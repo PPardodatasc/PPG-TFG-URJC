@@ -9,12 +9,12 @@ load_dotenv()
 def call_endpoint(filters: dict) -> list:
     """
     Llama al endpoint con los filtros proporcionados y devuelve los datos en formato JSON.
+    Gestiona errores de conexión, tiempo de espera y otros problemas comunes al hacer solicitudes HTTP.
     """
     
     url = os.environ.get("ENDPOINT_URL")
     if not url:
-        print("Error: ENDPOINT_URL environment variable is not set.")
-        return []
+        raise ValueError("Error: ENDPOINT_URL environment variable is not set.")
     
     records = []
     while True:
