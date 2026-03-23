@@ -1,0 +1,71 @@
+\chapter{Tecnologías}
+\label{chap:tecnologias}
+
+Para dar respuesta a las necesidades del proyecto, se ha diseñado una arquitectura de datos robusta, escalable y reproducible. La selección de herramientas se ha fundamentado en los estándares actuales de la industria y el paradigma del \textit{Modern Data Stack}. En este capítulo se detallan las tecnologías empleadas, así como la justificación técnica que motiva su adopción frente a otras alternativas del mercado.
+
+\section{Lenguaje Base y Gestión de Entorno}
+\label{sec:entorno}
+
+\subsection{Python\\}
+\label{subsec:python}
+
+Python se ha consolidado como el lenguaje de programación de referencia en el ecosistema de la Ciencia de Datos y la Inteligencia Artificial, gracias a su sintaxis legible y su vasta comunidad de desarrollo~\cite{van1995python}. En este proyecto, Python actúa como el hilo conductor que vertebra todas las fases de la arquitectura, desde los \textit{scripts} de extracción de datos hasta el entrenamiento de las redes neuronales.
+
+\subsection{Gestor de dependencias: \textit{uv}}
+\label{subsec:uv}
+
+Una práctica ineludible en cualquier proyecto de ingeniería de \textit{software} es garantizar la reproducibilidad del entorno virtual. Para la gestión de dependencias y paquetes, se ha adoptado \textit{uv}, una herramienta de vanguardia desarrollada en el lenguaje Rust que ha irrumpido recientemente como sustituto de alto rendimiento para el gestor tradicional \textit{pip}.
+
+La justificación técnica para la adopción de \textit{uv} radica en su eficiencia arquitectónica extrema. Al estar compilado en Rust, aprovecha los estándares modernos de empaquetado de Python (como PEP 518 y PEP 621), ya que lee las dependencias directamente desde archivos de configuración \texttt{.toml} sin necesidad de ejecutar código de terceros, un cuello de botella histórico en \textit{pip}. Además, \textit{uv} rechaza paquetes mal formados y aplica reglas estrictas que ignoran formatos obsoletos, lo que se traduce en una mayor seguridad y estabilidad del entorno.
+
+A nivel de rendimiento, \textit{uv} descarga múltiples paquetes de manera concurrente en lugar de realizar peticiones secuenciales. Destaca especialmente su implementación de un sistema de caché global mediante enlaces duros (\textit{hard links}); si un paquete ya ha sido instalado previamente en otro proyecto de la máquina, \textit{uv} enlaza los archivos en lugar de duplicarlos. Esta característica, sumada al uso del algoritmo de resolución de dependencias \textit{PubGrub} para evitar conflictos de versiones, reduce drásticamente los tiempos de instalación y el consumo de almacenamiento en disco.
+
+\section{Arquitectura de Ingesta y Almacenamiento}
+\label{sec:ingesta_almacenamiento}
+
+\subsection{Apache Airflow}
+\label{subsec:airflow}
+
+Apache Airflow es una plataforma de código abierto diseñada para crear, planificar y monitorizar flujos de trabajo programáticos (\textit{workflows}). A diferencia de herramientas de planificación clásicas basadas en el sistema operativo (como \textit{cron}), Airflow permite definir las tuberías de datos como código (\textit{Data-as-Code}) mediante Grafos Acíclicos Dirigidos (DAGs), lo que proporciona un control granular sobre las dependencias entre tareas.
+
+En la arquitectura de este proyecto, Airflow actúa como el orquestador principal encargado de automatizar las extracciones recurrentes de la API del Ayuntamiento de Melbourne. Se ha desplegado en un servidor virtualizado, configurado con los requisitos de seguridad y aislamiento de red pertinentes. Esta infraestructura garantiza una ejecución ininterrumpida.
+
+Su elección frente a otros orquestadores se fundamenta en su resiliencia. Airflow gestiona de forma nativa los reintentos ante caídas o fallos de conexión (\textit{retries}), alerta sobre cuellos de botella y proporciona una interfaz web robusta para monitorizar el estado del \textit{pipeline} en tiempo real, lo cual es crítico para una arquitectura de \textit{micro-batching} (procesamiento por microlotes).
+
+\subsection{DuckDB}
+\label{subsec:duckdb}
+
+DuckDB es un sistema de gestión de bases de datos relacionales en proceso (\textit{in-process}), diseñado específicamente para cargas de trabajo de procesamiento analítico en línea (OLAP). Frente a motores tradicionales embebidos como SQLite, que almacenan la información fila por fila (ideales para transacciones puntuales), DuckDB emplea una arquitectura de almacenamiento orientada a columnas. Además, DuckDB se ejecuta dentro de la aplicación, lo cual implica que no requiere un servidor externo, ni gestión de clústeres, ni una configuración de infraestructura compleja~\cite{raasveldt2019duckdb}.
+
+Esta aproximación columnar, combinada con un motor de ejecución de consultas vectorizado, permite que las operaciones analíticas complejas y las agregaciones temporales masivas se resuelvan a una velocidad significativamente superior. El motor procesa bloques de datos (vectores) en una sola instrucción de la CPU, lo que minimiza la sobrecarga computacional.
+
+Se ha integrado DuckDB en el proyecto por su sinergia absoluta con el ecosistema de Python y, muy especialmente, por su capacidad de ejecutar sentencias SQL estándar directamente sobre \textit{DataFrames} de Pandas. Al operar en el mismo espacio de memoria que el proceso que lo invoca, DuckDB permite realizar consultas relacionales analíticas complejas (incluyendo sentencias \texttt{JOIN}, agrupaciones o funciones de ventana) al consultar directamente variables nativas de Python, sin necesidad de copiar, exportar o transferir los datos previamente a un servidor externo. Esta versatilidad híbrida, que aúna la expresividad del lenguaje SQL con la flexibilidad analítica de Pandas, lo convierte en la base de datos ideal para transformar y almacenar el flujo incesante de datos espaciotemporales procedentes de Airflow.
+
+\section{Ciencia de Datos y \textit{Deep Learning}}
+\label{sec:deep_learning}
+
+\subsection{PyPOTS}
+\label{subsec:pypots}
+
+PyPOTS (\textit{A Python Toolbox for Data Mining on Partially Observed Time Series}) es una librería especializada de código abierto diseñada para el modelado, clasificación y predicción de series temporales que presentan valores nulos o discontinuidades estructurales~\cite{du2023pypots}. Su arquitectura unifica implementaciones de vanguardia basadas en mecanismos de atención y redes neuronales recurrentes.
+
+En este trabajo, se utiliza PyPOTS porque permite entrenar modelos de \textit{Deep Learning} capaces de inferir el estado de los sensores físicos estropeados (proceso de imputación) a partir de dependencias espaciotemporales complejas. A diferencia de las técnicas de interpolación matemática clásica, que solo observan los datos históricos de un sensor aislado, los modelos disponibles en PyPOTS analizan el contexto global de la red de aparcamientos.
+
+Al aprender la dinámica subyacente de la movilidad de la ciudad para rellenar estos huecos, el modelo extrae representaciones latentes profundas del comportamiento urbano. Este aprendizaje auto-supervisado otorga a la arquitectura la capacidad no solo de reconstruir el pasado imperfecto, sino de predecir la ocupación futura con un alto grado de precisión.
+
+\section{Visualización}
+\label{sec:visualizacion}
+
+\subsection{Grafana y Herramientas Geoespaciales}
+\label{subsec:grafana_folium}
+
+Para la monitorización visual de la información procesada, se ha optado por Grafana, una plataforma de código abierto líder en observabilidad y \textit{Business Intelligence} (BI). Grafana destaca por su capacidad para conectarse a múltiples fuentes de datos de forma nativa. En este proyecto, se alimenta directamente del motor analítico DuckDB, lo que permite generar cuadros de mando (\textit{dashboards}) interactivos que reflejan métricas de interés sobre los datos de ocupación.
+
+En el plano del análisis espacial, se han incorporado librerías de mapeo interactivas para Python, como Folium. Esta herramienta actúa como puente tecnológico hacia la biblioteca de JavaScript Leaflet, lo cual permite renderizar mapas de calor y representar geográficamente la red de sensores. Su uso es clave para analizar la disponibilidad de plazas en función de su proximidad a Puntos de Interés (POIs) específicos, como centros comerciales o áreas de ocio.
+
+\subsection{Quarto}
+\label{subsec:quarto}
+
+Para democratizar el acceso a los resultados y la metodología del proyecto, se ha empleado Quarto. Se trata de un sistema de publicación científica y técnica de código abierto, construido sobre la herramienta conversora universal Pandoc. Quarto permite entrelazar texto narrativo en formato \textit{Markdown} con código ejecutable de Python, para generar documentos dinámicos de alta calidad estética~\cite{Allaire2022quarto}.
+
+En este contexto, Quarto se ha utilizado para el desarrollo y despliegue del entorno web estructurado del proyecto. Esta tecnología facilita la compilación de un \textit{portfolio} interactivo que agrupa la arquitectura de datos, las visualizaciones generadas por Grafana y Folium, y las conclusiones extraídas de los modelos predictivos, lo que ofrece una experiencia divulgativa alternativa a la tradicional memoria estática en PDF.

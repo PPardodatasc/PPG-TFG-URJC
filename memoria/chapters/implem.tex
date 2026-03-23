@@ -1,0 +1,169 @@
+\chapter{Diseño e implementación}
+\label{chap:diseño}
+
+El presente capítulo constituye el núcleo técnico de este trabajo. En él se describe de manera exhaustiva el proceso de desarrollo de la plataforma, detallando las decisiones de diseño, el tratamiento de la información y la construcción del \textit{pipeline} predictivo. El objetivo es proporcionar una visión clara y reproducible de cómo se han integrado las diferentes tecnologías para dar solución al problema del pronóstico de aparcamiento mediante \textit{Deep Learning}.
+
+\section{Arquitectura general} 
+\label{sec:arquitectura}
+
+Para garantizar la escalabilidad y robustez del sistema, se ha diseñado una arquitectura orientada a los datos, dividida en fases secuenciales que abarcan desde la ingesta hasta la visualización final. La estructura global del proyecto se ilustra en la Figura~\ref{fig:arquitectura}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=12cm, keepaspectratio]{img/[implem]arquitectura.png}
+	\caption{Arquitectura general del pipeline del sistema.}
+	\label{fig:arquitectura}
+\end{figure}
+
+Tal y como se observa en la Figura~\ref{fig:arquitectura}, el sistema se articula de forma secuencial, dividiendo sus primeras fases (Capas 1 y 2) en dos flujos de trabajo diferenciados según la naturaleza temporal de los datos:
+\begin{itemize}
+	\item \textbf{Flujo histórico.} Ejecutado de forma local mediante \textit{scripts} de Python, se encarga de la extracción de datos desde el portal de \textit{Open Data} de Melbourne y posteriores transformaciones. Estos datos serán empleados en entrenar el modelo de PyPOTS.
+	\item \textbf{Flujo en tiempo real.} Orquestado íntegramente por Apache Airflow, interactúa de forma periódica con la API del Ayuntamiento para obtener los datos en tiempo real, estandarizarlos y mantener el sistema actualizado mediante el almacenamiento en DuckDB. Estos datos serán destinados para realizar la inferencia una vez el modelo ha sido entrenado.
+	\item \textbf{Motor de modelado predictivo.} Realiza el entrenamiento con los datos históricos y ejecutar la inferencia para generar las predicciones futuras. 
+	\item \textbf{Interfaz de consumo y visualización.} Integración de herramientas específicas según el caso de uso: Grafana para la monitorización de métricas y predicciones, Folium para la representación interactiva de la ocupación geográfica, y Quarto para la web del proyecto
+\end{itemize}
+
+
+
+\section{Origen y Comprensión de los Datos}
+\label{sec:origen_datos}
+
+El primer paso crítico en cualquier proyecto de analítica predictiva es la adquisición y comprensión del dominio de los datos. Para este trabajo, se ha tomado como base empírica el portal de \textit{Open Data} del Ayuntamiento de Melbourne. 
+
+\subsection{Justificación del \textit{dataset} histórico. Extracción automatizada}
+\label{subsec:justificacion}
+Para la fase de entrenamiento y experimentación inicial, se recurrió al \textit{dataset} histórico estático correspondiente al año 2019. La elección de este año en particular responde a una limitación operativa y contextual importante: debido a las anomalías de movilidad y a los cambios en las políticas de retención de datos durante la pandemia de la COVID-19, los conjuntos de datos posteriores a 2020 presentan vacíos de información o no fueron almacenados de forma persistente. Por tanto, 2019 representa el último ciclo temporal completo y fidedigno de la movilidad urbana ordinaria (incluyendo estacionalidad anual, festividades locales y variaciones estacionales).
+
+Para garantizar la reproducibilidad del entorno de desarrollo y evitar el manejo manual de archivos masivos, la obtención de este conjunto de datos se ha procedimentado mediante un \textit{pipeline} de extracción automatizado en Python. Haciendo uso de librerías nativas como \textit{requests} para peticiones HTTP, se orquestó la conexión al repositorio original para la descarga del archivo comprimido por bloques (\textit{chunks}) para evitar colapsar la memoria RAM.
+
+Una vez finalizada la transferencia, el sistema localiza el archivo (\textit{.zip}), extrae su contenido programáticamente utilizando la librería \textit{zipfile} y almacena los datos tabulares en formato CSV para su posterior procesamiento.
+
+\subsection{Estructura del conjunto de datos}
+\label{subsec:formato_datos}
+Este conjunto de datos masivo, compuesto por más de 42 millones de registros anuales, presenta un paradigma de almacenamiento orientado a eventos. Cada fila del documento no representa el estado general o agregado de una calle en un intervalo de tiempo dado, sino un evento asíncrono e individual: la llegada (\textit{ArrivalTime}) o la salida (\textit{DepartureTime}) física de un vehículo en un sensor o plaza de aparcamiento específica (\textit{DeviceId} o \textit{Bay ID}), acompañado de su marca temporal exacta.
+
+Esta alta granularidad, si bien es excelente para capturar la realidad del tráfico de agitación plaza por plaza, requiere de un procesamiento intensivo para transformar un registro de eventos asíncronos en una serie temporal regular y estructurada con la que posteriormente poder modelar.
+
+\section{Análisis Exploratorio de Datos (EDA)}
+\label{sec:eda}
+
+Antes de aplicar cualquier técnica de modelado o de diseñar el esquema de la base de datos analítica, es imperativo realizar un Análisis Exploratorio de Datos (EDA). Esta fase persigue un doble objetivo: comprender las distribuciones subyacentes de los datos de movilidad en Melbourne, así como las vairables de interés, e identificar anomalías  en las mediciones físicas de los sensores.
+
+Debido al gran volumen de información, las fases iniciales de diseño del algoritmo de limpieza se prototiparon sobre una muestra representativa de 500.000 filas, un tamaño significativo para obtener conclusiones generalizables al conjunto completo de datos. Esta estrategia permitió agilizar las iteraciones de desarrollo y optimizar el consumo de memoria RAM antes de escalar el proceso al clúster completo.
+
+Tras visualizar las observaciones del \textit{dataset} en formato \textit{DataFrame} de \textit{Pandas}, se realizó una interpretación a alto nivel de las variables presentes, clasificándolas en cuatro categorías principales:
+
+\begin{itemize}
+	\item \textbf{Variables temporales:}
+	\begin{itemize}
+		\item \textit{ArrivalTime} (\texttt{str}): Fecha y hora exacta en la que el sensor detectó la llegada del vehículo.
+		\item \textit{DepartureTime} (\texttt{str}): Fecha y hora exacta en la que el vehículo abandonó la plaza.
+		\item \textit{DurationMinutes} (\texttt{str}): Tiempo total de estacionamiento (diferencia temporal entre la llegada y la salida).
+	\end{itemize}
+	
+	\item \textbf{Variables de estado:}
+	\begin{itemize}
+		\item \textit{VehiclePresent} (\texttt{bool}): Variable objetivo (\textit{target}). Indica la presencia física de un vehículo sobre el sensor durante ese periodo.
+		\item \textit{InViolation} (\texttt{bool}): Indica si el vehículo excedió el tiempo permitido, incurriendo en una infracción.
+		\item \textit{Sign} (\texttt{str}) / \textit{SignPlateID} (\texttt{float64}): Texto y código identificador de la señal física de tráfico de la calle. Estas variables presentan una alta proporción de valores nulos.
+	\end{itemize}
+	
+	\item \textbf{Identificadores de plazas:}
+	\begin{itemize}
+		\item \textit{DeviceId} (\texttt{int64}): Número de serie electrónico del sensor.
+		\item \textit{BayId} (\texttt{int64}): Identificador de la plaza de aparcamiento.
+		\item \textit{StreetMarker} (\texttt{str}): Código alfanumérico identificativo. La tupla formada por (\textit{DeviceId}, \textit{StreetMarker}) constituye una clave única.
+	\end{itemize}
+	
+	\item \textbf{Variables de ubicación:}
+	\begin{itemize}
+		\item \textit{AreaName} (\texttt{str}): Barrio o distrito general al que pertenece la plaza.
+		\item \textit{StreetName} (\texttt{str}) / \textit{StreetId} (\texttt{int64}): Nombre y código numérico de la calle principal.
+		\item \textit{BetweenStreet1} (\texttt{str}) / \textit{BetweenStreet1ID} (\texttt{int64}): Primera calle transversal que acota el tramo de estacionamiento.
+		\item \textit{BetweenStreet2} (\texttt{str}) / \textit{BetweenStreet2ID} (\texttt{int64}): Segunda calle transversal que acota el tramo.
+		\item \textit{SideName} (\texttt{str}) / \textit{SideOfStreetCode} (\texttt{str}) / \textit{SideOfStreet} (\texttt{int64}): Identificadores de la acera de estacionamiento y su ubicación geográfica (Norte, Sur, Este, Oeste). Existe una equivalencia predefinida entre códigos (1-C, 2-E, 3-N, 4-S, 5-W).
+	\end{itemize}
+\end{itemize}
+
+\subsection{Transformación y tipificado de variables}
+\label{subsec:transformacion}
+Los datos brutos presentaban inconsistencias de formato que requirieron una estandarización previa. En primer lugar, la variable de duración (\textit{DurationMinutes}) fue convertida de cadena de texto a valor numérico de coma flotante (\texttt{float}). Asimismo, las marcas de tiempo (\textit{ArrivalTime} y \textit{DepartureTime}), almacenadas originalmente como texto plano, se transformaron a objetos \textit{datetime} nativos, lo cual es indispensable para habilitar la correcta indexación temporal y el posterior remuestreo de la serie.
+
+\subsection{Ingeniería de características (\textit{Feature Engineering})}
+\label{subsec:feature_engineering}
+Con las variables temporales correctamente tipificadas, se procedió a la descomposición de las fechas para extraer componentes estacionales subyacentes. A partir de la fecha de llegada, se generaron tres nuevas características fundamentales:
+\begin{itemize}
+	\item \textbf{Hora del día (\textit{Hour}):} busca capturar los picos de tráfico laboral diario.
+	\item \textbf{Día de la semana (\textit{WeekDay}):} busca entender el comportamiento de la movilidad entre días laborables y fines de semana.
+	\item \textbf{Mes del año (\textit{Month}):} ayuda a modelar la macro-estacionalidad, como periodos vacacionales o cambios de estación.
+\end{itemize}
+
+\subsection{Análisis descriptivo y visualización}
+\label{subsec:visualizacion_eda}
+Una vez estandarizado el conjunto de datos y generadas las nuevas variables, se procedió a realizar un análisis visual descriptivo para obtener \textit{insights} sobre el comportamiento de la movilidad.
+
+En primer lugar, se analizó la distribución de la variable objetivo binaria (\textit{VehiclePresent}), la cual indica la ocupación física de las plazas. Este paso es crítico para evaluar el balanceo de clases antes de la fase de modelado.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=10cm, keepaspectratio]{img/[implem]eda_target.png}
+	\caption{Distribución de la variable objetivo (\textit{VehiclePresent}).}
+	\label{fig:eda_target}
+\end{figure}
+
+Como se aprecia en la Figura~\ref{fig:eda_target}, se evaluó la proporción de registros correspondientes a plazas ocupadas frente a plazas libres. En problemas de \textit{Deep Learning}, un desbalanceo severo en la variable a predecir podría inducir a la red neuronal a apostar sistemáticamente por la clase mayoritaria, reduciendo drásticamente su capacidad de generalización. La visualización de esta distribución permite confirmar que no hay un desbalanceo notable, pues ambas clases presentan una representación equilibrada.
+
+Posteriormente, se analizó el volumen de registros de aparcamiento en función de la hora del día, con el fin de identificar los patrones de rotación diarios.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=12cm, keepaspectratio]{img/[implem]eda_hours.png}
+	\caption{Distribución del volumen de eventos de estacionamiento según la hora del día.}
+	\label{fig:eda_hours}
+\end{figure}
+
+Tal y como se ilustra en la Figura~\ref{fig:eda_hours}, la movilidad urbana en las plazas sensorizadas presenta un comportamiento fuertemente cíclico y dependiente del horario laboral. Se observa un valle profundo de inactividad durante la madrugada, seguido de un incremento pronunciado a partir de las 08:00 horas. El volumen de eventos se mantiene en niveles máximos durante las horas centrales del día, reflejando la alta rotación comercial y laboral, para finalmente descender de forma paulatina a partir de las 18:00 horas aproximadamente.
+
+Por último, se evaluó la distribución espacial de estos eventos para identificar los principales puntos de congestión o \textit{hotspots} de la ciudad.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=12cm, keepaspectratio]{img/[implem]eda_hotspots.png}
+	\caption{Top de vías o zonas con mayor densidad de registros de aparcamiento (\textit{hotspots}).}
+	\label{fig:eda_hotspots}
+\end{figure}
+
+El análisis geográfico representado en la Figura~\ref{fig:eda_hotspots} revela que la demanda de aparcamiento no se distribuye de manera uniforme, sino que se concentra asimétricamente en unas pocas vías principales. Estas calles, que acumulan la mayor densidad de registros, pueden corresponder a arterias de algún distrito central de negocios o a zonas con alta concentración de servicios. Esta información es importante, pues estas zonas serán áreas prioritarias para el modelo predictivo.
+
+\subsection{Selección de características}
+\label{subsec:feature_selection}
+Tras entender las variables en profundidad, se llevó a cabo un proceso selección de las mismas (\textit{Feature Selection}) para eliminar redundancias y evitar la fuga de información (\textit{data leakage}) durante el entrenamiento. Se descartaron columnas descriptivas que representaban la misma entidad a nivel lógico, por ejemplo, identificadores internos del sensor frente a nombres de la calle y se conservaron las variables que componen el conjunto mínimo viable de características predictivas: \textit{DeviceId}, \textit{StreetId}, \textit{VehiclePresent}, \textit{ArrivalTime}, \textit{DepartureTime}, así como el resto de variables temporales (\textit{Hour}, \textit{WeekDay}, \textit{Month}).
+
+Como paso final de esta fase exploratoria, el \textit{DataFrame} limpio y preprocesado fue exportado en formato Parquet (\textit{.parquet}). La elección de este formato de almacenamiento en columnas, en lugar del tradicional CSV, se implementó por su significativa reducción en los tiempos de lectura y escritura en disco para las fases posteriores.
+
+
+
+\section{Adaptación temporal para \textit{Deep Learning}\\}
+\label{sec:adaptacion_pypots}
+
+\subsection{Regularización de la serie (\textit{Grid})}
+\label{subsec:regularizacion}
+Como se mencionó en la subsección~\ref{subsec:formato_datos}, los datos originales son asíncronos y transaccionales. Sin embargo, las arquitecturas de \textit{Deep Learning} para series temporales requieren secuencias de longitud fija e intervalos regulares. Para solventar esta discrepancia, se implementó un algoritmo de agrupamiento y remuestreo que transforma los eventos asíncronos individuales en un sistema de cuadrícula (\textit{Grid}). Este enfoque discretiza el tiempo en intervalos fijos de 15 minutos y recalcula el estado de ocupación de cada plaza (\textit{DeviceId}) para cada uno de dichos intervalos.
+
+\subsection{Codificación categórica posicional (\textit{One-Hot Encoding})}
+\label{subsec:one_hot}
+Las variables temporales extraídas previamente en la fase de EDA (\textit{Hour}, \textit{WeekDay}, \textit{Month}) poseen una naturaleza cíclica y categórica. Si estas variables se introdujeran en la red neuronal como valores enteros secuenciales (por ejemplo, Lunes = 1, Martes = 2), el modelo podría inferir erróneamente una relación matemática de magnitud u orden jerárquico que no existe en la realidad.
+
+Para neutralizar este riesgo sobre la cuadrícula temporal ya regularizada, se aplicó una técnica de codificación posicional conocida como \textit{One-Hot Encoding}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=14cm, keepaspectratio]{img/[implem]eda_one-hot.png}
+	\caption{Transformación de variables temporales mediante \textit{One-Hot Encoding} en el \textit{dataset} final preprocesado.}
+	\label{fig:one_hot_encoding}
+\end{figure}
+
+
+Tal y como ilustra la Figura~\ref{fig:one_hot_encoding}, esta técnica expande cada característica categórica en múltiples columnas binarias. Como resultado, la topología final del \textit{dataset} incrementa su dimensionalidad horizontal, pero garantiza que la red neuronal pondere correctamente los patrones estacionales sin sesgos aritméticos. 
+
+Como resultado del procesamiento previo, se obtiene el conjunto de datos formalmente preparado para el proceso de entrenamiento.
