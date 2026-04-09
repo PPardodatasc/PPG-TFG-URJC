@@ -8,10 +8,10 @@ website:
     left:
       - href: index.qmd
         text: Inicio
-      - href: eda.qmd
-        text: Análisis Exploratorio
       - href: predictions.qmd
-        text: Modelo y Predicciones
+        text: Resultados
+      - href: visualizations.qmd
+        text: Visualizaciones
 
 format:
   html:

@@ -1,5 +1,0 @@
-Logo de la universidad:
-![Logo URJC](img/logoURJC.png)
-
-Imagen EDA:
-![Hotspots](img/[implem]eda_hotspots.png)
