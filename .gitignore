@@ -4,3 +4,5 @@ __pycache__/
 data/
 backups/
 airflow/
+pyproject.toml
+tfg_melbourne.egg-info # toml setuptools 
