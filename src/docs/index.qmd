@@ -1,0 +1,19 @@
+---
+title: "Inicio"
+---
+
+# Smart Parking en Melbourne
+
+Este portal interactivo documenta el desarrollo y los resultados del sistema de predicción de ocupación de aparcamientos en superficie en la ciudad de Melbourne.
+
+## Sobre el proyecto
+
+Para dar solución al problema de la congestión del tráfico de agitación, se ha diseñado una arquitectura orientada a los datos que ingiere eventos transaccionales de sensores físicos y aplica modelos de **Deep Learning** (PyPOTS) para imputar y predecir el estado futuro de las plazas.
+
+### Fases del desarrollo:
+1. Ingesta automatizada y almacenamiento analítico (DuckDB).
+2. Procesamiento de series temporales y Feature Engineering.
+3. Modelado con Redes Neuronales.
+4. Visualización geoespacial y divulgación.
+
+> Navega por el menú superior para explorar el análisis exploratorio (EDA) y los resultados predictivos del modelo.

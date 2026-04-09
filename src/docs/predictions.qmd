@@ -1,0 +1,40 @@
+---
+title: "Resultados y Predicciones"
+jupyter: python3
+---
+
+## Evaluación del Modelo PyPOTS
+
+Una vez entrenada la red neuronal sobre las series temporales regularizadas, procedemos a visualizar la capacidad predictiva del sistema frente a los datos reales.
+
+### Visualización dinámica con Python
+
+**Código de prueba a continuación** 
+*(Puedes hacer clic en "Code" para desplegar el código que genera la gráfica).*
+
+```{python}
+#| label: fig-prediccion
+#| fig-cap: "Ejemplo prueba datos mockeados"
+#| warning: false
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Datos simulados para el ejemplo
+horas = list(range(24))
+ocupacion_real = [0, 0, 1, 1, 0, 5, 15, 30, 45, 42, 40, 45, 50, 48, 30, 20, 25, 35, 40, 20, 10, 5, 2, 0]
+ocupacion_pred = [0, 0, 0, 1, 2, 6, 12, 28, 48, 45, 38, 42, 52, 46, 32, 22, 24, 33, 42, 22, 12, 4, 1, 0]
+
+plt.figure(figsize=(12, 6))
+plt.plot(horas, ocupacion_real, label='Realidad (Sensores)', marker='o', color='blue', linewidth=2)
+plt.plot(horas, ocupacion_pred, label='Predicción (PyPOTS)', linestyle='--', marker='x', color='orange', linewidth=2)
+
+plt.title("[MOCK]Evolución diaria de la ocupación en una vía principal (Hotspot)", fontsize=14, fontweight='bold')
+plt.xlabel("Hora del día", fontsize=12)
+plt.ylabel("Volumen de vehículos estacionados", fontsize=12)
+plt.legend(loc='upper left', fontsize=10)
+plt.grid(True, alpha=0.3)
+plt.xticks(horas)
+plt.tight_layout()
+plt.show()
+```

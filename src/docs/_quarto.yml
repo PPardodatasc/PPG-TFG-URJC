@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "Smart Parking Melbourne"
+  description: "Predicción de ocupación de estacionamientos en Melbourne utilizando técnicas de análisis de datos y machine learning."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: eda.qmd
+        text: Análisis Exploratorio
+      - href: predictions.qmd
+        text: Modelo y Predicciones
+
+format:
+  html:
+    theme: cosmo # Temas limpios. Otros buenos: litera, flatly, zephyr.
+    css: styles.css
+    toc: true # Activa el índice lateral de contenidos
+    code-fold: true # Permite al usuario ocultar/mostrar el código fuente
