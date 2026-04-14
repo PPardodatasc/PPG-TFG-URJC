@@ -32,7 +32,7 @@ def download_from_url(url: str, path: str) -> None:
 
 
 
-def find_segment_coordinates(row, df_spatial):
+def find_coordinates(row, df_spatial):
     """
     Match the street and transversal streets from the sensor data with the road segment descriptions 
     in the spatial dataset to find the corresponding latitude and longitude.
