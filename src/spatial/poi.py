@@ -60,16 +60,16 @@ def classify_zone(lat: float, lon: float, radius=150):
 
     # Zone classification
     if residential >= 2:
-        return 'Residential'
+        return 'Residencial'
     elif shops >= 15:
-        return 'Commercial'
+        return 'Comercial'
     elif amenities >= 80 or offices >= 5:
-        return 'Center'
+        return 'Centro'
     # Fallback
     elif shops >= 5 or amenities >= 30:
-        return 'Commercial'
+        return 'Comercial'
     else:
-        return 'General'
+        return 'Genérico'
 
 
 def get_zone_type(df_sensors, lat_col='lat', lon_col='lon'):

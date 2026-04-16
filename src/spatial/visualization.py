@@ -38,7 +38,7 @@ def create_parking_map(df_sensors, lat_col='lat', lon_col='lon', id_col='DeviceI
 
     # Add each sensor to the map
     for idx, row in df_sensors.iterrows():
-        zone = row.get('ZoneType', 'General') # Default to 'General' if ZoneType is missing. This should not happen since posible Nones have already been filtered out
+        zone = row.get('ZoneType', 'Genérico') # Default to 'General' if ZoneType is missing. This should not happen since posible Nones have already been filtered out
         color = color_map.get(zone, '#95a5a6')
         street = row.get(name_col, 'Unknown Street') # No names should be missing
 
