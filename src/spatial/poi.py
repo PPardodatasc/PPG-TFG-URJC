@@ -10,7 +10,7 @@ def get_pois(lat: float, lon: float, radius=150):
     Retrieve points of interest (POIs) from OpenStreetMap around a given location.
     Returns a dictionary with counts of different POI categories.
     """
-    time.sleep(2) # avoid hitting API rate limits
+    time.sleep(1) # avoid hitting API rate limits
 
     tags = {
         'amenity': True,  
