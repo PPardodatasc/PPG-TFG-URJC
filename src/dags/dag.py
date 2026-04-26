@@ -19,7 +19,7 @@ JsonPayload = list[JsonRecord]
 @dag(
     dag_id='melbourne_pipeline',
     start_date=datetime(2024, 1, 1),
-    schedule=None, # Manual por ahora
+    schedule='*/15 * * * *', # Trigger every 15 minutes
     catchup=False,
     tags=['TFG', 'API', 'DuckDB']
 )

@@ -25,4 +25,3 @@ if results:
         
         print("\n--- VISTA PREVIA ---")
         print(df_realtime.head(3))
-

@@ -2,22 +2,30 @@
 import duckdb
 import pandas as pd
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def save_to_db(df: pd.DataFrame, name_db: str) -> int:
     """
-    Guarda un DataFrame de Pandas en la base de datos DuckDB.
-    Crea la tabla si no existe y añade los nuevos registros.
-    NOTA: la variable df se usa en consultas SQL de DuckDB, se tiene que recibir aunque no se use como variable.
-    Devuelve el número total de filas en la tabla histórica.
+    Saves a Pandas DataFrame to a DuckDB database.
+    Creates the table if it does not exist and appends new records.
+    NOTE: the df variable is used in DuckDB SQL queries, so it must be passed even if not used as a regular Python variable.
+    Returns the total number of rows in the historical table.
     """
 
     def get_db_path(name_db: str) -> str:
         """
-        Construye la ruta absoluta hacia la base de datos DuckDB
+        Builds the absolute path to the DuckDB database.
+        Uses a fixed path when running in Docker, or computes the local path otherwise.
         """
-        # Get project root directory (2 levels above)
-        root_dir = Path(__file__).resolve().parent.parent.parent
-        db_path = root_dir / 'duck_db' / f"{name_db}.duckdb"
+        # 
+        db_path = Path(os.environ.get("DUCKDB_PATH")) / f"{name_db}.duckdb"
+        # else: # FALLBACK LOCAL
+        #     # Comportamiento original para cuando ejecutas en local
+        #     root_dir = Path(__file__).resolve().parent.parent.parent
+        #     db_path = root_dir / 'duck_db' / f"{name_db}.duckdb"
+            
         db_path.parent.mkdir(parents=True, exist_ok=True)
         return str(db_path)
     
