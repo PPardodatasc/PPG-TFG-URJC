@@ -1,14 +1,8 @@
 #dag.py
 from airflow.decorators import dag, task
 from datetime import datetime
-from pathlib import Path
-import sys
 from typing import Any, List, Dict
 import pandas as pd
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.etl.api import call_endpoint
 from src.etl.db_manager import save_to_db
