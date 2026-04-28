@@ -1,5 +1,5 @@
 #dag.py
-from airflow.sdk import dag, task
+from airflow.decorators import dag, task
 from datetime import datetime
 from pathlib import Path
 import sys
