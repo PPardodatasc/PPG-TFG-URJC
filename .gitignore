@@ -9,3 +9,4 @@ pyproject.toml
 tfg_melbourne.egg-info 
 # folium
 cache/
+logs/
