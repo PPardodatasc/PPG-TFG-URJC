@@ -13,7 +13,7 @@ def create_parking_map(df_sensors, lat_col='lat', lon_col='lon', id_col='DeviceI
     color_map = {
         'Commercial': '#e74c3c',  
         'Residential': '#2ecc71',  
-        'Center': '#3498db',       
+        'Center (CBD)': '#3498db',       
         'General': '#95a5a6'          
     }
 
@@ -30,7 +30,7 @@ def create_parking_map(df_sensors, lat_col='lat', lon_col='lon', id_col='DeviceI
         <b style="color: #333; font-family: Arial;">Puntos de interés</b><br>
         <i style="background:#e74c3c; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Comercial</span><br>
         <i style="background:#2ecc71; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Residencial</span><br>
-        <i style="background:#3498db; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Centro</span><br>
+        <i style="background:#3498db; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Centro (CBD)</span><br>
         <i style="background:#95a5a6; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Genérico</span>
     </div>
     '''

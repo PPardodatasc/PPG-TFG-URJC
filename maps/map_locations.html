@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f7877781d48dc0573df2d150088249b9 {
+                #map_7d4d8feaf58665d72e7f8b03b067bc8a {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -65,19 +65,19 @@
         <b style="color: #333; font-family: Arial;">Puntos de interés</b><br>
         <i style="background:#e74c3c; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Comercial</span><br>
         <i style="background:#2ecc71; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Residencial</span><br>
-        <i style="background:#3498db; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Centro</span><br>
+        <i style="background:#3498db; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Centro (CBD)</span><br>
         <i style="background:#95a5a6; width: 12px; height: 12px; float: left; margin-top: 4px; margin-right: 8px; border-radius: 50%;"></i><span style="color: #333;">Genérico</span>
     </div>
     
     
-            <div class="folium-map" id="map_f7877781d48dc0573df2d150088249b9" ></div>
+            <div class="folium-map" id="map_7d4d8feaf58665d72e7f8b03b067bc8a" ></div>
         
 </body>
 <script>
     
     
-            var map_f7877781d48dc0573df2d150088249b9 = L.map(
-                "map_f7877781d48dc0573df2d150088249b9",
+            var map_7d4d8feaf58665d72e7f8b03b067bc8a = L.map(
+                "map_7d4d8feaf58665d72e7f8b03b067bc8a",
                 {
                     center: [-37.8136, 144.9631],
                     crs: L.CRS.EPSG3857,
@@ -94,7 +94,7 @@
 
         
     
-            var tile_layer_a4e671cd87904e4dd74816f21d2319fe = L.tileLayer(
+            var tile_layer_357b3a039311e04281f871b362ee8719 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -111,21 +111,21 @@
             );
         
     
-            tile_layer_a4e671cd87904e4dd74816f21d2319fe.addTo(map_f7877781d48dc0573df2d150088249b9);
+            tile_layer_357b3a039311e04281f871b362ee8719.addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            var circle_marker_0fde462a4cf5219d124f28688a4ea75f = L.circleMarker(
+            var circle_marker_1a0b102d5de4d86e384d82b8a9a617b3 = L.circleMarker(
                 [-37.8126486, 144.968327],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_0fde462a4cf5219d124f28688a4ea75f.bindTooltip(
+            circle_marker_1a0b102d5de4d86e384d82b8a9a617b3.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23915<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> BOURKE STREET
         </div>
         
@@ -136,13 +136,13 @@
             );
         
     
-            var circle_marker_aba58dad3ac48167bc0eb3513a1d8296 = L.circleMarker(
+            var circle_marker_71cfc409cdb1a46be8aa6a474e54698a = L.circleMarker(
                 [-37.8137101, 144.9728538],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_aba58dad3ac48167bc0eb3513a1d8296.bindTooltip(
+            circle_marker_71cfc409cdb1a46be8aa6a474e54698a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -158,13 +158,13 @@
             );
         
     
-            var circle_marker_c96587bdb89f7f55999aca885b9335c2 = L.circleMarker(
+            var circle_marker_220f693a2bf9d6000d82f56aa596a602 = L.circleMarker(
                 [-37.8185482, 144.9633293],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_c96587bdb89f7f55999aca885b9335c2.bindTooltip(
+            circle_marker_220f693a2bf9d6000d82f56aa596a602.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -180,18 +180,18 @@
             );
         
     
-            var circle_marker_50df502e975d3700e57dae7e6c1f0329 = L.circleMarker(
+            var circle_marker_2f6b0a1c52789636e8a2c1b6a7a70f08 = L.circleMarker(
                 [-37.8104864, 144.9722391],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_50df502e975d3700e57dae7e6c1f0329.bindTooltip(
+            circle_marker_2f6b0a1c52789636e8a2c1b6a7a70f08.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23916<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> BOURKE STREET
         </div>
         
@@ -202,18 +202,18 @@
             );
         
     
-            var circle_marker_7adc586be15abbc4ca1158d4bc3d01ec = L.circleMarker(
+            var circle_marker_a4de01f3b216bb49feb24e08e1e2bbd9 = L.circleMarker(
                 [-37.8082099, 144.9598926],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_7adc586be15abbc4ca1158d4bc3d01ec.bindTooltip(
+            circle_marker_a4de01f3b216bb49feb24e08e1e2bbd9.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27446<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> FRANKLIN STREET
         </div>
         
@@ -224,18 +224,18 @@
             );
         
     
-            var circle_marker_01bc66c31beeb199468a659e9000d624 = L.circleMarker(
+            var circle_marker_6d0b66170d274890edbb04c2d86516f4 = L.circleMarker(
                 [-37.8190202, 144.959676],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_01bc66c31beeb199468a659e9000d624.bindTooltip(
+            circle_marker_6d0b66170d274890edbb04c2d86516f4.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27164<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> WILLIAM STREET
         </div>
         
@@ -246,18 +246,18 @@
             );
         
     
-            var circle_marker_1c2de58f860041d253e10a04ec91aecd = L.circleMarker(
+            var circle_marker_3c235874987364a5d403bb49f49d7872 = L.circleMarker(
                 [-37.813282, 144.9683299],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_1c2de58f860041d253e10a04ec91aecd.bindTooltip(
+            circle_marker_3c235874987364a5d403bb49f49d7872.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25982<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> RUSSELL STREET
         </div>
         
@@ -268,18 +268,18 @@
             );
         
     
-            var circle_marker_d90c16afa02754f3f6f2a7a87918cae7 = L.circleMarker(
+            var circle_marker_79c21e872c0707137b8572b2b5d7316a = L.circleMarker(
                 [-37.8123193, 144.9677641],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_d90c16afa02754f3f6f2a7a87918cae7.bindTooltip(
+            circle_marker_79c21e872c0707137b8572b2b5d7316a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27596<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> RUSSELL STREET
         </div>
         
@@ -290,18 +290,18 @@
             );
         
     
-            var circle_marker_28013fe9eb070d9d933c83443556b7a0 = L.circleMarker(
+            var circle_marker_034bce73b3fef6ae10e875e38da32c45 = L.circleMarker(
                 [-37.8028453, 144.9669083],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_28013fe9eb070d9d933c83443556b7a0.bindTooltip(
+            circle_marker_034bce73b3fef6ae10e875e38da32c45.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26585<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> PELHAM STREET
         </div>
         
@@ -312,13 +312,13 @@
             );
         
     
-            var circle_marker_b08e1e1f64e29b5799506000a5131ad2 = L.circleMarker(
+            var circle_marker_26406c7501b25afad0d901feb89f83b2 = L.circleMarker(
                 [-37.813996, 144.9545139],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_b08e1e1f64e29b5799506000a5131ad2.bindTooltip(
+            circle_marker_26406c7501b25afad0d901feb89f83b2.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -334,13 +334,13 @@
             );
         
     
-            var circle_marker_e6231284d361833dcda96212db1cc2da = L.circleMarker(
+            var circle_marker_de5ccf0ad871dd0d0cabbeae06fe3251 = L.circleMarker(
                 [-37.8126433, 144.9535046],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_e6231284d361833dcda96212db1cc2da.bindTooltip(
+            circle_marker_de5ccf0ad871dd0d0cabbeae06fe3251.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -356,13 +356,13 @@
             );
         
     
-            var circle_marker_66a0c027d0a6dbef516464141db14f29 = L.circleMarker(
+            var circle_marker_977449b200c620c02cd6512d77c17357 = L.circleMarker(
                 [-37.8085888, 144.9674631],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_66a0c027d0a6dbef516464141db14f29.bindTooltip(
+            circle_marker_977449b200c620c02cd6512d77c17357.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -378,18 +378,18 @@
             );
         
     
-            var circle_marker_d615b12a002f05740620f679caa24b12 = L.circleMarker(
+            var circle_marker_c7cdc6f459da7c71ffd0f23135e97830 = L.circleMarker(
                 [-37.8143489, 144.9554092],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_d615b12a002f05740620f679caa24b12.bindTooltip(
+            circle_marker_c7cdc6f459da7c71ffd0f23135e97830.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23944<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LONSDALE STREET
         </div>
         
@@ -400,13 +400,13 @@
             );
         
     
-            var circle_marker_f7c1f55f43a0d9bc9f98e23e0da9cfeb = L.circleMarker(
+            var circle_marker_2dd6048c240fae863164cc3908d01a07 = L.circleMarker(
                 [-37.8141404, 144.9576082],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_f7c1f55f43a0d9bc9f98e23e0da9cfeb.bindTooltip(
+            circle_marker_2dd6048c240fae863164cc3908d01a07.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -422,17 +422,61 @@
             );
         
     
-            var circle_marker_1dbf473592d327f666b5fcc1403629b7 = L.circleMarker(
+            var circle_marker_c9271c5df7777be2179a29cf13ec0283 = L.circleMarker(
                 [-37.8104095, 144.9647085],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_1dbf473592d327f666b5fcc1403629b7.bindTooltip(
+            circle_marker_c9271c5df7777be2179a29cf13ec0283.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23945<br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
+            <b>Calle:</b> LITTLE LONSDALE STREET
+        </div>
+        
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1c41d4b7044fa2d72badfcd4e5b4b27e = L.circleMarker(
+                [-37.8185369, 144.9568504],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
+        
+    
+            circle_marker_1c41d4b7044fa2d72badfcd4e5b4b27e.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Sensor:</b> 23940<br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
+            <b>Calle:</b> KING STREET
+        </div>
+        
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c39089bc5bec1aa7bf2065bd5c0d3519 = L.circleMarker(
+                [-37.8121392, 144.9589916],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
+        
+    
+            circle_marker_c39089bc5bec1aa7bf2065bd5c0d3519.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Sensor:</b> 23918<br>
             <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LITTLE LONSDALE STREET
         </div>
@@ -444,62 +488,18 @@
             );
         
     
-            var circle_marker_5182f144d9436699153bc85fe7d1114a = L.circleMarker(
-                [-37.8185369, 144.9568504],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
-        
-    
-            circle_marker_5182f144d9436699153bc85fe7d1114a.bindTooltip(
-                `<div>
-                     
-        <div style="font-family: Arial; font-size: 12px;">
-            <b>Sensor:</b> 23940<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
-            <b>Calle:</b> KING STREET
-        </div>
-        
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_8d65a92745be605f673efa467b2857b0 = L.circleMarker(
-                [-37.8121392, 144.9589916],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
-        
-    
-            circle_marker_8d65a92745be605f673efa467b2857b0.bindTooltip(
-                `<div>
-                     
-        <div style="font-family: Arial; font-size: 12px;">
-            <b>Sensor:</b> 23918<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
-            <b>Calle:</b> LITTLE LONSDALE STREET
-        </div>
-        
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_347d97a91fdc93bd4ec27b684f637df2 = L.circleMarker(
+            var circle_marker_54093e3688fa8e74d699f16c91fe1c00 = L.circleMarker(
                 [-37.8122905, 144.9542499],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_347d97a91fdc93bd4ec27b684f637df2.bindTooltip(
+            circle_marker_54093e3688fa8e74d699f16c91fe1c00.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23920<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LA TROBE STREET
         </div>
         
@@ -510,18 +510,18 @@
             );
         
     
-            var circle_marker_32633e49650ee4f1da2a56a17d5c2797 = L.circleMarker(
+            var circle_marker_f3fabe65f5a37fd30c8be3a97b03e9b0 = L.circleMarker(
                 [-37.8116707, 144.960474],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_32633e49650ee4f1da2a56a17d5c2797.bindTooltip(
+            circle_marker_f3fabe65f5a37fd30c8be3a97b03e9b0.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23917<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LONSDALE STREET
         </div>
         
@@ -532,13 +532,13 @@
             );
         
     
-            var circle_marker_57c05273b0b855333aea7a9fe35fa2fa = L.circleMarker(
+            var circle_marker_9ce5fe4416d612569013b7b34297ec8e = L.circleMarker(
                 [-37.8243074, 144.968403],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_57c05273b0b855333aea7a9fe35fa2fa.bindTooltip(
+            circle_marker_9ce5fe4416d612569013b7b34297ec8e.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -554,18 +554,18 @@
             );
         
     
-            var circle_marker_462ecc1d42c7d8dcf9452cc3d4777365 = L.circleMarker(
+            var circle_marker_4e0c9db92ced5c36fd5b68b3d86e87d9 = L.circleMarker(
                 [-37.8109274, 144.9559507],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_462ecc1d42c7d8dcf9452cc3d4777365.bindTooltip(
+            circle_marker_4e0c9db92ced5c36fd5b68b3d86e87d9.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 24602<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> WILLIAM STREET
         </div>
         
@@ -576,13 +576,13 @@
             );
         
     
-            var circle_marker_055d94ef4d110d70c422a91b1f65332c = L.circleMarker(
+            var circle_marker_bbdfa3cd97a3ad089d259137c26d7279 = L.circleMarker(
                 [-37.8131945, 144.9587471],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_055d94ef4d110d70c422a91b1f65332c.bindTooltip(
+            circle_marker_bbdfa3cd97a3ad089d259137c26d7279.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -598,13 +598,13 @@
             );
         
     
-            var circle_marker_f9bc20fc374ccd22d4ffe84d2bd505a3 = L.circleMarker(
+            var circle_marker_bd297387946f36a73d015205cca95c3a = L.circleMarker(
                 [-37.8096852, 144.9776971],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_f9bc20fc374ccd22d4ffe84d2bd505a3.bindTooltip(
+            circle_marker_bd297387946f36a73d015205cca95c3a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -620,18 +620,18 @@
             );
         
     
-            var circle_marker_427eeb17754a50782cdaa5cf0a7bba04 = L.circleMarker(
+            var circle_marker_4dc7f4001d3840816fd809e49f762d74 = L.circleMarker(
                 [-37.8040274, 144.9493598],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_427eeb17754a50782cdaa5cf0a7bba04.bindTooltip(
+            circle_marker_4dc7f4001d3840816fd809e49f762d74.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26086<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> ERROL STREET
         </div>
         
@@ -642,18 +642,18 @@
             );
         
     
-            var circle_marker_37683fa8b542b4bd779929f5cdc9581e = L.circleMarker(
+            var circle_marker_ea06998ad58585674ec5f9a2df19eeb6 = L.circleMarker(
                 [-37.8088069, 144.9703704],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_37683fa8b542b4bd779929f5cdc9581e.bindTooltip(
+            circle_marker_ea06998ad58585674ec5f9a2df19eeb6.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25060<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LITTLE LONSDALE STREET
         </div>
         
@@ -664,18 +664,18 @@
             );
         
     
-            var circle_marker_5de1bd0616d9154c774cc9a4c3ce453a = L.circleMarker(
+            var circle_marker_26945bb00d8db69040656e2c5dda2a89 = L.circleMarker(
                 [-37.8044686, 144.9539008],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_5de1bd0616d9154c774cc9a4c3ce453a.bindTooltip(
+            circle_marker_26945bb00d8db69040656e2c5dda2a89.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26281<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> HOWARD STREET
         </div>
         
@@ -686,18 +686,18 @@
             );
         
     
-            var circle_marker_32a6e19ded959c985d0e96450f03ec8e = L.circleMarker(
+            var circle_marker_27a506df964722d75bb317bb0f4d6d9b = L.circleMarker(
                 [-37.8219427, 144.9631516],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_32a6e19ded959c985d0e96450f03ec8e.bindTooltip(
+            circle_marker_27a506df964722d75bb317bb0f4d6d9b.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27531<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> SOUTHBANK BOULEVARD
         </div>
         
@@ -708,18 +708,18 @@
             );
         
     
-            var circle_marker_20186b478c4a6fb92834ec3e47336f84 = L.circleMarker(
+            var circle_marker_985942b7f07edc3cdc49330c4c9de2bb = L.circleMarker(
                 [-37.82061, 144.9570153],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_20186b478c4a6fb92834ec3e47336f84.bindTooltip(
+            circle_marker_985942b7f07edc3cdc49330c4c9de2bb.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27241<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> FLINDERS STREET
         </div>
         
@@ -730,18 +730,18 @@
             );
         
     
-            var circle_marker_abf2ca4085798b83e9057db7984d7101 = L.circleMarker(
+            var circle_marker_ab2d8fd02d1df53be77e6d338596cbaa = L.circleMarker(
                 [-37.8197939, 144.9459156],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_abf2ca4085798b83e9057db7984d7101.bindTooltip(
+            circle_marker_ab2d8fd02d1df53be77e6d338596cbaa.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27271<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> NAVIGATION DRIVE
         </div>
         
@@ -752,13 +752,13 @@
             );
         
     
-            var circle_marker_24684fae7de3b586151aa1621be06d08 = L.circleMarker(
+            var circle_marker_1e3f00a0d1e9988f1bc4ea5d634d8ddc = L.circleMarker(
                 [-37.8097852, 144.9810909],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_24684fae7de3b586151aa1621be06d08.bindTooltip(
+            circle_marker_1e3f00a0d1e9988f1bc4ea5d634d8ddc.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -774,18 +774,18 @@
             );
         
     
-            var circle_marker_b84435083cd3f1b89465423c56d1d990 = L.circleMarker(
+            var circle_marker_c1e497dca18a3e7aa4e0a35327ce8ace = L.circleMarker(
                 [-37.8169317, 144.9645045],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_b84435083cd3f1b89465423c56d1d990.bindTooltip(
+            circle_marker_c1e497dca18a3e7aa4e0a35327ce8ace.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27294<br>
-            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> ELIZABETH STREET
         </div>
         
@@ -796,17 +796,61 @@
             );
         
     
-            var circle_marker_2d7eb6bd3bcad2120f8c3e1e5620881f = L.circleMarker(
+            var circle_marker_d2f09799b84352843e4de245afb73d18 = L.circleMarker(
                 [-37.8125777, 144.9708913],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_2d7eb6bd3bcad2120f8c3e1e5620881f.bindTooltip(
+            circle_marker_d2f09799b84352843e4de245afb73d18.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25069<br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
+            <b>Calle:</b> EXHIBITION STREET
+        </div>
+        
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d9b07be2edeb1907e3f5a361bce4712f = L.circleMarker(
+                [-37.81766, 144.9549806],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
+        
+    
+            circle_marker_d9b07be2edeb1907e3f5a361bce4712f.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Sensor:</b> 26869<br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
+            <b>Calle:</b> LITTLE COLLINS STREET
+        </div>
+        
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_65dc9e2d072f5ad9b50d2e41ea93b90b = L.circleMarker(
+                [-37.8097532, 144.9693618],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
+        
+    
+            circle_marker_65dc9e2d072f5ad9b50d2e41ea93b90b.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Sensor:</b> 25771<br>
             <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> EXHIBITION STREET
         </div>
@@ -818,57 +862,13 @@
             );
         
     
-            var circle_marker_63288585ccea5d18eae7e12c86d5620b = L.circleMarker(
-                [-37.81766, 144.9549806],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
-        
-    
-            circle_marker_63288585ccea5d18eae7e12c86d5620b.bindTooltip(
-                `<div>
-                     
-        <div style="font-family: Arial; font-size: 12px;">
-            <b>Sensor:</b> 26869<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
-            <b>Calle:</b> LITTLE COLLINS STREET
-        </div>
-        
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_c0501187bac38eca2488e677a4efb136 = L.circleMarker(
-                [-37.8097532, 144.9693618],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
-        
-    
-            circle_marker_c0501187bac38eca2488e677a4efb136.bindTooltip(
-                `<div>
-                     
-        <div style="font-family: Arial; font-size: 12px;">
-            <b>Sensor:</b> 25771<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
-            <b>Calle:</b> EXHIBITION STREET
-        </div>
-        
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_1a4f66c27f8697e1c22e2a8e19f4bb7a = L.circleMarker(
+            var circle_marker_726f1e773d3256a842bd31dc2c2cb37d = L.circleMarker(
                 [-37.8066085, 144.9535525],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_1a4f66c27f8697e1c22e2a8e19f4bb7a.bindTooltip(
+            circle_marker_726f1e773d3256a842bd31dc2c2cb37d.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -884,13 +884,13 @@
             );
         
     
-            var circle_marker_3e6d8a334f07922145d412b2240bdfe0 = L.circleMarker(
+            var circle_marker_761d7a1e4c9a1ae25406242d11c203f9 = L.circleMarker(
                 [-37.8071275, 144.9535893],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_3e6d8a334f07922145d412b2240bdfe0.bindTooltip(
+            circle_marker_761d7a1e4c9a1ae25406242d11c203f9.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -906,18 +906,18 @@
             );
         
     
-            var circle_marker_e9fe097666e6c443dd4796810407560c = L.circleMarker(
+            var circle_marker_c6f1d03bfd247cf37d443c9a9b879855 = L.circleMarker(
                 [-37.8154168, 144.9526172],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_e9fe097666e6c443dd4796810407560c.bindTooltip(
+            circle_marker_c6f1d03bfd247cf37d443c9a9b879855.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26574<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> SPENCER STREET
         </div>
         
@@ -928,18 +928,18 @@
             );
         
     
-            var circle_marker_1995ba95d9d2520ead91d01905ae3524 = L.circleMarker(
+            var circle_marker_18ac18fd8d2ccccc903fd6ce45076f3f = L.circleMarker(
                 [-37.8157691, 144.9618288],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_1995ba95d9d2520ead91d01905ae3524.bindTooltip(
+            circle_marker_18ac18fd8d2ccccc903fd6ce45076f3f.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26462<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LITTLE COLLINS STREET
         </div>
         
@@ -950,18 +950,18 @@
             );
         
     
-            var circle_marker_235c2742fdbbcf4c3bb4642e4b269c84 = L.circleMarker(
+            var circle_marker_f08acb47396a859fc875569952c738dc = L.circleMarker(
                 [-37.8199462, 144.9552983],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_235c2742fdbbcf4c3bb4642e4b269c84.bindTooltip(
+            circle_marker_f08acb47396a859fc875569952c738dc.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27644<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> FLINDERS LANE
         </div>
         
@@ -972,18 +972,18 @@
             );
         
     
-            var circle_marker_372e0b8c14be0a462db813c30f209a8f = L.circleMarker(
+            var circle_marker_076c3b4209e9faaf621f4537ede848f5 = L.circleMarker(
                 [-37.816583, 144.9559555],
                 {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_372e0b8c14be0a462db813c30f209a8f.bindTooltip(
+            circle_marker_076c3b4209e9faaf621f4537ede848f5.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26562<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> KING STREET
         </div>
         
@@ -994,18 +994,18 @@
             );
         
     
-            var circle_marker_c329b61ec6be910617332d36bc7647e4 = L.circleMarker(
+            var circle_marker_abdf94942ee7f667c63fc2c225e63a3d = L.circleMarker(
                 [-37.8152335, 144.9585741],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_c329b61ec6be910617332d36bc7647e4.bindTooltip(
+            circle_marker_abdf94942ee7f667c63fc2c225e63a3d.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26012<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> WILLIAM STREET
         </div>
         
@@ -1016,18 +1016,18 @@
             );
         
     
-            var circle_marker_a613eeb02bb77761739d20eb1bb264d8 = L.circleMarker(
+            var circle_marker_899cf2d2f0872cc4062715890c375e80 = L.circleMarker(
                 [-37.8164483, 144.9629403],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_a613eeb02bb77761739d20eb1bb264d8.bindTooltip(
+            circle_marker_899cf2d2f0872cc4062715890c375e80.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27245<br>
-            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> COLLINS STREET
         </div>
         
@@ -1038,13 +1038,13 @@
             );
         
     
-            var circle_marker_c2207dc121eeaa6efca6f8704c48449f = L.circleMarker(
+            var circle_marker_224155a669c0b12bf5a6a87764e8f5d3 = L.circleMarker(
                 [-37.8147169, 144.9717127],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_c2207dc121eeaa6efca6f8704c48449f.bindTooltip(
+            circle_marker_224155a669c0b12bf5a6a87764e8f5d3.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1060,18 +1060,18 @@
             );
         
     
-            var circle_marker_285f41439cccdf6ddee3676d7be4f2b0 = L.circleMarker(
+            var circle_marker_ce8e66825a4538317c4e9c0c9616b0ba = L.circleMarker(
                 [-37.8212302, 144.9469484],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_285f41439cccdf6ddee3676d7be4f2b0.bindTooltip(
+            circle_marker_ce8e66825a4538317c4e9c0c9616b0ba.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27243<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> COLLINS STREET
         </div>
         
@@ -1082,18 +1082,18 @@
             );
         
     
-            var circle_marker_60466119f040cb45e4ba5b9554d72cb7 = L.circleMarker(
+            var circle_marker_6cfca92710d6e9fc2b0562ca2c939e7b = L.circleMarker(
                 [-37.8080625, 144.9580738],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_60466119f040cb45e4ba5b9554d72cb7.bindTooltip(
+            circle_marker_6cfca92710d6e9fc2b0562ca2c939e7b.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26375<br>
-            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> QUEEN STREET
         </div>
         
@@ -1104,18 +1104,18 @@
             );
         
     
-            var circle_marker_723462ca67595b7fa0145134a68bb0d1 = L.circleMarker(
+            var circle_marker_bb30dcc29e621bf1a03c2ec26ec304e0 = L.circleMarker(
                 [-37.8104276, 144.9682245],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_723462ca67595b7fa0145134a68bb0d1.bindTooltip(
+            circle_marker_bb30dcc29e621bf1a03c2ec26ec304e0.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26669<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LONSDALE STREET
         </div>
         
@@ -1126,18 +1126,18 @@
             );
         
     
-            var circle_marker_b0a656fec0a42e7eb5b8737dd16f5f2b = L.circleMarker(
+            var circle_marker_fcac2bcfea2f80b6cb7e2b4de4831b16 = L.circleMarker(
                 [-37.8149639, 144.9552143],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_b0a656fec0a42e7eb5b8737dd16f5f2b.bindTooltip(
+            circle_marker_fcac2bcfea2f80b6cb7e2b4de4831b16.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26852<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> KING STREET
         </div>
         
@@ -1148,18 +1148,18 @@
             );
         
     
-            var circle_marker_5bf9e76b9105568c128cc973874dbe16 = L.circleMarker(
+            var circle_marker_5f9e6d511180a716733a841a39cc3e17 = L.circleMarker(
                 [-37.817664, 144.9562011],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_5bf9e76b9105568c128cc973874dbe16.bindTooltip(
+            circle_marker_5f9e6d511180a716733a841a39cc3e17.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26385<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> KING STREET
         </div>
         
@@ -1170,18 +1170,18 @@
             );
         
     
-            var circle_marker_741c9284af3396f41f3a9233618a54af = L.circleMarker(
+            var circle_marker_867972d70d2f9e59368bf151184f5d1f = L.circleMarker(
                 [-37.8107438, 144.9700512],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_741c9284af3396f41f3a9233618a54af.bindTooltip(
+            circle_marker_867972d70d2f9e59368bf151184f5d1f.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25988<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> EXHIBITION STREET
         </div>
         
@@ -1192,18 +1192,18 @@
             );
         
     
-            var circle_marker_77ff078e915201179c0df094accaad50 = L.circleMarker(
+            var circle_marker_65d6cd1795d589897475c6ac58745d9b = L.circleMarker(
                 [-37.8107375, 144.9601324],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_77ff078e915201179c0df094accaad50.bindTooltip(
+            circle_marker_65d6cd1795d589897475c6ac58745d9b.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26908<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LA TROBE STREET
         </div>
         
@@ -1214,13 +1214,13 @@
             );
         
     
-            var circle_marker_7f35298295e7751348df5c0063d1b472 = L.circleMarker(
+            var circle_marker_449d2744b963a008fd7ad8b560d2193e = L.circleMarker(
                 [-37.8145705, 144.9746608],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_7f35298295e7751348df5c0063d1b472.bindTooltip(
+            circle_marker_449d2744b963a008fd7ad8b560d2193e.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1236,18 +1236,18 @@
             );
         
     
-            var circle_marker_2874eb8456294944532e12fb06527ba1 = L.circleMarker(
+            var circle_marker_ccebbe19fd7dc95b4cda1c78c3bb5a64 = L.circleMarker(
                 [-37.8105292, 144.9585508],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_2874eb8456294944532e12fb06527ba1.bindTooltip(
+            circle_marker_ccebbe19fd7dc95b4cda1c78c3bb5a64.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26376<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEEN STREET
         </div>
         
@@ -1258,13 +1258,13 @@
             );
         
     
-            var circle_marker_c58ade7b65e31ef509619ee00bafc5a4 = L.circleMarker(
+            var circle_marker_0d479367a4fe868845f5e60c6e6a90f5 = L.circleMarker(
                 [-37.8170709, 144.9457674],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_c58ade7b65e31ef509619ee00bafc5a4.bindTooltip(
+            circle_marker_0d479367a4fe868845f5e60c6e6a90f5.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1280,18 +1280,18 @@
             );
         
     
-            var circle_marker_87375b119e8e8efbd8c29c9814bf49bb = L.circleMarker(
+            var circle_marker_df257549e705f5273d932f8ba86f5285 = L.circleMarker(
                 [-37.8036261, 144.9548783],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_87375b119e8e8efbd8c29c9814bf49bb.bindTooltip(
+            circle_marker_df257549e705f5273d932f8ba86f5285.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 28208<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEENSBERRY STREET
         </div>
         
@@ -1302,18 +1302,18 @@
             );
         
     
-            var circle_marker_20919a4904d1ee91eec98650e03ab774 = L.circleMarker(
+            var circle_marker_32f327f313c284f8860930f250c02f4a = L.circleMarker(
                 [-37.8182581, 144.9593117],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_20919a4904d1ee91eec98650e03ab774.bindTooltip(
+            circle_marker_32f327f313c284f8860930f250c02f4a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26381<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> WILLIAM STREET
         </div>
         
@@ -1324,13 +1324,13 @@
             );
         
     
-            var circle_marker_a46c024d5eea1c678b15070ed9743838 = L.circleMarker(
+            var circle_marker_4ca12f8f147595ab75f25f1f83d64212 = L.circleMarker(
                 [-37.8152059, 144.9755553],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_a46c024d5eea1c678b15070ed9743838.bindTooltip(
+            circle_marker_4ca12f8f147595ab75f25f1f83d64212.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1346,18 +1346,18 @@
             );
         
     
-            var circle_marker_be6596dfc69397332d98df4ed08a0346 = L.circleMarker(
+            var circle_marker_b023dc77f57d19e56758ded393f6bebd = L.circleMarker(
                 [-37.8033586, 144.9516379],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_be6596dfc69397332d98df4ed08a0346.bindTooltip(
+            circle_marker_b023dc77f57d19e56758ded393f6bebd.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23931<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEENSBERRY STREET
         </div>
         
@@ -1368,13 +1368,13 @@
             );
         
     
-            var circle_marker_bba3033249f5fe8e581538cd70887faa = L.circleMarker(
+            var circle_marker_927759f09ca11d2238c57ac722c7fafc = L.circleMarker(
                 [-37.7984317, 144.9651487],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_bba3033249f5fe8e581538cd70887faa.bindTooltip(
+            circle_marker_927759f09ca11d2238c57ac722c7fafc.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1390,13 +1390,13 @@
             );
         
     
-            var circle_marker_e0e0f98d8addc5430785622f4643d26b = L.circleMarker(
+            var circle_marker_7763037135c4e3dde3b766be3755e69c = L.circleMarker(
                 [-37.811016, 144.9774785],
                 {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_e0e0f98d8addc5430785622f4643d26b.bindTooltip(
+            circle_marker_7763037135c4e3dde3b766be3755e69c.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1412,13 +1412,13 @@
             );
         
     
-            var circle_marker_68aa40538eb7e45b40ffe722e94165d9 = L.circleMarker(
+            var circle_marker_bdf4e226cd48c21c0d8350af4ddb605c = L.circleMarker(
                 [-37.8256379, 144.9625654],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_68aa40538eb7e45b40ffe722e94165d9.bindTooltip(
+            circle_marker_bdf4e226cd48c21c0d8350af4ddb605c.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1434,18 +1434,18 @@
             );
         
     
-            var circle_marker_d29c62bca8db686d8248c9f313b72ca7 = L.circleMarker(
+            var circle_marker_bc0580299428f2e59b80f67232d09cdd = L.circleMarker(
                 [-37.8108225, 144.9836017],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_d29c62bca8db686d8248c9f313b72ca7.bindTooltip(
+            circle_marker_bc0580299428f2e59b80f67232d09cdd.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26734<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> CLARENDON STREET
         </div>
         
@@ -1456,13 +1456,13 @@
             );
         
     
-            var circle_marker_f83a0a0c3e9f77056e0c43b43c8164c2 = L.circleMarker(
+            var circle_marker_e2fd299a9067de932138a533eb840f34 = L.circleMarker(
                 [-37.8108631, 144.9883928],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_f83a0a0c3e9f77056e0c43b43c8164c2.bindTooltip(
+            circle_marker_e2fd299a9067de932138a533eb840f34.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1478,13 +1478,13 @@
             );
         
     
-            var circle_marker_bcf4cc338c85a77321d4a48a626bc7c2 = L.circleMarker(
+            var circle_marker_02c5f063ba561c6ca5d01b17925e2144 = L.circleMarker(
                 [-37.8128073, 144.9718934],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_bcf4cc338c85a77321d4a48a626bc7c2.bindTooltip(
+            circle_marker_02c5f063ba561c6ca5d01b17925e2144.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1500,13 +1500,13 @@
             );
         
     
-            var circle_marker_092d0fc278b50d2710252972b2a65b77 = L.circleMarker(
+            var circle_marker_28368fa1703430fc7f6c10057e152a04 = L.circleMarker(
                 [-37.820459, 144.9490075],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_092d0fc278b50d2710252972b2a65b77.bindTooltip(
+            circle_marker_28368fa1703430fc7f6c10057e152a04.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1522,18 +1522,18 @@
             );
         
     
-            var circle_marker_d40e250e04e277eda0029c72b74483d7 = L.circleMarker(
+            var circle_marker_014a93e99343a365fdc8baea7c3fbde2 = L.circleMarker(
                 [-37.8034288, 144.9531251],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_d40e250e04e277eda0029c72b74483d7.bindTooltip(
+            circle_marker_014a93e99343a365fdc8baea7c3fbde2.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23929<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEENSBERRY STREET
         </div>
         
@@ -1544,13 +1544,13 @@
             );
         
     
-            var circle_marker_2a4293a8f2239c74a4aeeada1f1c4716 = L.circleMarker(
+            var circle_marker_8ead972789b63ee6f77d93c4262eabd2 = L.circleMarker(
                 [-37.8334288, 144.9851525],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_2a4293a8f2239c74a4aeeada1f1c4716.bindTooltip(
+            circle_marker_8ead972789b63ee6f77d93c4262eabd2.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1566,18 +1566,18 @@
             );
         
     
-            var circle_marker_3da6187d706c18799c6f416dc9626d0a = L.circleMarker(
+            var circle_marker_f0dcfc0e776b82e6b8d786d11dc79ce1 = L.circleMarker(
                 [-37.8143424, 144.9625243],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_3da6187d706c18799c6f416dc9626d0a.bindTooltip(
+            circle_marker_f0dcfc0e776b82e6b8d786d11dc79ce1.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26878<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> BOURKE STREET
         </div>
         
@@ -1588,18 +1588,18 @@
             );
         
     
-            var circle_marker_da03ddeeb14dedb9365af694486dc4a3 = L.circleMarker(
+            var circle_marker_782e8dd13c3c284f2e97822de7a9c843 = L.circleMarker(
                 [-37.8167643, 144.9660155],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_da03ddeeb14dedb9365af694486dc4a3.bindTooltip(
+            circle_marker_782e8dd13c3c284f2e97822de7a9c843.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26860<br>
-            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> FLINDERS LANE
         </div>
         
@@ -1610,18 +1610,18 @@
             );
         
     
-            var circle_marker_bb62ec227cd1188e7e6bfca7994d5fd3 = L.circleMarker(
+            var circle_marker_17b1c9dcd97d3e5aab5c28a01884c288 = L.circleMarker(
                 [-37.8094012, 144.9738487],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_bb62ec227cd1188e7e6bfca7994d5fd3.bindTooltip(
+            circle_marker_17b1c9dcd97d3e5aab5c28a01884c288.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26699<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> ALBERT STREET
         </div>
         
@@ -1632,18 +1632,18 @@
             );
         
     
-            var circle_marker_96363d42e0ee941cf2f625869d660686 = L.circleMarker(
+            var circle_marker_82914b7b64f28bdb59a4c51a1d141067 = L.circleMarker(
                 [-37.8060052, 144.9587311],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_96363d42e0ee941cf2f625869d660686.bindTooltip(
+            circle_marker_82914b7b64f28bdb59a4c51a1d141067.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25111<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> VICTORIA STREET
         </div>
         
@@ -1654,18 +1654,18 @@
             );
         
     
-            var circle_marker_82de98bdc5745fb8dac3d3c717e4dbbe = L.circleMarker(
+            var circle_marker_40f212f945a97d0c547f7507b3d469b7 = L.circleMarker(
                 [-37.8156703, 144.9827786],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_82de98bdc5745fb8dac3d3c717e4dbbe.bindTooltip(
+            circle_marker_40f212f945a97d0c547f7507b3d469b7.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 28110<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> CLARENDON STREET
         </div>
         
@@ -1676,13 +1676,13 @@
             );
         
     
-            var circle_marker_6fe691261de08e8b27d81c67b6ff451e = L.circleMarker(
+            var circle_marker_1cec6e8f1ffc7cd271394c8db20ad180 = L.circleMarker(
                 [-37.8107433, 144.9780532],
                 {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_6fe691261de08e8b27d81c67b6ff451e.bindTooltip(
+            circle_marker_1cec6e8f1ffc7cd271394c8db20ad180.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1698,13 +1698,13 @@
             );
         
     
-            var circle_marker_6aa0318cefaddf6deb7db6ffcfdec846 = L.circleMarker(
+            var circle_marker_187203adc0b6ac1ad3d401a181bcdc49 = L.circleMarker(
                 [-37.8157781, 144.972161],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_6aa0318cefaddf6deb7db6ffcfdec846.bindTooltip(
+            circle_marker_187203adc0b6ac1ad3d401a181bcdc49.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1720,13 +1720,13 @@
             );
         
     
-            var circle_marker_b4de1f55d786ff40dd9e3e6e45e105d8 = L.circleMarker(
+            var circle_marker_8db1106c5ada75452ae62c860f6e79d3 = L.circleMarker(
                 [-37.8138793, 144.9529076],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_b4de1f55d786ff40dd9e3e6e45e105d8.bindTooltip(
+            circle_marker_8db1106c5ada75452ae62c860f6e79d3.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1742,18 +1742,18 @@
             );
         
     
-            var circle_marker_c57a197050f79395b21a42477e00af2c = L.circleMarker(
+            var circle_marker_6cfe35635b2251be1570e8b0deaf9e7a = L.circleMarker(
                 [-37.8073518, 144.9588893],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_c57a197050f79395b21a42477e00af2c.bindTooltip(
+            circle_marker_6cfe35635b2251be1570e8b0deaf9e7a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26918<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> THERRY STREET
         </div>
         
@@ -1764,18 +1764,18 @@
             );
         
     
-            var circle_marker_2e3aeeea3880ddaee7418ffacde9a549 = L.circleMarker(
+            var circle_marker_bf4c55aba513bcad02a5c7855f7a2a25 = L.circleMarker(
                 [-37.811031, 144.989911],
-                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_2e3aeeea3880ddaee7418ffacde9a549.bindTooltip(
+            circle_marker_bf4c55aba513bcad02a5c7855f7a2a25.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25268<br>
-            <b>Zona:</b> <span style="color: #95a5a6; font-weight: bold;">General</span><br>
+            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
             <b>Calle:</b> ALBERT STREET
         </div>
         
@@ -1786,13 +1786,13 @@
             );
         
     
-            var circle_marker_ac9d4eda86ccf96ee40ca432f433f5ef = L.circleMarker(
+            var circle_marker_426b3a81a841134b1a1bc7487ddeda4a = L.circleMarker(
                 [-37.8144318, 144.9739746],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_ac9d4eda86ccf96ee40ca432f433f5ef.bindTooltip(
+            circle_marker_426b3a81a841134b1a1bc7487ddeda4a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1808,13 +1808,13 @@
             );
         
     
-            var circle_marker_07c9a7a40ce0dc2dab93fe075940d253 = L.circleMarker(
+            var circle_marker_8f2ad08048806a7a5c20816d0f562333 = L.circleMarker(
                 [-37.8086801, 144.9545529],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_07c9a7a40ce0dc2dab93fe075940d253.bindTooltip(
+            circle_marker_8f2ad08048806a7a5c20816d0f562333.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -1830,18 +1830,18 @@
             );
         
     
-            var circle_marker_dd0b51d1a5b1d4104c6485ad3c100ecf = L.circleMarker(
+            var circle_marker_2c0a4d471a0c43cc2b649f9c2f4d5039 = L.circleMarker(
                 [-37.8130712, 144.9829852],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_dd0b51d1a5b1d4104c6485ad3c100ecf.bindTooltip(
+            circle_marker_2c0a4d471a0c43cc2b649f9c2f4d5039.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27344<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> CLARENDON STREET
         </div>
         
@@ -1852,18 +1852,18 @@
             );
         
     
-            var circle_marker_db5d0cfb22edd3cf47ce71bc4c835d88 = L.circleMarker(
+            var circle_marker_9e2c5c69c2aa23b76fbda345a4b26b97 = L.circleMarker(
                 [-37.8149226, 144.9570332],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_db5d0cfb22edd3cf47ce71bc4c835d88.bindTooltip(
+            circle_marker_9e2c5c69c2aa23b76fbda345a4b26b97.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26877<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> BOURKE STREET
         </div>
         
@@ -1874,18 +1874,18 @@
             );
         
     
-            var circle_marker_062ee24da352d6ee61e1f133da090a45 = L.circleMarker(
+            var circle_marker_4d6d56cf86368067343d525309d60ecb = L.circleMarker(
                 [-37.809102, 144.9657144],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_062ee24da352d6ee61e1f133da090a45.bindTooltip(
+            circle_marker_4d6d56cf86368067343d525309d60ecb.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27225<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LA TROBE STREET
         </div>
         
@@ -1896,18 +1896,18 @@
             );
         
     
-            var circle_marker_abe23660166076c904af861249454975 = L.circleMarker(
+            var circle_marker_34b71d5ecee444e67860c339241eabbc = L.circleMarker(
                 [-37.8106732, 144.9726834],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_abe23660166076c904af861249454975.bindTooltip(
+            circle_marker_34b71d5ecee444e67860c339241eabbc.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23970<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> SPRING STREET
         </div>
         
@@ -1918,18 +1918,18 @@
             );
         
     
-            var circle_marker_156248b5f0630410c58d40d07c8a8807 = L.circleMarker(
+            var circle_marker_72e9e5db1759a9f08427b03c2fac0666 = L.circleMarker(
                 [-37.8085578, 144.9689644],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_156248b5f0630410c58d40d07c8a8807.bindTooltip(
+            circle_marker_72e9e5db1759a9f08427b03c2fac0666.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26816<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> EXHIBITION STREET
         </div>
         
@@ -1940,18 +1940,18 @@
             );
         
     
-            var circle_marker_6ffc44c014252d0e10f69cf0c89027ea = L.circleMarker(
+            var circle_marker_8b95fad14f856d16bc754db8859d4a77 = L.circleMarker(
                 [-37.812391, 144.9833382],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_6ffc44c014252d0e10f69cf0c89027ea.bindTooltip(
+            circle_marker_8b95fad14f856d16bc754db8859d4a77.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26742<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> CLARENDON STREET
         </div>
         
@@ -1962,18 +1962,18 @@
             );
         
     
-            var circle_marker_cdd99979865d7f6a3e360d3897c3d110 = L.circleMarker(
+            var circle_marker_ddddf0f8097959ebf39dd843bba6371e = L.circleMarker(
                 [-37.8158435, 144.9609743],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_cdd99979865d7f6a3e360d3897c3d110.bindTooltip(
+            circle_marker_ddddf0f8097959ebf39dd843bba6371e.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26359<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEEN STREET
         </div>
         
@@ -1984,18 +1984,18 @@
             );
         
     
-            var circle_marker_88e335b320ca0fb5feb91ee45fb46156 = L.circleMarker(
+            var circle_marker_322117efb9f60ae6ecd7b884a49dbf2e = L.circleMarker(
                 [-37.8097048, 144.9730159],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_88e335b320ca0fb5feb91ee45fb46156.bindTooltip(
+            circle_marker_322117efb9f60ae6ecd7b884a49dbf2e.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27191<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> NICHOLSON STREET
         </div>
         
@@ -2006,18 +2006,18 @@
             );
         
     
-            var circle_marker_6a1996e4af3dfa769dd9ceb8639f80a3 = L.circleMarker(
+            var circle_marker_63e2ee2957a78aa37ad6f7b5bb5d2aa6 = L.circleMarker(
                 [-37.8161828, 144.9555237],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_6a1996e4af3dfa769dd9ceb8639f80a3.bindTooltip(
+            circle_marker_63e2ee2957a78aa37ad6f7b5bb5d2aa6.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26568<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> KING STREET
         </div>
         
@@ -2028,13 +2028,13 @@
             );
         
     
-            var circle_marker_bae011d5a9617e31d96aeca08d66ea3f = L.circleMarker(
+            var circle_marker_57f882507c00a614f7bd182a6bb92b49 = L.circleMarker(
                 [-37.8136768, 144.9602292],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_bae011d5a9617e31d96aeca08d66ea3f.bindTooltip(
+            circle_marker_57f882507c00a614f7bd182a6bb92b49.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2050,13 +2050,13 @@
             );
         
     
-            var circle_marker_d2d3c6afefcede411a4b526318bfd641 = L.circleMarker(
+            var circle_marker_6bf0037c004d5dc54d0c6db47c634a4a = L.circleMarker(
                 [-37.8174547, 144.9636411],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_d2d3c6afefcede411a4b526318bfd641.bindTooltip(
+            circle_marker_6bf0037c004d5dc54d0c6db47c634a4a.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2072,18 +2072,18 @@
             );
         
     
-            var circle_marker_e39907385f7a63c8feb27e459f83a34e = L.circleMarker(
+            var circle_marker_20cbb663d919052e41193697eb495845 = L.circleMarker(
                 [-37.8203478, 144.9471679],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_e39907385f7a63c8feb27e459f83a34e.bindTooltip(
+            circle_marker_20cbb663d919052e41193697eb495845.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26107<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> HARBOUR ESPLANADE
         </div>
         
@@ -2094,13 +2094,13 @@
             );
         
     
-            var circle_marker_c5d3066ca5315a625a3f859b898b13cb = L.circleMarker(
+            var circle_marker_59968dbd057723ff1d7521c7bf201fcf = L.circleMarker(
                 [-37.831848, 144.9870165],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_c5d3066ca5315a625a3f859b898b13cb.bindTooltip(
+            circle_marker_59968dbd057723ff1d7521c7bf201fcf.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2116,18 +2116,18 @@
             );
         
     
-            var circle_marker_82de23bd11d4dec429bb9bea40c142a0 = L.circleMarker(
+            var circle_marker_dbac380ae977bb44aeeb430fe787cae8 = L.circleMarker(
                 [-37.8197201, 144.9571483],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_82de23bd11d4dec429bb9bea40c142a0.bindTooltip(
+            circle_marker_dbac380ae977bb44aeeb430fe787cae8.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25934<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> KING STREET
         </div>
         
@@ -2138,18 +2138,18 @@
             );
         
     
-            var circle_marker_6eb0600b63f7410f36ad1889c4ad2769 = L.circleMarker(
+            var circle_marker_cef63ebe723c786955569f5a8c3c982e = L.circleMarker(
                 [-37.8088834, 144.9719139],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_6eb0600b63f7410f36ad1889c4ad2769.bindTooltip(
+            circle_marker_cef63ebe723c786955569f5a8c3c982e.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23972<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> SPRING STREET
         </div>
         
@@ -2160,13 +2160,13 @@
             );
         
     
-            var circle_marker_717cee47e6cc714a191c8b9be71f37f0 = L.circleMarker(
+            var circle_marker_1a795760e56d60c9c00682a02f046b56 = L.circleMarker(
                 [-37.8082699, 144.9717549],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_717cee47e6cc714a191c8b9be71f37f0.bindTooltip(
+            circle_marker_1a795760e56d60c9c00682a02f046b56.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2182,18 +2182,18 @@
             );
         
     
-            var circle_marker_0ddfdb074c09f193a3ab9dfba9518d75 = L.circleMarker(
+            var circle_marker_a082717a8d891698b10fa6357ab54478 = L.circleMarker(
                 [-37.8208474, 144.9442597],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_0ddfdb074c09f193a3ab9dfba9518d75.bindTooltip(
+            circle_marker_a082717a8d891698b10fa6357ab54478.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26104<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> MERCHANT STREET
         </div>
         
@@ -2204,18 +2204,18 @@
             );
         
     
-            var circle_marker_4838e9f95f899d005ac7b69f565a46b7 = L.circleMarker(
+            var circle_marker_bf23b64daedb8838183d6aafbe830c95 = L.circleMarker(
                 [-37.818322, 144.9623622],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_4838e9f95f899d005ac7b69f565a46b7.bindTooltip(
+            circle_marker_bf23b64daedb8838183d6aafbe830c95.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25209<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEEN STREET
         </div>
         
@@ -2226,18 +2226,18 @@
             );
         
     
-            var circle_marker_422b3939cea7b1fe9e42c57c7cc67bac = L.circleMarker(
+            var circle_marker_dca5e5e9e418bf6fb266324eb4a967b4 = L.circleMarker(
                 [-37.8051147, 144.9500794],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_422b3939cea7b1fe9e42c57c7cc67bac.bindTooltip(
+            circle_marker_dca5e5e9e418bf6fb266324eb4a967b4.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26265<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> VICTORIA STREET
         </div>
         
@@ -2248,13 +2248,13 @@
             );
         
     
-            var circle_marker_708d1debdedca228c0ea36784408e073 = L.circleMarker(
+            var circle_marker_cc2841e206c1447aaefacad450ddea64 = L.circleMarker(
                 [-37.8169996, 144.9819984],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_708d1debdedca228c0ea36784408e073.bindTooltip(
+            circle_marker_cc2841e206c1447aaefacad450ddea64.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2270,13 +2270,13 @@
             );
         
     
-            var circle_marker_9c5316c701265c78fce24486a0eda642 = L.circleMarker(
+            var circle_marker_8fccb603759de45e721c256cbb58e1ce = L.circleMarker(
                 [-37.8254756, 144.9688492],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_9c5316c701265c78fce24486a0eda642.bindTooltip(
+            circle_marker_8fccb603759de45e721c256cbb58e1ce.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2292,18 +2292,18 @@
             );
         
     
-            var circle_marker_ad283096b5cf93f4772f2f96af27435d = L.circleMarker(
+            var circle_marker_c6af9d5a29b087cbba6b8cc607d3fa75 = L.circleMarker(
                 [-37.8043737, 144.9524045],
                 {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_ad283096b5cf93f4772f2f96af27435d.bindTooltip(
+            circle_marker_c6af9d5a29b087cbba6b8cc607d3fa75.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23978<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> CHETWYND STREET
         </div>
         
@@ -2314,18 +2314,18 @@
             );
         
     
-            var circle_marker_a6133fab636379e03b35cd7e133b79b2 = L.circleMarker(
+            var circle_marker_d97fa7eb032159f44458a761eb653e8c = L.circleMarker(
                 [-37.8044411, 144.9510059],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_a6133fab636379e03b35cd7e133b79b2.bindTooltip(
+            circle_marker_d97fa7eb032159f44458a761eb653e8c.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23979<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> LEVESON STREET
         </div>
         
@@ -2336,13 +2336,13 @@
             );
         
     
-            var circle_marker_58a8b74458182ac6cff53f34bcf3f195 = L.circleMarker(
+            var circle_marker_ceb5ae881159a708cf73ea179a1b4e5c = L.circleMarker(
                 [-37.8147115, 144.9694567],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_58a8b74458182ac6cff53f34bcf3f195.bindTooltip(
+            circle_marker_ceb5ae881159a708cf73ea179a1b4e5c.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2358,18 +2358,18 @@
             );
         
     
-            var circle_marker_0d4f642edd1693febbfb96b87f09e983 = L.circleMarker(
+            var circle_marker_1ed4b5ebf94a549c92c2dcb14c071580 = L.circleMarker(
                 [-37.8164034, 144.9596015],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_0d4f642edd1693febbfb96b87f09e983.bindTooltip(
+            circle_marker_1ed4b5ebf94a549c92c2dcb14c071580.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26660<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LITTLE COLLINS STREET
         </div>
         
@@ -2380,13 +2380,13 @@
             );
         
     
-            var circle_marker_50c20f11347d4b8bd6e010f2b43a2e0c = L.circleMarker(
+            var circle_marker_dfbb16410c27fcc023adacc7addc6aca = L.circleMarker(
                 [-37.8113886, 144.9674614],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_50c20f11347d4b8bd6e010f2b43a2e0c.bindTooltip(
+            circle_marker_dfbb16410c27fcc023adacc7addc6aca.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2402,17 +2402,39 @@
             );
         
     
-            var circle_marker_60801c4a561c966cd6b0dc3473392417 = L.circleMarker(
+            var circle_marker_05c60db156b83994647cbd693139fd40 = L.circleMarker(
                 [-37.8143869, 144.960303],
-                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_60801c4a561c966cd6b0dc3473392417.bindTooltip(
+            circle_marker_05c60db156b83994647cbd693139fd40.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27040<br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
+            <b>Calle:</b> QUEEN STREET
+        </div>
+        
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9fec8f106daa3901e73ac70993c1cfd9 = L.circleMarker(
+                [-37.811564, 144.95927],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
+        
+    
+            circle_marker_9fec8f106daa3901e73ac70993c1cfd9.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Sensor:</b> 25219<br>
             <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEEN STREET
         </div>
@@ -2424,40 +2446,18 @@
             );
         
     
-            var circle_marker_c925ce166b2d1e8c5425294249c3466b = L.circleMarker(
-                [-37.811564, 144.95927],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
-        
-    
-            circle_marker_c925ce166b2d1e8c5425294249c3466b.bindTooltip(
-                `<div>
-                     
-        <div style="font-family: Arial; font-size: 12px;">
-            <b>Sensor:</b> 25219<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
-            <b>Calle:</b> QUEEN STREET
-        </div>
-        
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var circle_marker_029a4a4f3106b6fe77cf7caae7f724bc = L.circleMarker(
+            var circle_marker_c173b5e7e3eab98f36139996068c2894 = L.circleMarker(
                 [-37.8123281, 144.9596143],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_029a4a4f3106b6fe77cf7caae7f724bc.bindTooltip(
+            circle_marker_c173b5e7e3eab98f36139996068c2894.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 26175<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEEN STREET
         </div>
         
@@ -2468,13 +2468,13 @@
             );
         
     
-            var circle_marker_9a3de8b0dfcd19943d683d4804ae555b = L.circleMarker(
+            var circle_marker_00876969a07d55b2182ad4806ca0eede = L.circleMarker(
                 [-37.8048388, 144.9553354],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_9a3de8b0dfcd19943d683d4804ae555b.bindTooltip(
+            circle_marker_00876969a07d55b2182ad4806ca0eede.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2490,13 +2490,13 @@
             );
         
     
-            var circle_marker_b39c96ae886ac5ba923619bdce400e67 = L.circleMarker(
+            var circle_marker_81faef7fafef5065ebee37c94811b622 = L.circleMarker(
                 [-37.8175889, 144.9807845],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_b39c96ae886ac5ba923619bdce400e67.bindTooltip(
+            circle_marker_81faef7fafef5065ebee37c94811b622.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2512,18 +2512,18 @@
             );
         
     
-            var circle_marker_fcc399028b34556ef4a355a001e4d48a = L.circleMarker(
+            var circle_marker_62d2bb1e8fec1d4831f6c585a166c35b = L.circleMarker(
                 [-37.8058712, 144.9521417],
-                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_fcc399028b34556ef4a355a001e4d48a.bindTooltip(
+            circle_marker_62d2bb1e8fec1d4831f6c585a166c35b.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 27469<br>
-            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> CHETWYND STREET
         </div>
         
@@ -2534,18 +2534,18 @@
             );
         
     
-            var circle_marker_4a325f158dc95f8d0c2f42cc5b400160 = L.circleMarker(
+            var circle_marker_87d6f2ca024aa8e568e5f4eebb7e14ce = L.circleMarker(
                 [-37.81155, 144.9702482],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_4a325f158dc95f8d0c2f42cc5b400160.bindTooltip(
+            circle_marker_87d6f2ca024aa8e568e5f4eebb7e14ce.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 28178<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> EXHIBITION STREET
         </div>
         
@@ -2556,18 +2556,18 @@
             );
         
     
-            var circle_marker_5ab26823943e56b92bf8bc6c319fceea = L.circleMarker(
+            var circle_marker_9e999bc17396f534c9d8bc29b40ff560 = L.circleMarker(
                 [-37.8155175, 144.9549449],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_5ab26823943e56b92bf8bc6c319fceea.bindTooltip(
+            circle_marker_9e999bc17396f534c9d8bc29b40ff560.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 24563<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> LITTLE BOURKE STREET
         </div>
         
@@ -2578,18 +2578,18 @@
             );
         
     
-            var circle_marker_f9e6aac854b2a11a5bbf55dbdae0268f = L.circleMarker(
+            var circle_marker_87e3b18f1a2a06720901f2a0fef79606 = L.circleMarker(
                 [-37.8073821, 144.9601197],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_f9e6aac854b2a11a5bbf55dbdae0268f.bindTooltip(
+            circle_marker_87e3b18f1a2a06720901f2a0fef79606.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25077<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> ELIZABETH STREET
         </div>
         
@@ -2600,18 +2600,18 @@
             );
         
     
-            var circle_marker_ce8c914ebe1065c50ff3780a57f40db4 = L.circleMarker(
+            var circle_marker_254b8c020da8908063415dfc615a7f28 = L.circleMarker(
                 [-37.8167094, 144.9581993],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_ce8c914ebe1065c50ff3780a57f40db4.bindTooltip(
+            circle_marker_254b8c020da8908063415dfc615a7f28.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23994<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> COLLINS STREET
         </div>
         
@@ -2622,13 +2622,13 @@
             );
         
     
-            var circle_marker_5a42317e1de8108a0f13c9e9dc111b50 = L.circleMarker(
+            var circle_marker_7c74f12cf40d1999c86fe49912575da7 = L.circleMarker(
                 [-37.8212866, 144.9506999],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_5a42317e1de8108a0f13c9e9dc111b50.bindTooltip(
+            circle_marker_7c74f12cf40d1999c86fe49912575da7.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2644,18 +2644,18 @@
             );
         
     
-            var circle_marker_cf3a39c221cc256a141f48fade6acf8c = L.circleMarker(
+            var circle_marker_70a2b45ea4eaae90f9da8ea71eccebd6 = L.circleMarker(
                 [-37.8197371, 144.9479344],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_cf3a39c221cc256a141f48fade6acf8c.bindTooltip(
+            circle_marker_70a2b45ea4eaae90f9da8ea71eccebd6.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 23993<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> WATERVIEW WALK
         </div>
         
@@ -2666,13 +2666,13 @@
             );
         
     
-            var circle_marker_139c2605f70a912c75422215f98ad94e = L.circleMarker(
+            var circle_marker_0b05be4712c78992c6bef7ca1273516e = L.circleMarker(
                 [-37.8111356, 144.9531919],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_139c2605f70a912c75422215f98ad94e.bindTooltip(
+            circle_marker_0b05be4712c78992c6bef7ca1273516e.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2688,13 +2688,13 @@
             );
         
     
-            var circle_marker_acf7071069405e38433c2105cf9bd767 = L.circleMarker(
+            var circle_marker_208a06b718495e64309342e5b002ea39 = L.circleMarker(
                 [-37.8321264, 144.9859552],
                 {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_acf7071069405e38433c2105cf9bd767.bindTooltip(
+            circle_marker_208a06b718495e64309342e5b002ea39.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2710,18 +2710,18 @@
             );
         
     
-            var circle_marker_2478a57188547d5575e8b9d2019053da = L.circleMarker(
+            var circle_marker_85a1d9b355ad3ac6a3af07e5d21a8806 = L.circleMarker(
                 [-37.8144169, 144.9688503],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_2478a57188547d5575e8b9d2019053da.bindTooltip(
+            circle_marker_85a1d9b355ad3ac6a3af07e5d21a8806.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 24001<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #3498db; font-weight: bold;">Center (CBD)</span><br>
             <b>Calle:</b> RUSSELL STREET
         </div>
         
@@ -2732,13 +2732,13 @@
             );
         
     
-            var circle_marker_44970441f13438e1c755c2c67058442b = L.circleMarker(
+            var circle_marker_841e476a3e065e3a8fd6f1dc0d881f2f = L.circleMarker(
                 [-37.805816, 144.9546915],
                 {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_44970441f13438e1c755c2c67058442b.bindTooltip(
+            circle_marker_841e476a3e065e3a8fd6f1dc0d881f2f.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
@@ -2754,18 +2754,18 @@
             );
         
     
-            var circle_marker_113774cb5d4fd4cd16ee9d1f8cc0528d = L.circleMarker(
+            var circle_marker_69a01d9ba215f4c319b28f9d6fad6977 = L.circleMarker(
                 [-37.8031264, 144.9504164],
-                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
-            ).addTo(map_f7877781d48dc0573df2d150088249b9);
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_7d4d8feaf58665d72e7f8b03b067bc8a);
         
     
-            circle_marker_113774cb5d4fd4cd16ee9d1f8cc0528d.bindTooltip(
+            circle_marker_69a01d9ba215f4c319b28f9d6fad6977.bindTooltip(
                 `<div>
                      
         <div style="font-family: Arial; font-size: 12px;">
             <b>Sensor:</b> 25976<br>
-            <b>Zona:</b> <span style="color: #2ecc71; font-weight: bold;">Residential</span><br>
+            <b>Zona:</b> <span style="color: #e74c3c; font-weight: bold;">Commercial</span><br>
             <b>Calle:</b> QUEENSBERRY STREET
         </div>
         

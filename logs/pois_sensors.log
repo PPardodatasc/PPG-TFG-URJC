@@ -1,121 +1,121 @@
-Sensor ID: 23915, Street: BOURKE STREET, Lat: -37.8126486, Lon: 144.968327, ZoneType: Residential
+Sensor ID: 23915, Street: BOURKE STREET, Lat: -37.8126486, Lon: 144.968327, ZoneType: Commercial
 Sensor ID: 23914, Street: COLLINS STREET, Lat: -37.8137101, Lon: 144.9728538, ZoneType: Commercial
 Sensor ID: 23913, Street: FLINDERS STREET, Lat: -37.8185482, Lon: 144.9633293, ZoneType: Commercial
-Sensor ID: 23916, Street: BOURKE STREET, Lat: -37.8104864, Lon: 144.9722391, ZoneType: Residential
-Sensor ID: 27446, Street: FRANKLIN STREET, Lat: -37.8082099, Lon: 144.9598926, ZoneType: Residential
-Sensor ID: 27164, Street: WILLIAM STREET, Lat: -37.8190202, Lon: 144.959676, ZoneType: Center
-Sensor ID: 25982, Street: RUSSELL STREET, Lat: -37.813282, Lon: 144.9683299, ZoneType: Residential
-Sensor ID: 27596, Street: RUSSELL STREET, Lat: -37.8123193, Lon: 144.9677641, ZoneType: Residential
-Sensor ID: 26585, Street: PELHAM STREET, Lat: -37.8028453, Lon: 144.9669083, ZoneType: Center
+Sensor ID: 23916, Street: BOURKE STREET, Lat: -37.8104864, Lon: 144.9722391, ZoneType: Commercial
+Sensor ID: 27446, Street: FRANKLIN STREET, Lat: -37.8082099, Lon: 144.9598926, ZoneType: Commercial
+Sensor ID: 27164, Street: WILLIAM STREET, Lat: -37.8190202, Lon: 144.959676, ZoneType: Commercial
+Sensor ID: 25982, Street: RUSSELL STREET, Lat: -37.813282, Lon: 144.9683299, ZoneType: Center (CBD)
+Sensor ID: 27596, Street: RUSSELL STREET, Lat: -37.8123193, Lon: 144.9677641, ZoneType: Center (CBD)
+Sensor ID: 26585, Street: PELHAM STREET, Lat: -37.8028453, Lon: 144.9669083, ZoneType: Commercial
 Sensor ID: 26632, Street: KING STREET, Lat: -37.813996, Lon: 144.9545139, ZoneType: Residential
 Sensor ID: 25724, Street: LA TROBE STREET, Lat: -37.8126433, Lon: 144.9535046, ZoneType: Residential
 Sensor ID: 26754, Street: LA TROBE STREET, Lat: -37.8085888, Lon: 144.9674631, ZoneType: Residential
-Sensor ID: 23944, Street: LONSDALE STREET, Lat: -37.8143489, Lon: 144.9554092, ZoneType: Residential
+Sensor ID: 23944, Street: LONSDALE STREET, Lat: -37.8143489, Lon: 144.9554092, ZoneType: Commercial
 Sensor ID: 23941, Street: WILLIAM STREET, Lat: -37.8141404, Lon: 144.9576082, ZoneType: Commercial
-Sensor ID: 23945, Street: LITTLE LONSDALE STREET, Lat: -37.8104095, Lon: 144.9647085, ZoneType: Commercial
-Sensor ID: 23940, Street: KING STREET, Lat: -37.8185369, Lon: 144.9568504, ZoneType: Residential
-Sensor ID: 23918, Street: LITTLE LONSDALE STREET, Lat: -37.8121392, Lon: 144.9589916, ZoneType: Residential
-Sensor ID: 23920, Street: LA TROBE STREET, Lat: -37.8122905, Lon: 144.9542499, ZoneType: Residential
-Sensor ID: 23917, Street: LONSDALE STREET, Lat: -37.8116707, Lon: 144.960474, ZoneType: Residential
+Sensor ID: 23945, Street: LITTLE LONSDALE STREET, Lat: -37.8104095, Lon: 144.9647085, ZoneType: Center (CBD)
+Sensor ID: 23940, Street: KING STREET, Lat: -37.8185369, Lon: 144.9568504, ZoneType: Commercial
+Sensor ID: 23918, Street: LITTLE LONSDALE STREET, Lat: -37.8121392, Lon: 144.9589916, ZoneType: Commercial
+Sensor ID: 23920, Street: LA TROBE STREET, Lat: -37.8122905, Lon: 144.9542499, ZoneType: Commercial
+Sensor ID: 23917, Street: LONSDALE STREET, Lat: -37.8116707, Lon: 144.960474, ZoneType: Commercial
 Sensor ID: 28287, Street: DODDS STREET, Lat: -37.8243074, Lon: 144.968403, ZoneType: Commercial
-Sensor ID: 24602, Street: WILLIAM STREET, Lat: -37.8109274, Lon: 144.9559507, ZoneType: Residential
+Sensor ID: 24602, Street: WILLIAM STREET, Lat: -37.8109274, Lon: 144.9559507, ZoneType: Commercial
 Sensor ID: 26228, Street: LONSDALE STREET, Lat: -37.8131945, Lon: 144.9587471, ZoneType: Commercial
 Sensor ID: 27071, Street: ALBERT STREET, Lat: -37.8096852, Lon: 144.9776971, ZoneType: Commercial
-Sensor ID: 26086, Street: ERROL STREET, Lat: -37.8040274, Lon: 144.9493598, ZoneType: Residential
-Sensor ID: 25060, Street: LITTLE LONSDALE STREET, Lat: -37.8088069, Lon: 144.9703704, ZoneType: Residential
-Sensor ID: 26281, Street: HOWARD STREET, Lat: -37.8044686, Lon: 144.9539008, ZoneType: Residential
-Sensor ID: 27531, Street: SOUTHBANK BOULEVARD, Lat: -37.8219427, Lon: 144.9631516, ZoneType: Residential
-Sensor ID: 27241, Street: FLINDERS STREET, Lat: -37.82061, Lon: 144.9570153, ZoneType: Residential
-Sensor ID: 27271, Street: NAVIGATION DRIVE, Lat: -37.8197939, Lon: 144.9459156, ZoneType: Residential
+Sensor ID: 26086, Street: ERROL STREET, Lat: -37.8040274, Lon: 144.9493598, ZoneType: Center (CBD)
+Sensor ID: 25060, Street: LITTLE LONSDALE STREET, Lat: -37.8088069, Lon: 144.9703704, ZoneType: Commercial
+Sensor ID: 26281, Street: HOWARD STREET, Lat: -37.8044686, Lon: 144.9539008, ZoneType: Commercial
+Sensor ID: 27531, Street: SOUTHBANK BOULEVARD, Lat: -37.8219427, Lon: 144.9631516, ZoneType: Commercial
+Sensor ID: 27241, Street: FLINDERS STREET, Lat: -37.82061, Lon: 144.9570153, ZoneType: Commercial
+Sensor ID: 27271, Street: NAVIGATION DRIVE, Lat: -37.8197939, Lon: 144.9459156, ZoneType: Commercial
 Sensor ID: 28174, Street: EADES STREET, Lat: -37.8097852, Lon: 144.9810909, ZoneType: Commercial
-Sensor ID: 27294, Street: ELIZABETH STREET, Lat: -37.8169317, Lon: 144.9645045, ZoneType: Commercial
-Sensor ID: 25069, Street: EXHIBITION STREET, Lat: -37.8125777, Lon: 144.9708913, ZoneType: Commercial
-Sensor ID: 26869, Street: LITTLE COLLINS STREET, Lat: -37.81766, Lon: 144.9549806, ZoneType: Residential
-Sensor ID: 25771, Street: EXHIBITION STREET, Lat: -37.8097532, Lon: 144.9693618, ZoneType: Residential
+Sensor ID: 27294, Street: ELIZABETH STREET, Lat: -37.8169317, Lon: 144.9645045, ZoneType: Center (CBD)
+Sensor ID: 25069, Street: EXHIBITION STREET, Lat: -37.8125777, Lon: 144.9708913, ZoneType: Center (CBD)
+Sensor ID: 26869, Street: LITTLE COLLINS STREET, Lat: -37.81766, Lon: 144.9549806, ZoneType: Commercial
+Sensor ID: 25771, Street: EXHIBITION STREET, Lat: -37.8097532, Lon: 144.9693618, ZoneType: Commercial
 Sensor ID: 23927, Street: HOWARD STREET, Lat: -37.8066085, Lon: 144.9535525, ZoneType: Commercial
 Sensor ID: 23923, Street: ROSSLYN STREET, Lat: -37.8071275, Lon: 144.9535893, ZoneType: Commercial
-Sensor ID: 26574, Street: SPENCER STREET, Lat: -37.8154168, Lon: 144.9526172, ZoneType: Residential
-Sensor ID: 26462, Street: LITTLE COLLINS STREET, Lat: -37.8157691, Lon: 144.9618288, ZoneType: Residential
-Sensor ID: 27644, Street: FLINDERS LANE, Lat: -37.8199462, Lon: 144.9552983, ZoneType: Residential
-Sensor ID: 26562, Street: KING STREET, Lat: -37.816583, Lon: 144.9559555, ZoneType: Center
-Sensor ID: 26012, Street: WILLIAM STREET, Lat: -37.8152335, Lon: 144.9585741, ZoneType: Residential
-Sensor ID: 27245, Street: COLLINS STREET, Lat: -37.8164483, Lon: 144.9629403, ZoneType: Commercial
+Sensor ID: 26574, Street: SPENCER STREET, Lat: -37.8154168, Lon: 144.9526172, ZoneType: Commercial
+Sensor ID: 26462, Street: LITTLE COLLINS STREET, Lat: -37.8157691, Lon: 144.9618288, ZoneType: Commercial
+Sensor ID: 27644, Street: FLINDERS LANE, Lat: -37.8199462, Lon: 144.9552983, ZoneType: Commercial
+Sensor ID: 26562, Street: KING STREET, Lat: -37.816583, Lon: 144.9559555, ZoneType: Center (CBD)
+Sensor ID: 26012, Street: WILLIAM STREET, Lat: -37.8152335, Lon: 144.9585741, ZoneType: Commercial
+Sensor ID: 27245, Street: COLLINS STREET, Lat: -37.8164483, Lon: 144.9629403, ZoneType: Center (CBD)
 Sensor ID: 26121, Street: EXHIBITION STREET, Lat: -37.8147169, Lon: 144.9717127, ZoneType: Commercial
-Sensor ID: 27243, Street: COLLINS STREET, Lat: -37.8212302, Lon: 144.9469484, ZoneType: Residential
-Sensor ID: 26375, Street: QUEEN STREET, Lat: -37.8080625, Lon: 144.9580738, ZoneType: Commercial
-Sensor ID: 26669, Street: LONSDALE STREET, Lat: -37.8104276, Lon: 144.9682245, ZoneType: Residential
-Sensor ID: 26852, Street: KING STREET, Lat: -37.8149639, Lon: 144.9552143, ZoneType: Residential
-Sensor ID: 26385, Street: KING STREET, Lat: -37.817664, Lon: 144.9562011, ZoneType: Center
-Sensor ID: 25988, Street: EXHIBITION STREET, Lat: -37.8107438, Lon: 144.9700512, ZoneType: Residential
-Sensor ID: 26908, Street: LA TROBE STREET, Lat: -37.8107375, Lon: 144.9601324, ZoneType: Residential
+Sensor ID: 27243, Street: COLLINS STREET, Lat: -37.8212302, Lon: 144.9469484, ZoneType: Commercial
+Sensor ID: 26375, Street: QUEEN STREET, Lat: -37.8080625, Lon: 144.9580738, ZoneType: Center (CBD)
+Sensor ID: 26669, Street: LONSDALE STREET, Lat: -37.8104276, Lon: 144.9682245, ZoneType: Commercial
+Sensor ID: 26852, Street: KING STREET, Lat: -37.8149639, Lon: 144.9552143, ZoneType: Commercial
+Sensor ID: 26385, Street: KING STREET, Lat: -37.817664, Lon: 144.9562011, ZoneType: Commercial
+Sensor ID: 25988, Street: EXHIBITION STREET, Lat: -37.8107438, Lon: 144.9700512, ZoneType: Commercial
+Sensor ID: 26908, Street: LA TROBE STREET, Lat: -37.8107375, Lon: 144.9601324, ZoneType: Commercial
 Sensor ID: 26169, Street: SPRING STREET, Lat: -37.8145705, Lon: 144.9746608, ZoneType: Commercial
-Sensor ID: 26376, Street: QUEEN STREET, Lat: -37.8105292, Lon: 144.9585508, ZoneType: Residential
+Sensor ID: 26376, Street: QUEEN STREET, Lat: -37.8105292, Lon: 144.9585508, ZoneType: Commercial
 Sensor ID: 26710, Street: HARBOUR ESPLANADE, Lat: -37.8170709, Lon: 144.9457674, ZoneType: Commercial
-Sensor ID: 28208, Street: QUEENSBERRY STREET, Lat: -37.8036261, Lon: 144.9548783, ZoneType: Residential
-Sensor ID: 26381, Street: WILLIAM STREET, Lat: -37.8182581, Lon: 144.9593117, ZoneType: Residential
+Sensor ID: 28208, Street: QUEENSBERRY STREET, Lat: -37.8036261, Lon: 144.9548783, ZoneType: Commercial
+Sensor ID: 26381, Street: WILLIAM STREET, Lat: -37.8182581, Lon: 144.9593117, ZoneType: Commercial
 Sensor ID: 23935, Street: WELLINGTON PARADE, Lat: -37.8152059, Lon: 144.9755553, ZoneType: Commercial
-Sensor ID: 23931, Street: QUEENSBERRY STREET, Lat: -37.8033586, Lon: 144.9516379, ZoneType: Residential
+Sensor ID: 23931, Street: QUEENSBERRY STREET, Lat: -37.8033586, Lon: 144.9516379, ZoneType: Commercial
 Sensor ID: 23933, Street: FARADAY STREET, Lat: -37.7984317, Lon: 144.9651487, ZoneType: Residential
 Sensor ID: 23934, Street: CATHEDRAL PLACE, Lat: -37.811016, Lon: 144.9774785, ZoneType: General
 Sensor ID: 23936, Street: KAVANAGH STREET, Lat: -37.8256379, Lon: 144.9625654, ZoneType: Residential
-Sensor ID: 26734, Street: CLARENDON STREET, Lat: -37.8108225, Lon: 144.9836017, ZoneType: Residential
+Sensor ID: 26734, Street: CLARENDON STREET, Lat: -37.8108225, Lon: 144.9836017, ZoneType: Commercial
 Sensor ID: 25242, Street: ALBERT STREET, Lat: -37.8108631, Lon: 144.9883928, ZoneType: Residential
 Sensor ID: 26496, Street: LITTLE COLLINS STREET, Lat: -37.8128073, Lon: 144.9718934, ZoneType: Commercial
 Sensor ID: 26332, Street: COLLINS STREET, Lat: -37.820459, Lon: 144.9490075, ZoneType: Commercial
-Sensor ID: 23929, Street: QUEENSBERRY STREET, Lat: -37.8034288, Lon: 144.9531251, ZoneType: Residential
+Sensor ID: 23929, Street: QUEENSBERRY STREET, Lat: -37.8034288, Lon: 144.9531251, ZoneType: Commercial
 Sensor ID: 27658, Street: ACLAND STREET, Lat: -37.8334288, Lon: 144.9851525, ZoneType: Residential
-Sensor ID: 26878, Street: BOURKE STREET, Lat: -37.8143424, Lon: 144.9625243, ZoneType: Residential
-Sensor ID: 26860, Street: FLINDERS LANE, Lat: -37.8167643, Lon: 144.9660155, ZoneType: Commercial
-Sensor ID: 26699, Street: ALBERT STREET, Lat: -37.8094012, Lon: 144.9738487, ZoneType: Center
-Sensor ID: 25111, Street: VICTORIA STREET, Lat: -37.8060052, Lon: 144.9587311, ZoneType: Residential
-Sensor ID: 28110, Street: CLARENDON STREET, Lat: -37.8156703, Lon: 144.9827786, ZoneType: Residential
+Sensor ID: 26878, Street: BOURKE STREET, Lat: -37.8143424, Lon: 144.9625243, ZoneType: Center (CBD)
+Sensor ID: 26860, Street: FLINDERS LANE, Lat: -37.8167643, Lon: 144.9660155, ZoneType: Center (CBD)
+Sensor ID: 26699, Street: ALBERT STREET, Lat: -37.8094012, Lon: 144.9738487, ZoneType: Commercial
+Sensor ID: 25111, Street: VICTORIA STREET, Lat: -37.8060052, Lon: 144.9587311, ZoneType: Center (CBD)
+Sensor ID: 28110, Street: CLARENDON STREET, Lat: -37.8156703, Lon: 144.9827786, ZoneType: Commercial
 Sensor ID: 26980, Street: LANSDOWNE STREET, Lat: -37.8107433, Lon: 144.9780532, ZoneType: General
 Sensor ID: 25764, Street: EXHIBITION STREET, Lat: -37.8157781, Lon: 144.972161, ZoneType: Commercial
 Sensor ID: 26233, Street: LITTLE LONSDALE STREET, Lat: -37.8138793, Lon: 144.9529076, ZoneType: Residential
-Sensor ID: 26918, Street: THERRY STREET, Lat: -37.8073518, Lon: 144.9588893, ZoneType: Residential
-Sensor ID: 25268, Street: ALBERT STREET, Lat: -37.811031, Lon: 144.989911, ZoneType: General
+Sensor ID: 26918, Street: THERRY STREET, Lat: -37.8073518, Lon: 144.9588893, ZoneType: Center (CBD)
+Sensor ID: 25268, Street: ALBERT STREET, Lat: -37.811031, Lon: 144.989911, ZoneType: Residential
 Sensor ID: 26188, Street: FLINDERS LANE, Lat: -37.8144318, Lon: 144.9739746, ZoneType: Commercial
 Sensor ID: 26583, Street: DUDLEY STREET, Lat: -37.8086801, Lon: 144.9545529, ZoneType: Commercial
-Sensor ID: 27344, Street: CLARENDON STREET, Lat: -37.8130712, Lon: 144.9829852, ZoneType: Residential
-Sensor ID: 26877, Street: BOURKE STREET, Lat: -37.8149226, Lon: 144.9570332, ZoneType: Center
-Sensor ID: 27225, Street: LA TROBE STREET, Lat: -37.809102, Lon: 144.9657144, ZoneType: Residential
-Sensor ID: 23970, Street: SPRING STREET, Lat: -37.8106732, Lon: 144.9726834, ZoneType: Residential
-Sensor ID: 26816, Street: EXHIBITION STREET, Lat: -37.8085578, Lon: 144.9689644, ZoneType: Residential
-Sensor ID: 26742, Street: CLARENDON STREET, Lat: -37.812391, Lon: 144.9833382, ZoneType: Residential
-Sensor ID: 26359, Street: QUEEN STREET, Lat: -37.8158435, Lon: 144.9609743, ZoneType: Residential
-Sensor ID: 27191, Street: NICHOLSON STREET, Lat: -37.8097048, Lon: 144.9730159, ZoneType: Center
-Sensor ID: 26568, Street: KING STREET, Lat: -37.8161828, Lon: 144.9555237, ZoneType: Residential
+Sensor ID: 27344, Street: CLARENDON STREET, Lat: -37.8130712, Lon: 144.9829852, ZoneType: Commercial
+Sensor ID: 26877, Street: BOURKE STREET, Lat: -37.8149226, Lon: 144.9570332, ZoneType: Commercial
+Sensor ID: 27225, Street: LA TROBE STREET, Lat: -37.809102, Lon: 144.9657144, ZoneType: Commercial
+Sensor ID: 23970, Street: SPRING STREET, Lat: -37.8106732, Lon: 144.9726834, ZoneType: Commercial
+Sensor ID: 26816, Street: EXHIBITION STREET, Lat: -37.8085578, Lon: 144.9689644, ZoneType: Commercial
+Sensor ID: 26742, Street: CLARENDON STREET, Lat: -37.812391, Lon: 144.9833382, ZoneType: Commercial
+Sensor ID: 26359, Street: QUEEN STREET, Lat: -37.8158435, Lon: 144.9609743, ZoneType: Commercial
+Sensor ID: 27191, Street: NICHOLSON STREET, Lat: -37.8097048, Lon: 144.9730159, ZoneType: Commercial
+Sensor ID: 26568, Street: KING STREET, Lat: -37.8161828, Lon: 144.9555237, ZoneType: Commercial
 Sensor ID: 26536, Street: QUEEN STREET, Lat: -37.8136768, Lon: 144.9602292, ZoneType: Commercial
 Sensor ID: 26392, Street: FLINDERS LANE, Lat: -37.8174547, Lon: 144.9636411, ZoneType: Commercial
-Sensor ID: 26107, Street: HARBOUR ESPLANADE, Lat: -37.8203478, Lon: 144.9471679, ZoneType: Residential
+Sensor ID: 26107, Street: HARBOUR ESPLANADE, Lat: -37.8203478, Lon: 144.9471679, ZoneType: Commercial
 Sensor ID: 27870, Street: AIRLIE STREET, Lat: -37.831848, Lon: 144.9870165, ZoneType: Residential
-Sensor ID: 25934, Street: KING STREET, Lat: -37.8197201, Lon: 144.9571483, ZoneType: Residential
-Sensor ID: 23972, Street: SPRING STREET, Lat: -37.8088834, Lon: 144.9719139, ZoneType: Center
+Sensor ID: 25934, Street: KING STREET, Lat: -37.8197201, Lon: 144.9571483, ZoneType: Commercial
+Sensor ID: 23972, Street: SPRING STREET, Lat: -37.8088834, Lon: 144.9719139, ZoneType: Commercial
 Sensor ID: 23973, Street: SPRING STREET, Lat: -37.8082699, Lon: 144.9717549, ZoneType: Commercial
-Sensor ID: 26104, Street: MERCHANT STREET, Lat: -37.8208474, Lon: 144.9442597, ZoneType: Residential
-Sensor ID: 25209, Street: QUEEN STREET, Lat: -37.818322, Lon: 144.9623622, ZoneType: Center
-Sensor ID: 26265, Street: VICTORIA STREET, Lat: -37.8051147, Lon: 144.9500794, ZoneType: Residential
+Sensor ID: 26104, Street: MERCHANT STREET, Lat: -37.8208474, Lon: 144.9442597, ZoneType: Center (CBD)
+Sensor ID: 25209, Street: QUEEN STREET, Lat: -37.818322, Lon: 144.9623622, ZoneType: Commercial
+Sensor ID: 26265, Street: VICTORIA STREET, Lat: -37.8051147, Lon: 144.9500794, ZoneType: Center (CBD)
 Sensor ID: 25340, Street: JOLIMONT TERRACE, Lat: -37.8169996, Lon: 144.9819984, ZoneType: Commercial
 Sensor ID: 23980, Street: GRANT STREET, Lat: -37.8254756, Lon: 144.9688492, ZoneType: Residential
-Sensor ID: 23978, Street: CHETWYND STREET, Lat: -37.8043737, Lon: 144.9524045, ZoneType: Center
-Sensor ID: 23979, Street: LEVESON STREET, Lat: -37.8044411, Lon: 144.9510059, ZoneType: Residential
+Sensor ID: 23978, Street: CHETWYND STREET, Lat: -37.8043737, Lon: 144.9524045, ZoneType: Center (CBD)
+Sensor ID: 23979, Street: LEVESON STREET, Lat: -37.8044411, Lon: 144.9510059, ZoneType: Center (CBD)
 Sensor ID: 27052, Street: COLLINS STREET, Lat: -37.8147115, Lon: 144.9694567, ZoneType: Commercial
-Sensor ID: 26660, Street: LITTLE COLLINS STREET, Lat: -37.8164034, Lon: 144.9596015, ZoneType: Residential
+Sensor ID: 26660, Street: LITTLE COLLINS STREET, Lat: -37.8164034, Lon: 144.9596015, ZoneType: Commercial
 Sensor ID: 26820, Street: RUSSELL STREET, Lat: -37.8113886, Lon: 144.9674614, ZoneType: Commercial
-Sensor ID: 27040, Street: QUEEN STREET, Lat: -37.8143869, Lon: 144.960303, ZoneType: Commercial
-Sensor ID: 25219, Street: QUEEN STREET, Lat: -37.811564, Lon: 144.95927, ZoneType: Residential
-Sensor ID: 26175, Street: QUEEN STREET, Lat: -37.8123281, Lon: 144.9596143, ZoneType: Residential
+Sensor ID: 27040, Street: QUEEN STREET, Lat: -37.8143869, Lon: 144.960303, ZoneType: Center (CBD)
+Sensor ID: 25219, Street: QUEEN STREET, Lat: -37.811564, Lon: 144.95927, ZoneType: Commercial
+Sensor ID: 26175, Street: QUEEN STREET, Lat: -37.8123281, Lon: 144.9596143, ZoneType: Commercial
 Sensor ID: 23989, Street: CAPEL STREET, Lat: -37.8048388, Lon: 144.9553354, ZoneType: Commercial
 Sensor ID: 25553, Street: PALMER STREET, Lat: -37.8175889, Lon: 144.9807845, ZoneType: Residential
-Sensor ID: 27469, Street: CHETWYND STREET, Lat: -37.8058712, Lon: 144.9521417, ZoneType: Center
-Sensor ID: 28178, Street: EXHIBITION STREET, Lat: -37.81155, Lon: 144.9702482, ZoneType: Residential
-Sensor ID: 24563, Street: LITTLE BOURKE STREET, Lat: -37.8155175, Lon: 144.9549449, ZoneType: Residential
-Sensor ID: 25077, Street: ELIZABETH STREET, Lat: -37.8073821, Lon: 144.9601197, ZoneType: Residential
-Sensor ID: 23994, Street: COLLINS STREET, Lat: -37.8167094, Lon: 144.9581993, ZoneType: Residential
+Sensor ID: 27469, Street: CHETWYND STREET, Lat: -37.8058712, Lon: 144.9521417, ZoneType: Commercial
+Sensor ID: 28178, Street: EXHIBITION STREET, Lat: -37.81155, Lon: 144.9702482, ZoneType: Commercial
+Sensor ID: 24563, Street: LITTLE BOURKE STREET, Lat: -37.8155175, Lon: 144.9549449, ZoneType: Commercial
+Sensor ID: 25077, Street: ELIZABETH STREET, Lat: -37.8073821, Lon: 144.9601197, ZoneType: Center (CBD)
+Sensor ID: 23994, Street: COLLINS STREET, Lat: -37.8167094, Lon: 144.9581993, ZoneType: Commercial
 Sensor ID: 23996, Street: BRENTANI WAY, Lat: -37.8212866, Lon: 144.9506999, ZoneType: Commercial
-Sensor ID: 23993, Street: WATERVIEW WALK, Lat: -37.8197371, Lon: 144.9479344, ZoneType: Residential
+Sensor ID: 23993, Street: WATERVIEW WALK, Lat: -37.8197371, Lon: 144.9479344, ZoneType: Commercial
 Sensor ID: 26572, Street: KING STREET, Lat: -37.8111356, Lon: 144.9531919, ZoneType: Residential
 Sensor ID: 28012, Street: WALSH STREET, Lat: -37.8321264, Lon: 144.9859552, ZoneType: Residential
-Sensor ID: 24001, Street: RUSSELL STREET, Lat: -37.8144169, Lon: 144.9688503, ZoneType: Residential
+Sensor ID: 24001, Street: RUSSELL STREET, Lat: -37.8144169, Lon: 144.9688503, ZoneType: Center (CBD)
 Sensor ID: 24993, Street: VICTORIA STREET, Lat: -37.805816, Lon: 144.9546915, ZoneType: Commercial
-Sensor ID: 25976, Street: QUEENSBERRY STREET, Lat: -37.8031264, Lon: 144.9504164, ZoneType: Residential
+Sensor ID: 25976, Street: QUEENSBERRY STREET, Lat: -37.8031264, Lon: 144.9504164, ZoneType: Commercial
