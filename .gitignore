@@ -12,3 +12,5 @@ cache/
 logs/
 # DuckDB
 *.duckdb
+# Prediction logs and results
+logs_experiments/
