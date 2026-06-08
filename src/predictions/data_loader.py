@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 DATA_AMOUNT = 0.1 # % of the original dataset to use. Change according to necesities.
-MISSING_RATE = 0.1 # % of observed data to hide to evaluate imputation performance in validation and test
+MISSING_RATE = 0.15 # % of the complete observed data to hide to evaluate imputation performance in validation and test
 
 class DataLoader:
     """
@@ -37,9 +37,10 @@ class DataLoader:
                 X_list.append(data[i : i + self.window_size])
         return np.array(X_list)
 
-    def _mask_data(self, X, missing_rate=0.1):
+
+    def _mask_data(self, X, missing_rate=0.15):
         """
-        Aritificial masking for evaluation in validation and test
+        Artificial masking for evaluation in validation and test
         """
         X_masked = np.copy(X)
         observed_indices = np.where(~np.isnan(X))

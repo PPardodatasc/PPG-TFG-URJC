@@ -71,7 +71,7 @@ class Evaluator:
 #################### Execution flow
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description='Evaluación Final de Modelos')
+    parser = argparse.ArgumentParser(description='Evaluación de Modelos en Test')
     parser.add_argument('--model_path', type=str, required=True, help='Ruta absoluta al modelo entrenado (.pypots)')
     parser.add_argument('--window_size', type=int, required=True, help='Ventana con la que se entrenó el modelo')
     args = parser.parse_args()
