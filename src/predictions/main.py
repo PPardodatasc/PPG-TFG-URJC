@@ -8,7 +8,7 @@ import random
 import traceback
 from predictions.train import Trainer
 
-def sample_parameters(search_space):
+def sample_parameters(search_space: dict) -> dict:
     """
     Randomly samples parameters from the given search space.
     The search space can contain:
@@ -32,15 +32,16 @@ def sample_parameters(search_space):
     return params
 
 
-def save_best_model_summary(logs_path, model_name, best_mae, best_params, best_model_dir):
+def save_best_model_summary(logs_path: str, model_metadata: dict) -> None:
     """Save a summary of the best model to logs_experiments/best_models_summary.txt"""
     summary_file = os.path.join(logs_path)
     os.makedirs(os.path.dirname(summary_file), exist_ok=True)
     with open(summary_file, "a", encoding="utf-8") as f:
-        f.write(f"{model_name}:\n")
-        f.write(f"Final mae: {best_mae:.5f}\n")
-        f.write(f"Best params: {best_params}\n")
-        f.write(f"Path: {best_model_dir}\n")
+        f.write(f"{model_metadata['model']}:\n")
+        f.write(f"Trials: {model_metadata['trials']}\n")
+        f.write(f"Final mae: {model_metadata['best_mae']:.5f}\n")
+        f.write(f"Best params: {model_metadata['best_params']}\n")
+        f.write(f"Path: {model_metadata['best_model_dir']}\n")
         f.write("="*40 + "\n\n")
     
     
@@ -95,16 +96,23 @@ def main():
             traceback.print_exc()
 
     print("\n" + "="*15)
-    print(f"OPTIMIZACIÓN DE {args.model} COMPLETADA")
+    print(f"OPTIMIZACIÓN DE {args.model} COMPLETADA. Trials realizados: {args.trials}")
     print(f"Mejor MAE Final: {best_mae:.5f}")
     print(f"Mejores Parámetros: {best_params}")
     print(f"Ruta del ganador: {best_model_dir}\n")
+
+    best_model_metadata = {
+        "model": args.model,
+        "trials": args.trials,
+        "best_mae": best_mae,
+        "best_params": best_params,
+        "best_model_dir": best_model_dir
+    }
     
     if best_model_dir is not None:
-        save_best_model_summary(logs_path, args.model, best_mae, best_params, best_model_dir)
-
+        save_best_model_summary(logs_path, best_model_metadata)
     print(f"Mejor configuración y resultados almacenados en: {logs_path}")
 
-    
+ 
 if __name__ == "__main__":
     main()
