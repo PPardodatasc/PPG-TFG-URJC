@@ -1,9 +1,12 @@
 # data_loader.py
+import os
+from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
+load_dotenv()
 
-DATA_AMOUNT = 0.1 # % of the original dataset to use. Change according to necesities.
-MISSING_RATE = 0.15 # % of the complete observed data to hide to evaluate imputation performance in validation and test
+DATA_AMOUNT = float(os.environ.get("DATA_AMOUNT", 0.8)) # % of the original dataset to use. Change according to necesities.
+MISSING_RATE = float(os.environ.get("MISSING_RATE", 0.15)) # % of the complete observed data to hide to evaluate imputation performance in validation and test
 
 class DataLoader:
     """

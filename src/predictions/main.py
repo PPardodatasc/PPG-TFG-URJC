@@ -6,7 +6,9 @@ import math
 import os
 import random
 import traceback
+from dotenv import load_dotenv
 from predictions.train import Trainer
+load_dotenv()
 
 def sample_parameters(search_space: dict) -> dict:
     """
@@ -54,9 +56,9 @@ def main():
     args = parser.parse_args()
 
     # Input data and log paths
-    repo_root = os.getenv("PROJECT_ROOT", "")
-    parquet_file = os.getenv("PARQUET_MODEL", "df_pypots.parquet")
-    log_file = os.getenv("BEST_MODEL_LOG", "best_models_summary.txt")
+    repo_root = os.environ.get("PROJECT_ROOT", "")
+    parquet_file = os.environ.get("PARQUET_MODEL", "df_pypots.parquet")
+    log_file = os.environ.get("BEST_MODEL_LOG", "best_models_summary.txt")
     data_path = f"{repo_root}/data/{parquet_file}"
     logs_path = f"{repo_root}/logs_experiments/{log_file}"
 
@@ -113,6 +115,6 @@ def main():
         save_best_model_summary(logs_path, best_model_metadata)
     print(f"Mejor configuración y resultados almacenados en: {logs_path}")
 
- 
+
 if __name__ == "__main__":
     main()
