@@ -9,6 +9,9 @@ import traceback
 from dotenv import load_dotenv
 from predictions.train import Trainer
 load_dotenv()
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, message=".*enable_nested_tensor is True.*") # Avoid PyTorch/PyPOTS warnings about nested_tensors
+
 
 def sample_parameters(search_space: dict) -> dict:
     """

@@ -1,6 +1,6 @@
 {
     "window_size": [48, 96],
-    "batch_size": [16, 32],
+    "batch_size": [64, 128],
     "lr": {
         "distribution": "loguniform",
         "min": 0.0001,

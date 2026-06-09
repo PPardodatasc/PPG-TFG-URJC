@@ -66,7 +66,7 @@ class DataLoader:
         print(f"[{self.__class__.__name__}] Cargando datos desde: {self.filepath}...")
         df = pd.read_parquet(self.filepath)
 
-        np.random.seed(33) 
+        np.random.seed(33) # ensure reproducibility so all models are trained with the same % of data and same missing values for evaluation
         unique_devices = df['DeviceId'].unique()
         selected_devices = np.random.choice(unique_devices, size=int(len(unique_devices) * DATA_AMOUNT), replace=False) # 
         df = df[df['DeviceId'].isin(selected_devices)].reset_index(drop=True)

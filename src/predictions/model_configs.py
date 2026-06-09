@@ -23,7 +23,7 @@ DEFAULT_MODEL_KWARGS = {
         'n_channels': 64,
         'n_heads': 2,
         'target_strategy': 'random',
-        'n_diffusion_steps': 50,
+        'n_diffusion_steps': 30,
         'patience': 5,
         'model_saving_strategy': 'best',
         'd_time_embedding': 128,
