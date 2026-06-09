@@ -129,6 +129,10 @@ class Trainer:
                 predicted_data = np.array(imputation_results["imputation"])
             else:
                 predicted_data = np.array(imputation_results)
+            
+            # csdi outputs a 4D tensor with multiple trajectories, which are averaged them for evaluation
+            if predicted_data.ndim == 4: 
+                predicted_data = predicted_data.mean(axis=1) 
         else:
             pass 
         

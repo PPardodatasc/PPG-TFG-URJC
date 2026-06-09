@@ -7,8 +7,8 @@ import os
 import random
 import traceback
 from dotenv import load_dotenv
-from predictions.train import Trainer
 load_dotenv()
+from predictions.train import Trainer
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, message=".*enable_nested_tensor is True.*") # Avoid PyTorch/PyPOTS warnings about nested_tensors
 
@@ -116,7 +116,7 @@ def main():
     
     if best_model_dir is not None:
         save_best_model_summary(logs_path, best_model_metadata)
-    print(f"Mejor configuración y resultados almacenados en: {logs_path}")
+        print(f"Mejor configuración y resultados almacenados en: {logs_path}")
 
 
 if __name__ == "__main__":
