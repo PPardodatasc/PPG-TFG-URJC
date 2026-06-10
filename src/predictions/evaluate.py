@@ -164,12 +164,34 @@ class Evaluator:
         metrics = self._compute_metrics(imputed_data)
         self._log_and_save_results(f"Red Neuronal: {self.target_model}", metrics)
 
+    def evaluate_mean(self):
+        """Evaluates the baseline of imputing missing values with the global mean of each feature."""
+        print("Realizando inferencia sobre el conjunto de Test con la Media Global...")
+        mean_model = Mean()
+        mean_model.fit(self.test_set)
+        results = mean_model.impute(self.test_set)
+
+        mean_imputed = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
+        metrics = self._compute_metrics(mean_imputed)
+        self._log_and_save_results("Baseline: MEDIA GLOBAL", metrics)
+
+    def evaluate_locf(self):
+        """Evaluates the baseline of imputing missing values with the last observation carried forward."""
+        print("Realizando inferencia sobre el conjunto de Test con LOCF...")
+        locf_model = LOCF()
+        locf_model.fit(self.test_set)
+        results = locf_model.impute(self.test_set)
+
+        locf_imputed = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
+        metrics = self._compute_metrics(locf_imputed)
+        self._log_and_save_results("Baseline: LOCF", metrics)
+
 
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Evaluación de Modelos en Test')
     parser.add_argument('--model', type=str, choices=['SAITS', 'CSDI'], help='Nombre del modelo neuronal a evaluar')
-    parser.add_argument('--window_size', type=int, help='Ventana temporal (requerido para evaluar baselines)') 
+    parser.add_argument('--window_size', type=int, help='Ventana temporal (requerido si se evalúan baselines sin un modelo neuronal)')
     parser.add_argument('--mode', type=str, default='nn', choices=['nn', 'baselines', 'all'], help='Modo de evaluación')
     args = parser.parse_args()
     
@@ -178,5 +200,11 @@ if __name__ == "__main__":
         
     evaluator = Evaluator(args.model, args.mode, args.window_size)
     
+    # NN
     if args.mode in ('nn', 'all'):
         evaluator.evaluate_imputation()
+        
+    # Baselines
+    if args.mode in ('baselines', 'all'):
+        evaluator.evaluate_mean()
+        evaluator.evaluate_locf()
