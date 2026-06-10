@@ -1,6 +1,6 @@
 {
     "epochs": [30, 50],
     "batch_size": [64, 128, 256],
-    "lr": {"_type": "loguniform", "_value": [0.0005, 0.01]},
+    "lr": {"distribution": "loguniform", "min": 0.0005, "max": 0.01},
     "moving_avg_window_size": [25, 51, 99]
 }
