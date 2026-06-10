@@ -1,5 +1,5 @@
 # main.py
-# usage: python src/predictions/main.py   --model SAITS   --search_space src/predictions/configs_nni/saits_search_space.json   --trials 10
+# usage: python src/predictions/main.py   --model SAITS   --search_space src/predictions/configs/saits_search_space.json   --trials 10
 import argparse
 import json
 import math

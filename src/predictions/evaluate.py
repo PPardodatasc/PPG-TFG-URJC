@@ -10,7 +10,7 @@ from predictions.data_loader import DataLoader
 from pypots.imputation import SAITS, CSDI, LOCF, Mean
 
 class Evaluator:
-    def __init__(self, target_model: str, mode: str, fallback_window: int = None):
+    def __init__(self, target_model: str, mode: str, window: int):
         self.target_model = target_model 
         self.mode = mode
         
@@ -23,7 +23,7 @@ class Evaluator:
         
         self.best_params = {}
         self.model_path = ""
-        self.window_size = fallback_window
+        self.window_size = window
         
         # Obtain info from summary .txt file
         if self.target_model and self.mode in ('nn', 'all'):

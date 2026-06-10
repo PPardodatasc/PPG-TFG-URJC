@@ -18,13 +18,13 @@ echo "======================================================"
 echo -e "\n>>> STARTING SAITS EXPERIMENTS <<<"
 python src/predictions/main.py \
     --model SAITS \
-    --search_space src/predictions/configs_nni/saits_search_space.json \
+    --search_space src/predictions/configs/saits_search_space.json \
     --trials 22
 
 echo -e "\n>>> STARTING CSDI EXPERIMENTS <<<"
 python src/predictions/main.py \
     --model CSDI \
-    --search_space src/predictions/configs_nni/csdi_search_space.json \
+    --search_space src/predictions/configs/csdi_search_space.json \
     --trials 8
 
 echo "======================================================"

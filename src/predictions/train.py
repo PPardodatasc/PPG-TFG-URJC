@@ -23,7 +23,7 @@ class Trainer:
     def _build_model(self, config: dict, n_features: int, save_dir: str):
         """
         Builds the PyPOTS model configurations. 
-        The final_config is the result of merging the default config (model_configs.py) with the hyperparameter search config (configs_nni/).
+        The final_config is the result of merging the default config (model_configs.py) with the hyperparameter search config (configs/).
         """
         
         config['optimizer'] = Adam(lr=config['lr'])
