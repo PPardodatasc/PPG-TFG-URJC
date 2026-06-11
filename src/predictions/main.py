@@ -1,5 +1,5 @@
 # main.py
-# usage: python src/predictions/main.py   --model SAITS   --search_space src/predictions/configs/saits_search_space.json   --trials 10
+# usage: python src/predictions/main.py --model PatchTST --search_space src/predictions/configs_nni/patchtst_search_space.json --trials 10
 import argparse
 import json
 import math
@@ -24,21 +24,23 @@ def sample_parameters(search_space: dict) -> dict:
     params = {}
     for key, value in search_space.items():
         if isinstance(value, list):
-            # Si es una lista ej: "epochs": [20, 40], elegimos uno aleatorio
+            # if list, sample one value
             params[key] = random.choice(value)
         elif isinstance(value, dict) and value.get("distribution") == "loguniform":
-            # Si es loguniform ej: LR
+            # if log-uniform, sample in log space
             low = math.log(value["min"])
             high = math.log(value["max"])
             params[key] = math.exp(random.uniform(low, high))
         else:
-            # Por si ponemos un valor fijo en el JSON
+            # if fixed value, use it directly
             params[key] = value
     return params
 
 
 def save_best_model_summary(logs_path: str, model_metadata: dict) -> None:
-    """Save a summary of the best model to logs_experiments/best_models_summary.txt"""
+    """
+    Save a summary of the best model to logs_experiments/best_models_summary.txt
+    """
     summary_file = os.path.join(logs_path)
     os.makedirs(os.path.dirname(summary_file), exist_ok=True)
     with open(summary_file, "a", encoding="utf-8") as f:
@@ -53,7 +55,7 @@ def save_best_model_summary(logs_path: str, model_metadata: dict) -> None:
 
 def main():
     parser = argparse.ArgumentParser(description='HPO para PyPOTS')
-    parser.add_argument('--model', type=str, required=True, choices=['SAITS', 'CSDI'])
+    parser.add_argument('--model', type=str, choices=['SAITS', 'CSDI', 'MICN', 'Transformer', 'DLinear'])
     parser.add_argument('--search_space', type=str, required=True, help='Ruta al archivo JSON')
     parser.add_argument('--trials', type=int, default=10, help='Número de combinaciones a probar')
     args = parser.parse_args()

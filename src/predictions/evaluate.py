@@ -1,13 +1,18 @@
 # src/predictions/evaluate.py
-# usage: python src/predictions/evaluate.py --model SAITS --mode nn
+# usage: python src/predictions/evaluate.py --model DLinear --mode nn --window_size 192
+
 import os
 import ast
 import numpy as np
+from typing import Any
 from dotenv import load_dotenv
 load_dotenv() 
 
 from predictions.data_loader import DataLoader
 from pypots.imputation import SAITS, CSDI, LOCF, Mean
+from pypots.forecasting.micn import MICN
+from pypots.forecasting.transformer import Transformer
+from pypots.forecasting.dlinear import DLinear
 
 class Evaluator:
     def __init__(self, target_model: str, mode: str, window: int):
@@ -21,11 +26,13 @@ class Evaluator:
         self.summary_file = os.path.join(self.repo_root, "logs_experiments", self.model_logs)
         self.data_path = os.path.join(self.repo_root, "data", os.environ.get("PARQUET_MODEL", "df_pypots.parquet"))
         
+        self.task_type = os.environ.get("TASK_TYPE", "imputation").lower()
+        self.pred_steps = int(os.environ.get("PRED_STEPS", 96))
+        
         self.best_params = {}
         self.model_path = ""
         self.window_size = window
         
-        # Obtain info from summary .txt file
         if self.target_model and self.mode in ('nn', 'all'):
             self._parse_summary()
             
@@ -37,8 +44,7 @@ class Evaluator:
         _, _, self.test_set = loader.get_splits()
 
     def _parse_summary(self):
-        """ Reads best_models_summary.txt to find the best configuration and model path for the target model.
-        """
+        """ Reads best_models_summary.txt to find the best configuration and model path for the target model."""
         if not os.path.exists(self.summary_file):
             raise FileNotFoundError(f"No se encuentra el archivo de resumen en: {self.summary_file}")
             
@@ -64,12 +70,11 @@ class Evaluator:
         if not found:
             raise ValueError(f"No se encontró el modelo {self.target_model} en el resumen.")
             
-        self.window_size = self.best_params['window_size']
+        self.window_size = self.best_params.get('window_size', self.window_size) # forecasting models do not have window_size in the txt, therefore the one passed as argument is kept as default
         print(f"[{self.target_model}] Configuración óptima recuperada automáticamente.")
         
-    def _load_model(self):
-        """Builds the model architecture based on the best parameters and loads the trained weights from the .pypots file.
-        """
+    def _load_model(self) -> Any:
+        """Builds the model architecture based on the best parameters and loads the trained weights from the .pypots file."""
         if not os.path.exists(self.model_path):
             raise FileNotFoundError(f"No se encuentra el archivo .pypots en: {self.model_path}")
             
@@ -77,33 +82,57 @@ class Evaluator:
         
         if self.target_model == "SAITS":
             model = SAITS(
-                n_steps=self.window_size,
-                n_features=9,
-                n_layers=self.best_params['n_layers'],
-                d_model=self.best_params['d_model'],
-                d_ffn=self.best_params.get('d_ffn', self.best_params['d_model']), # Corregido
-                n_heads=self.best_params['n_heads'],
-                d_k=self.best_params['d_model'] // self.best_params['n_heads'],   # NUEVO
-                d_v=self.best_params['d_model'] // self.best_params['n_heads'],   # NUEVO
-                dropout=self.best_params['dropout'],
-                epochs=1, # Irrelevante para test
-                batch_size=self.best_params.get('batch_size', 64)
+                n_steps=self.window_size, n_features=9, n_layers=self.best_params['n_layers'],
+                d_model=self.best_params['d_model'], d_ffn=self.best_params.get('d_ffn', self.best_params['d_model']),
+                n_heads=self.best_params['n_heads'], d_k=self.best_params['d_model'] // self.best_params['n_heads'],
+                d_v=self.best_params['d_model'] // self.best_params['n_heads'], dropout=self.best_params['dropout'],
+                epochs=1, batch_size=self.best_params.get('batch_size', 64)
             )
-
         elif self.target_model == "CSDI":
             model = CSDI(
-                n_steps=self.window_size,
-                n_features=9,
-                n_layers=self.best_params['n_layers'],
-                n_heads=self.best_params['n_heads'],
-                n_channels=self.best_params['n_channels'],
+                n_steps=self.window_size, n_features=9, n_layers=self.best_params['n_layers'],
+                n_heads=self.best_params['n_heads'], n_channels=self.best_params['n_channels'],
                 d_time_embedding=self.best_params.get('d_time_embedding', 128),
                 d_feature_embedding=self.best_params.get('d_feature_embedding', 128),
                 d_diffusion_embedding=self.best_params.get('d_diffusion_embedding', 128),
                 n_diffusion_steps=self.best_params.get('n_diffusion_steps', 30),
                 target_strategy=self.best_params.get('target_strategy', 'random'),
-                epochs=1,
+                epochs=1, batch_size=self.best_params.get('batch_size', 64)
+            )
+        elif self.target_model == "MICN":
+            model = MICN(
+                n_steps=self.window_size, 
+                n_features=9, 
+                n_pred_steps=self.pred_steps, 
+                n_pred_features=9,
+                n_layers=self.best_params.get('n_layers', 2),
+                d_model=self.best_params['d_model'],
+                conv_kernel=self.best_params.get('conv_kernel', [7, 9]), 
+                dropout=self.best_params.get('dropout', 0.1),
+                epochs=1, 
                 batch_size=self.best_params.get('batch_size', 64)
+            )
+        elif self.target_model == "Transformer":
+            model = Transformer(
+                n_steps=self.window_size, n_features=9, 
+                n_pred_steps=self.pred_steps, n_pred_features=9,
+                n_encoder_layers=self.best_params.get('n_layers', 2),
+                n_decoder_layers=self.best_params.get('n_layers', 2), 
+                d_model=self.best_params['d_model'],
+                d_ffn=self.best_params.get('d_ffn', 256), 
+                n_heads=self.best_params['n_heads'],
+                d_k=self.best_params['d_model'] // self.best_params['n_heads'],
+                d_v=self.best_params['d_model'] // self.best_params['n_heads'],
+                dropout=self.best_params['dropout'],
+                epochs=1, batch_size=self.best_params.get('batch_size', 64)
+            )
+        elif self.target_model == "DLinear":
+            model = DLinear(
+                n_steps=self.window_size, n_features=9, 
+                n_pred_steps=self.pred_steps, n_pred_features=9,
+                moving_avg_window_size=self.best_params.get('moving_avg_window_size', 25),
+                d_model=self.best_params.get('d_model', 128),  
+                epochs=1, batch_size=self.best_params.get('batch_size', 64)
             )
         else:
             raise ValueError(f"Modelo no soportado: {self.target_model}")
@@ -111,32 +140,15 @@ class Evaluator:
         model.load(self.model_path)
         return model
 
-    def _get_eval_arrays(self):
-        """
-        Prepares the real values, input values, and evaluation mask for computing metrics. The evaluation mask identifies the originally missing entries in the test set.
-        """
-        real_data = np.array(self.test_set["X_ori"])
-        input_data = np.array(self.test_set["X"])
-        eval_mask = np.isnan(input_data) & ~np.isnan(real_data)
-        return real_data, input_data, eval_mask
-
-    def _compute_metrics(self, predicted_data: np.ndarray) -> dict:
-        """
-        Computes MAE, MSE, and RMSE between the imputed values and the real values in the test set, only for the originally missing entries.
-        """
-        real_data, _, eval_mask = self._get_eval_arrays()
-        pred_vals = predicted_data[eval_mask]
-        real_vals = real_data[eval_mask]
-
+    def _compute_metrics(self, pred_vals: np.ndarray, real_vals: np.ndarray) -> dict:
+        """Computes MAE, MSE, and RMSE between the predicted values and the real values."""
         mae = float(np.mean(np.abs(pred_vals - real_vals)))
         mse = float(np.mean(np.square(pred_vals - real_vals)))
         rmse = float(np.sqrt(mse))
         return {"MAE": mae, "MSE": mse, "RMSE": rmse}
 
     def _log_and_save_results(self, model_name: str, metrics: dict):
-        """
-        Logs the evaluation metrics to the console and appends them to a summary file for future reference.
-        """
+        """Logs the evaluation metrics to the console and appends them to a summary file."""
         output = (
             f"{model_name}:\n"
             f"MAE: {metrics['MAE']:.5f}\n"
@@ -149,62 +161,89 @@ class Evaluator:
         with open(self.results_file, "a", encoding="utf-8") as f:
             f.write(output)
 
-    def evaluate_imputation(self):
-        """ 
-        Launches the inference process on the Test set and computes the evaluation metrics
-        """
+    def evaluate_model(self):
+        """Launches the inference process on the Test set and computes the evaluation metrics."""
         model = self._load_model()
         print("Realizando inferencia sobre el conjunto de Test...")
-        results = model.impute(self.test_set)
+        test_set = self.test_set
+        assert test_set is not None
         
-        imputed_data = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
-        if imputed_data.ndim == 4:
-            imputed_data = imputed_data.mean(axis=1)
+        if self.task_type == 'imputation':
+            results = model.impute(test_set)
+            imputed_data = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
+            if imputed_data.ndim == 4: imputed_data = imputed_data.mean(axis=1)
+                
+            real_data = np.array(test_set["X_ori"])
+            input_data = np.array(test_set["X"])
+            eval_mask = np.isnan(input_data) & ~np.isnan(real_data)
+            pred_vals = imputed_data[eval_mask]
+            real_vals = real_data[eval_mask]
+            
+        elif self.task_type == 'forecasting':
+            results = model.predict(test_set)
+            predicted_data = np.array(results["forecasting"]) if isinstance(results, dict) else np.array(results)
+            real_data = np.array(test_set["X_pred"])
+            
+            eval_mask = ~np.isnan(real_data)
+            pred_vals = predicted_data[eval_mask]
+            real_vals = real_data[eval_mask]
+        else:
+            raise ValueError(f"Tipo de tarea no soportado: {self.task_type}")
 
-        metrics = self._compute_metrics(imputed_data)
+        metrics = self._compute_metrics(pred_vals, real_vals)
         self._log_and_save_results(f"Red Neuronal: {self.target_model}", metrics)
 
     def evaluate_mean(self):
-        """Evaluates the baseline of imputing missing values with the global mean of each feature."""
+        if self.task_type == 'forecasting': return
         print("Realizando inferencia sobre el conjunto de Test con la Media Global...")
         mean_model = Mean()
-        mean_model.fit(self.test_set)
-        results = mean_model.impute(self.test_set)
-
+        test_set = self.test_set
+        assert test_set is not None
+        mean_model.fit(test_set)
+        results = mean_model.impute(test_set)
         mean_imputed = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
-        metrics = self._compute_metrics(mean_imputed)
+        
+        real_data = np.array(test_set["X_ori"])
+        input_data = np.array(test_set["X"])
+        eval_mask = np.isnan(input_data) & ~np.isnan(real_data)
+        
+        metrics = self._compute_metrics(mean_imputed[eval_mask], real_data[eval_mask])
         self._log_and_save_results("Baseline: MEDIA GLOBAL", metrics)
 
     def evaluate_locf(self):
-        """Evaluates the baseline of imputing missing values with the last observation carried forward."""
+        if self.task_type == 'forecasting': return
         print("Realizando inferencia sobre el conjunto de Test con LOCF...")
         locf_model = LOCF()
-        locf_model.fit(self.test_set)
-        results = locf_model.impute(self.test_set)
-
+        test_set = self.test_set
+        assert test_set is not None
+        locf_model.fit(test_set)
+        results = locf_model.impute(test_set)
         locf_imputed = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
-        metrics = self._compute_metrics(locf_imputed)
+        
+        real_data = np.array(test_set["X_ori"])
+        input_data = np.array(test_set["X"])
+        eval_mask = np.isnan(input_data) & ~np.isnan(real_data)
+        
+        metrics = self._compute_metrics(locf_imputed[eval_mask], real_data[eval_mask])
         self._log_and_save_results("Baseline: LOCF", metrics)
 
 
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Evaluación de Modelos en Test')
-    parser.add_argument('--model', type=str, choices=['SAITS', 'CSDI'], help='Nombre del modelo neuronal a evaluar')
-    parser.add_argument('--window_size', type=int, help='Ventana temporal (requerido si se evalúan baselines sin un modelo neuronal)')
+    parser.add_argument('--model', type=str, choices=['SAITS', 'CSDI', 'MICN', 'Transformer', 'DLinear'])
+    parser.add_argument('--window_size', type=int, help='Ventana temporal')
     parser.add_argument('--mode', type=str, default='nn', choices=['nn', 'baselines', 'all'], help='Modo de evaluación')
     args = parser.parse_args()
     
     if args.mode in ('nn', 'all') and not args.model:
-        raise ValueError('Debes especificar --model (SAITS o CSDI) cuando mode es nn o all')
+        raise ValueError('Debes especificar --model cuando mode es nn o all')
         
     evaluator = Evaluator(args.model, args.mode, args.window_size)
     
-    # NN
     if args.mode in ('nn', 'all'):
-        evaluator.evaluate_imputation()
+        evaluator.evaluate_model()
         
-    # Baselines
     if args.mode in ('baselines', 'all'):
         evaluator.evaluate_mean()
         evaluator.evaluate_locf()
