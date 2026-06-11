@@ -1,0 +1,8 @@
+{
+    "window_size": [192],
+    "batch_size": [32, 64, 128],
+    "lr": {"distribution": "loguniform", "min": 0.0005, "max": 0.005},
+    "n_layers": [1, 2],
+    "d_model": [64, 128],
+    "dropout": [0.1, 0.2]
+}

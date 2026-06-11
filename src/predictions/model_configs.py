@@ -75,7 +75,36 @@ DEFAULT_MODEL_KWARGS = {
         'lr': 0.00663,                 
         'patience': 2,
         'model_saving_strategy': 'best'
-    }
+    },
 
+    # ==========================================
     # FORECASTING 48H, WINDOW SIZE 96H
+    # Best params: {'window_size': 384, 'batch_size': 32, 'lr': 0.00020, 'n_layers': 2, 'd_model': 256, 'n_heads': 4, 'dropout': 0.1}
+    'Transformer_w384_ps192': {
+        'epochs': 20,
+        'window_size': 384,      
+        'd_model': 256,          
+        'd_ffn': 256,           
+        'n_heads': 4,            
+        'n_layers': 2,           
+        'n_encoder_layers': 2,   
+        'n_decoder_layers': 2,   
+        'dropout': 0.1,          
+        'batch_size': 32,        
+        'lr': 0.00020,           
+        'patience': 2,
+        'model_saving_strategy': 'best'
+    },
+    
+    # Best params: {'window_size': 384, 'batch_size': 256, 'lr': 0.00300, 'moving_avg_window_size': 51}
+    'DLinear_w384_ps192': {
+        'epochs': 30,
+        'window_size': 384,  
+        'moving_avg_window_size': 51,  
+        'd_model': 128,          # Mantenemos el default de la base       
+        'batch_size': 256,            
+        'lr': 0.00300,                 
+        'patience': 2,
+        'model_saving_strategy': 'best'
+    }
 }
