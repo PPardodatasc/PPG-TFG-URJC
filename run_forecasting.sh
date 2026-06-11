@@ -22,17 +22,17 @@ python src/predictions/main.py \
     --search_space src/predictions/configs/dlinear_search_space.json \
     --trials 22
 
-# echo -e "\n>>> STARTING TimesNet EXPERIMENTS <<<"
-# python src/predictions/main.py \
-#     --model TimesNet \
-#     --search_space src/predictions/configs/timesnet_search_space.json \
-#     --trials 10
+echo -e "\n>>> STARTING MICN EXPERIMENTS <<<"
+python src/predictions/main.py \
+    --model MICN \
+    --search_space src/predictions/configs/micn_search_space.json \
+    --trials 22
 
-# echo -e "\n>>> STARTING Transformer EXPERIMENTS <<<"
-# python src/predictions/main.py \
-#     --model Transformer \
-#     --search_space src/predictions/configs/transformer_search_space.json \
-#     --trials 10
+echo -e "\n>>> STARTING Transformer EXPERIMENTS <<<"
+python src/predictions/main.py \
+    --model Transformer \
+    --search_space src/predictions/configs/transformer_search_space.json \
+    --trials 22
 
 echo "======================================================"
 echo " ALL FORECASTING EXPERIMENTS COMPLETED."
