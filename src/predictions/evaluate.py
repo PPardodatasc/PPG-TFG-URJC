@@ -70,7 +70,7 @@ class Evaluator:
         if not found:
             raise ValueError(f"No se encontró el modelo {self.target_model} en el resumen.")
             
-        self.window_size = self.best_params.get('window_size', self.window_size) # forecasting models do not have window_size in the txt, therefore the one passed as argument is kept as default
+        self.window_size = self.best_params.get('window_size', self.window_size) # .get in case window_size is not explicitly saved in the summary
         print(f"[{self.target_model}] Configuración óptima recuperada automáticamente.")
         
     def _load_model(self) -> Any:
