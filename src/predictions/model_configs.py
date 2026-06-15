@@ -95,15 +95,27 @@ DEFAULT_MODEL_KWARGS = {
         'patience': 2,
         'model_saving_strategy': 'best'
     },
-    
     # Best params: {'window_size': 384, 'batch_size': 256, 'lr': 0.00300, 'moving_avg_window_size': 51}
     'DLinear_w384_ps192': {
         'epochs': 30,
         'window_size': 384,  
         'moving_avg_window_size': 51,  
-        'd_model': 128,          # Mantenemos el default de la base       
+        'd_model': 128,                
         'batch_size': 256,            
         'lr': 0.00300,                 
+        'patience': 2,
+        'model_saving_strategy': 'best'
+    },
+    # Best params: {'window_size': 192, 'batch_size': 64, 'lr': 0.00087, 'n_layers': 2, 'd_model': 128, 'conv_kernel': [7, 9], 'dropout': 0.1}
+    'MICN_w192_ps192': {
+        'epochs': 20,
+        'window_size': 192,      
+        'd_model': 128,          
+        'n_layers': 2,          
+        'conv_kernel': [7, 9],   
+        'dropout': 0.1,         
+        'batch_size': 64,     
+        'lr': 0.00087,          
         'patience': 2,
         'model_saving_strategy': 'best'
     }
