@@ -3,6 +3,10 @@
 
 Para dar respuesta a las necesidades del proyecto, se ha diseñado una arquitectura de datos robusta, escalable y reproducible. La selección de herramientas se ha fundamentado en los estándares actuales de la industria y el paradigma del \textit{Modern Data Stack}. En este capítulo se detallan las tecnologías empleadas, así como la justificación técnica que motiva su adopción frente a otras alternativas del mercado.
 
+
+
+
+
 \section{Lenguaje Base y Gestión de Entorno}
 \label{sec:entorno}
 
@@ -20,6 +24,10 @@ La justificación técnica para la adopción de \textit{uv} radica en su eficien
 
 A nivel de rendimiento, \textit{uv} descarga múltiples paquetes de manera concurrente en lugar de realizar peticiones secuenciales. Destaca especialmente su implementación de un sistema de caché global mediante enlaces duros (\textit{hard links}); si un paquete ya ha sido instalado previamente en otro proyecto de la máquina, \textit{uv} enlaza los archivos en lugar de duplicarlos. Esta característica, sumada al uso del algoritmo de resolución de dependencias \textit{PubGrub} para evitar conflictos de versiones, reduce drásticamente los tiempos de instalación y el consumo de almacenamiento en disco.
 
+
+
+
+
 \section{Arquitectura de Ingesta y Almacenamiento}
 \label{sec:ingesta_almacenamiento}
 
@@ -30,7 +38,7 @@ Apache Airflow es una plataforma de código abierto diseñada para crear, planif
 
 En la arquitectura de este proyecto, Airflow actúa como el orquestador principal encargado de automatizar las extracciones recurrentes de la API del Ayuntamiento de Melbourne. Se ha desplegado en un servidor virtualizado, configurado con los requisitos de seguridad y aislamiento de red pertinentes. Esta infraestructura garantiza una ejecución ininterrumpida.
 
-Su elección frente a otros orquestadores se fundamenta en su resiliencia. Airflow gestiona de forma nativa los reintentos ante caídas o fallos de conexión (\textit{retries}), alerta sobre cuellos de botella y proporciona una interfaz web robusta para monitorizar el estado del \textit{pipeline} en tiempo real, lo cual es crítico para una arquitectura de \textit{micro-batching} (procesamiento por microlotes).
+Su elección frente a otros orquestadores se fundamenta en su resiliencia. Airflow gestiona de forma nativa los reintentos ante caídas o fallos de conexión (\textit{retries}), alerta sobre cuellos de botella y proporciona una interfaz web robusta para monitorizar el estado del \textit{pipeline} en tiempo real, lo cual es crítico para una arquitectura de \textit{micro-batching}.
 
 \subsection{DuckDB}
 \label{subsec:duckdb}
@@ -41,17 +49,48 @@ Esta aproximación columnar, combinada con un motor de ejecución de consultas v
 
 Se ha integrado DuckDB en el proyecto por su sinergia absoluta con el ecosistema de Python y, muy especialmente, por su capacidad de ejecutar sentencias SQL estándar directamente sobre \textit{DataFrames} de Pandas. Al operar en el mismo espacio de memoria que el proceso que lo invoca, DuckDB permite realizar consultas relacionales analíticas complejas (incluyendo sentencias \texttt{JOIN}, agrupaciones o funciones de ventana) al consultar directamente variables nativas de Python, sin necesidad de copiar, exportar o transferir los datos previamente a un servidor externo. Esta versatilidad híbrida, que aúna la expresividad del lenguaje SQL con la flexibilidad analítica de Pandas, lo convierte en la base de datos ideal para transformar y almacenar el flujo incesante de datos espaciotemporales procedentes de Airflow.
 
+
+
+
+
 \section{Ciencia de Datos y \textit{Deep Learning}}
 \label{sec:deep_learning}
+
+\subsection{PyTorch}
+\label{subsec:pytorch}
+
+PyTorch es un \textit{framework} de aprendizaje automático de código abierto desarrollado por el laboratorio de investigación de Inteligencia Artificial de Meta (FAIR). Se ha establecido como el estándar en la investigación académica y la industria para el desarrollo de arquitecturas de \textit{Deep Learning}.
+
+La adopción de PyTorch como el motor computacional subyacente de este proyecto se justifica por dos características arquitectónicas fundamentales. En primer lugar, su paradigma de grafos computacionales dinámicos (\textit{Dynamic Computation Graphs}), que permite modificar la estructura de la red neuronal durante el tiempo de ejecución, facilitando enormemente la depuración del código. En segundo lugar, su integración nativa con la plataforma CUDA de NVIDIA, lo que permite paralelizar el entrenamiento de los modelos delegando las multiplicaciones matriciales masivas (esenciales en arquitecturas como el Transformer) a la unidad de procesamiento gráfico (GPU).
 
 \subsection{PyPOTS}
 \label{subsec:pypots}
 
-PyPOTS (\textit{A Python Toolbox for Data Mining on Partially Observed Time Series}) es una librería especializada de código abierto diseñada para el modelado, clasificación y predicción de series temporales que presentan valores nulos o discontinuidades estructurales~\cite{du2023pypots}. Su arquitectura unifica implementaciones de vanguardia basadas en mecanismos de atención y redes neuronales recurrentes.
+PyPOTS (\textit{A Python Toolbox for Data Mining on Partially Observed Time Series}) es una librería especializada de código abierto construida sobre el ecosistema de PyTorch. Fue impulsada originalmente por el investigador Wenjie Du y es respaldada por una comunidad académica internacional con miembros de instituciones como la Universidad de Oxford y el King's College London~\cite{du2023pypots}. Está diseñada específicamente para el modelado, clasificación y predicción de series temporales que presentan valores nulos o discontinuidades estructurales. Su arquitectura unifica implementaciones de vanguardia del estado del arte algorítmico, proporcionando una API estandarizada de alto nivel.
 
-En este trabajo, se utiliza PyPOTS porque permite entrenar modelos de \textit{Deep Learning} capaces de inferir el estado de los sensores físicos estropeados (proceso de imputación) a partir de dependencias espaciotemporales complejas. A diferencia de las técnicas de interpolación matemática clásica, que solo observan los datos históricos de un sensor aislado, los modelos disponibles en PyPOTS analizan el contexto global de la red de aparcamientos.
+En este trabajo, el papel de PyPOTS es bimodal, dando respuesta a las dos fases críticas del tratamiento de la serie temporal:
 
-Al aprender la dinámica subyacente de la movilidad de la ciudad para rellenar estos huecos, el modelo extrae representaciones latentes profundas del comportamiento urbano. Este aprendizaje auto-supervisado otorga a la arquitectura la capacidad no solo de reconstruir el pasado imperfecto, sino de predecir la ocupación futura con un alto grado de precisión.
+\begin{itemize}
+	\item \textbf{Fase de Imputación.} Permite entrenar modelos de \textit{Deep Learning} capaces de inferir el estado de los sensores físicos estropeados. A diferencia de las técnicas de interpolación matemática clásica que solo observan datos históricos aislados, PyPOTS analiza el contexto global de la red, extrayendo representaciones latentes profundas del comportamiento espacial y temporal urbano para reconstruir la señal con extrema precisión.
+	
+	\item \textbf{Fase de Predicción.} Una vez restaurada la integridad del conjunto de datos, PyPOTS provee las arquitecturas predictivas modernas necesarias para proyectar la ocupación futura. La librería integra nativamente un amplio abanico de familias algorítmicas con arquitecturas simples y otras muy complejas. Es importante señalar que algunas de las arquitecturas complejas han tenido que ser descartadas para este proyecto debido a su inasumible coste computacional y desbordamiento de parámetros.
+\end{itemize}
+
+Adicionalmente, cabe destacar que PyPOTS incluye integración nativa con \textbf{NNI (\textit{Neural Network Intelligence})}, el \textit{framework} de código abierto de Microsoft diseñado para la optimización automatizada de hiperparámetros (HPO). Aunque se tiene plena constancia de su potencial analítico para explorar el espacio de búsqueda, en el presente trabajo no se ha podido explotar esta tecnología en su totalidad debido a restricciones estrictas de \textit{hardware}. Los intentos de orquestar algoritmos avanzados de búsqueda saturaban la capacidad física del entorno local, colapsando los núcleos de la CPU al 100\,\% de su capacidad y agotando por completo la memoria VRAM del dispositivo CUDA. Por consiguiente, la optimización paramétrica se ha adaptado a estos techos computacionales para garantizar la viabilidad del entrenamiento, como se puede observar en la sección \ref{sec:flujo_imput_pred}. %% revisar como dejar la sección, es una sección de implem.tex, concertamente la de los modelos. ahora sale ??
+
+
+\subsection{TensorBoard}
+\label{subsec:tensorboard}
+
+TensorBoard constituye una plataforma de visualización interactiva diseñada originalmente para el ecosistema TensorFlow, aunque en la actualidad ofrece integración nativa con PyTorch y, por extensión, con la librería PyPOTS. Esta herramienta permite monitorizar e inspeccionar el flujo computacional y las métricas de evaluación durante el entrenamiento de las diversas arquitecturas.
+
+La justificación técnica para su adopción radica en la necesidad de analizar la evolución de la función de pérdida durante el entrenamiento, así como las métricas de error en validación (como el MSE) a lo largo de las épocas. 
+
+TensorBoard proyecta estas magnitudes matemáticas en gráficas interactivas, lo cual resulta indispensable para diagnosticar problemas de convergencia y detectar \textit{overfitting}. Adicionalmente, al almacenar los registros de distintas ejecuciones, la plataforma permite superponer y comparar múltiples configuraciones de hiperparámetros (HPO) en un mismo plano espacial, lo cual permite también verificar el correcto accionamiento de las reglas de parada temprana.
+
+
+
+
 
 \section{Visualización}
 \label{sec:visualizacion}

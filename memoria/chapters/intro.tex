@@ -23,7 +23,7 @@ En primer lugar, el gobierno local de Melbourne es pionero a nivel mundial en po
 
 En segundo lugar, la plataforma proporciona una dualidad de acceso crítica para este proyecto. Por un lado, un repositorio histórico masivo, como el \textit{dataset} del año 2019 escogido para este proyecto, el cual es indispensable para la fase de entrenamiento de modelos de \textit{Deep Learning}. Por otro lado, una API REST que emite el estado de los sensores en tiempo real, lo cual habilita la implementación de un \textit{pipeline} de orquestación continua.
 
-Finalmente, al tratarse de una red de sensores físicos expuesta a condiciones urbanas reales durante años, el conjunto de datos de Melbourne no es un entorno estéril o simulado. Contiene intrínsecamente las imperfecciones, latencias, fallos de batería y valores faltantes descritos en la motivación de este trabajo. Esta naturaleza imperfecta es precisamente lo que legitima y hace necesaria la aplicación de herramientas de imputación avanzadas como PyPOTS, lo que permite demostrar el valor de la solución propuesta en un escenario de extrema fidelidad con el mundo real.
+Finalmente, al tratarse de una red de sensores físicos expuesta a condiciones urbanas reales durante años, el conjunto de datos de Melbourne no es un entorno estéril o simulado. Contiene intrínsecamente las imperfecciones, latencias, fallos de batería y valores faltantes descritos en la motivación de este trabajo. Esta naturaleza imperfecta es precisamente lo que legitima y hace necesaria la aplicación de herramientas de imputación avanzadas. A su vez, una vez restaurada la integridad temporal de la red, este entorno real es idóneo para desplegar y evaluar modelos predictivos (\textit{forecasting}) de vanguardia, de forma que se completa del ciclo completo, desde el dato crudo hasta la inteligencia predictiva.
 
 \section{Estado del Arte}
 \label{sec:estado_arte}
@@ -47,9 +47,39 @@ Actualmente, el estado del arte a nivel industrial y de investigación converge 
 
 Pese a contar con infraestructuras de datos robustas, la extracción de valor predictivo se topa con el desafío técnico expuesto en la motivación: la naturaleza intermitente de la señal física. Los algoritmos clásicos de \textit{Machine Learning} y las redes neuronales estándar tienen un comportamiento errático ante la presencia de huecos o valores nulos en las secuencias temporales.
 
-En los últimos años, el análisis secuencial ha dado un salto cualitativo gracias a la adaptación de arquitecturas de \textit{Deep Learning} avanzadas (\textit{Transformers}) al dominio temporal. No obstante, la vanguardia investigadora actual no se centra únicamente en la predicción pura, sino en el modelado de Datos Temporales Parcialmente Observados (\textit{Partially Observed Time Series} o POTS).
+Actualmente, la vanguardia investigadora no se centra únicamente en la predicción pura, sino en el modelado de Datos Temporales Parcialmente Observados (\textit{Partially Observed Time Series} o POTS).
 
-Para abordar esta problemática, la comunidad científica ha transitado desde heurísticas simples hacia \textit{frameworks} de aprendizaje profundo especializados en imputación. Librerías recientes de código abierto, como PyPOTS, se han posicionado como el estándar en investigación~\cite{du2023pypots}. Estas herramientas implementan modelos capaces de inferir el dato faltante basándose en el contexto espacio-temporal global de la serie, para así alimentar los posteriores cuadros de mando analíticos y sistemas de información geográfica con información íntegra y fiable.
+Para abordar esta problemática, la comunidad científica ha transitado desde heurísticas simples hacia \textit{frameworks} de aprendizaje profundo especializados en imputación. Librerías recientes de código abierto, como PyPOTS~\cite{du2023pypots}, logran unificar la evaluación de distintos enfoques. En el contexto de este proyecto, la reconstrucción de la señal se aborda evaluando empíricamente la evolución de este campo mediante tres grandes enfoques:
+
+\begin{itemize}
+	\item \textbf{Heurísticas Clásicas (Media y LOCF).} Tradicionalmente, la imputación en entornos industriales dependía de sustituciones estadísticas simples como la imputación por la Media Global o el acarreo del último valor observado (LOCF, \textit{Last Observation Carried Forward}). Aunque computacionalmente triviales, estas técnicas asumen una distribución estática que ignora la dinámica espaciotemporal real del tráfico urbano. En la actualidad se emplean únicamente como (\textit{baselines}) comparativos.
+	
+	\item \textbf{Imputación basada en Auto-Atención (SAITS).} El paradigma moderno de reconstrucción ha sido dominado por arquitecturas como SAITS (\textit{Self-Attention-based Imputation for Time Series})~\cite{du2023saits}. Este enfoque utiliza un mecanismo dual de atención conjunta que captura tanto la correlación temporal (histórica) como la espacial (entre distintos sensores) simultáneamente. De esta forma logra inferir datos faltantes masivos con alta precisión algorítmica.
+	
+	\item \textbf{Modelos Generativos Probabilísticos (CSDI).} Las últimas investigaciones en imputación adoptan los modelos de difusión estocástica, popularizados en la generación de imágenes. Arquitecturas como CSDI (\textit{Conditional Score-based Diffusion Models for Probabilistic Time Series Imputation})~\cite{tashiro2021csdi} no solo predicen un valor determinista para el sensor caído, sino que generan una distribución probabilística del tráfico: se logra cuantificar la incertidumbre, lo cual es altamente valioso en entornos reales.
+\end{itemize}
+
+\subsection{Evolución de la Analítica Predictiva}
+\label{subsec:estado_forecasting}
+
+Una vez garantizada la integridad de las series temporales mediante técnicas de imputación, el siguiente desafío reside en la anticipación de la demanda mediante el modelado predictivo. Históricamente, la predicción de tráfico y ocupación urbana ha estado dominada por modelos estadísticos paramétricos, como ARIMA, y posteriormente por Redes Neuronales Recurrentes (RNNs) como las LSTM (\textit{Long Short-Term Memory}). Sin embargo, estos enfoques presentan limitaciones severas al intentar modelar secuencias temporales excesivamente largas o capturar estacionalidades concurrentes~\cite{vaswani2017attention}.
+
+El punto de inflexión en el análisis secuencial se produjo con la irrupción de la arquitectura Transformer~\cite{vaswani2017attention}. Originalmente diseñados para el procesamiento del lenguaje natural, los Transformers introdujeron el mecanismo de auto-atención (\textit{Self-Attention}), lo que permite a los modelos correlacionar cualquier punto del pasado con el futuro de forma directa, sin sufrir la degradación de memoria característica de las redes recurrentes. En consecuencia, se produjo una proliferación de modelos basados en atención orientados a series temporales. 
+
+No obstante, el modelado temporal contemporáneo ha comenzado a cuestionar el monopolio de los Transformers debido a su alta complejidad computacional (cuadrática respecto a la longitud de entrada) y su tendencia al sobreajuste frente a ruidos estacionales. Como respuesta, el Estado del Arte actual se ha diversificado en tres grandes paradigmas competitivos que este proyecto busca evaluar empíricamente:
+
+\begin{itemize}
+	\item \textbf{El paradigma de Atención (Transformer).} Representa el enfoque de aprendizaje profundo puro, que emplea matrices de atención multicabeza (\textit{Multi-Head Attention}) para descubrir correlaciones globales no lineales complejas a largo plazo.
+	
+	\item \textbf{El paradigma Convolucional (MICN).} Busca mitigar el coste de la atención temporal con arquitecturas recientes como MICN (\textit{Multi-scale Isometric Convolutional Network})~\cite{wang2023micn}, las cuales han demostrado que el uso de convoluciones isométricas unidimensionales a múltiples escalas permite extraer características locales y globales de la serie temporal de manera mucho más eficiente y ligera.
+	
+	\item \textbf{El paradigma de Descomposición Lineal (DLinear).} De forma contraintuitiva frente a la tendencia hacia arquitecturas cada vez más profundas, investigaciones recientes han demostrado que un conjunto de capas lineales simples puede superar a los Transformers más avanzados~\cite{zeng2023are}. DLinear descompone la serie temporal en un componente de tendencia (mediante medias móviles) y un componente estacional, aplicando mapeos lineales directos que resultan extremadamente rápidos y robustos frente a anomalías.
+\end{itemize}
+
+La convergencia de estos tres paradigmas proporciona un marco de evaluación idóneo para determinar la relación coste-beneficio computacional a la hora de predecir la movilidad urbana en entornos reales.
+
+
+
 
 \section{Objetivos del proyecto}
 \label{sec:objetivos}
@@ -57,7 +87,7 @@ Para abordar esta problemática, la comunidad científica ha transitado desde he
 \subsection{Objetivo general}
 \label{subsec:obj_general}
 
-Desarrollar un sistema integral de procesamiento y modelado para predecir la disponibilidad de plazas de aparcamiento en superficie, gestionando y reconstruyendo series temporales espacialmente distribuidas provenientes de una red de datos de sensores IoT en tiempo real.
+Desarrollar un sistema integral de ingeniería de datos e Inteligencia Artificial capaz de predecir la disponibilidad de plazas de aparcamiento en superficie. La consecución de este objetivo exige el diseño de una arquitectura robusta que ingiera telemetría IoT en tiempo real y aborde el ciclo de vida completo del dato: desde la captura de señales físicas, a las que se aplica una reconstrucción algorítmica de la serie temporal mediante modelos de imputación, hasta la aplicación de arquitecturas predictivas del estado del arte, para anticipar la movilidad a corto y medio plazo. Este enfoque busca transformar datos brutos en inteligencia urbana.
 
 \subsection{Objetivos específicos}
 \label{subsec:obj_especificos}
@@ -65,19 +95,20 @@ Desarrollar un sistema integral de procesamiento y modelado para predecir la dis
 Para alcanzar el objetivo general, el proyecto se desglosa en las siguientes metas técnicas secuenciales:
 
 \begin{itemize}
-	\item \textbf{Realizar un Análisis Exploratorio de Datos históricos (EDA).} Analizar el conjunto de datos históricos masivos para identificar distribuciones, patrones de estacionalidad en la movilidad urbana y anomalías en los tiempos de estacionamiento.
+	\item \textbf{Realizar un Análisis Exploratorio de Datos (EDA) sobre registros históricos.} Analizar masivamente el histórico de la red de sensores para identificar distribuciones, extraer estacionalidades complejas de la movilidad urbana y detectar anomalías en los tiempos de estacionamiento que condicionen el modelado posterior.
 	
-	\item \textbf{Preprocesar el \textit{dataset} y entrenar el modelo.} Acondicionar el conjunto de datos y posteriormente entrenar el modelo de PyPOTS, para que el algoritmo aprenda los patrones subyacentes de ocupación y la estructura de la serie temporal.
+	\item \textbf{Desplegar una infraestructura de ingesta y almacenamiento continuo en tiempo real.} Diseñar y orquestar un \textit{pipeline} automatizado mediante Apache Airflow para consumir telemetría viva de la API de la ciudad de Melbourne durante un periodo ininterrumpido de un mes. El objetivo es someter al sistema a condiciones reales de producción y almacenar el flujo resultante en una base de datos analítica centralizada (DuckDB).
 	
-	\item \textbf{Desplegar la infraestructura de ingesta y almacenamiento continuo.} Orquestar un \textit{pipeline} automatizado utilizando Apache Airflow para consumir datos en tiempo real de la API de Melbourne durante un periodo ininterrumpido de un mes, y almacenar el histórico resultante en una base de datos analítica centralizada (DuckDB).
+	\item \textbf{Reconstruir la señal temporal mediante modelos de imputación SOTA.} Entrenar y evaluar modelos neuronales avanzados en el conjunto de datos histórico para imputar los valores faltantes (\textit{missing data}) en el \textit{dataset} real recopilado. Esta meta es crítica para subsanar los fallos inherentes de red y hardware de la sensórica IoT y poder garantizar la integridad de los datos antes de la fase predictiva.
 	
-	\item \textbf{Imputar datos faltantes en la serie temporal actual.} Aplicar el modelo PyPOTS previamente entrenado sobre los datos reales recopilados durante el mes de monitorización con Airflow, con el fin de reconstruir la serie temporal e imputar los valores faltantes (\textit{missing data}) generados por los fallos inherentes de la sensórica física.
+	\item \textbf{Predecir la ocupación futura mediante modelado predictivo.} Diseñar un experimento comparativo utilizando arquitecturas de vanguardia para series temporales: modelos de descomposición lineal (DLinear), mecanismos de auto-atención pura (Transformer) y redes convolucionales isométricas (MICN). El objetivo es predecir la disponibilidad de plazas a horizontes de 24 y 48 horas bajo las mismas restricciones computacionales y de contexto.
 	
-	\item \textbf{Desarrollar un \textit{dashboard} analítico.} Construir un cuadro de mando interactivo conectando Grafana directamente a DuckDB para la monitorización de datos y métricas. 
+	%% REVISAR SI DA TIEMPO A GRAFANA
+	\item \textbf{Desarrollar un cuadro de mando analítico en tiempo real.} Construir un \textit{dashboard} interactivo conectando Grafana directamente al motor OLAP de DuckDB, permitiendo la monitorización fluida del estado de la red de aparcamientos y las métricas de rendimiento.
 	
-	\item \textbf{Construir un visualizador geoespacial.} Visualizar la red de aparcamientos categorizada por su proximidad a Puntos de Interés (POIs) en un mapa 2D.
+	\item \textbf{Construir un visualizador geoespacial contextualizado.} Representar la topología de la red de sensores en un mapa 2D interactivo, categorizando las plazas de aparcamiento según su proximidad y relación con distintos Puntos de Interés (POIs) urbanos.
 	
-	\item \textbf{Divulgar los resultados mediante un entorno web estructurado.} Diseñar y desplegar una página web interactiva con Quarto, dividida en tres secciones principales, que actúe como portfolio visual para exponer la metodología, la arquitectura de datos y los resultados del proyecto de manera accesible.
+	\item \textbf{Divulgar los resultados mediante un entorno web interactivo.} Desarrollar y desplegar un \textit{portfolio} digital utilizando Quarto, estructurado para exponer la metodología científica, la arquitectura de datos implementada y las conclusiones algorítmicas del proyecto de manera accesible y reproducible.
 \end{itemize}
 
 \section{Planificación temporal}
@@ -119,9 +150,9 @@ El resto del presente documento se estructura en cuatro capítulos adicionales, 
 \begin{itemize}
 	\item El \textbf{capítulo~\ref{chap:tecnologias}} (Tecnologías empleadas) detalla las herramientas, lenguajes y \textit{frameworks} utilizados para la consecución del proyecto. Se justifica la elección de cada pieza de \textit{software} dentro del paradigma del \textit{Modern Data Stack}.
 	
-	\item El \textbf{capítulo~\ref{chap:diseño}} (Diseño e Implementación) constituye el núcleo técnico de la memoria. En él se describe exhaustivamente el desarrollo del \textit{pipeline} de datos, los procesos de limpieza y \textit{resampling} del conjunto histórico, así como el entrenamiento del modelo de predicción. Asimismo, se detallan el diseño arquitectónico de la orquestación en tiempo real y la construcción del ecosistema de visualización analítica y geoespacial.
+	\item El \textbf{capítulo~\ref{chap:diseño}} (Diseño e Implementación) constituye el núcleo técnico de la memoria. En él se describe exhaustivamente el desarrollo del \textit{pipeline} de datos, los procesos de limpieza y \textit{resampling} del conjunto histórico, así como el flujo entrenamiento de los modelos de imputación y predicción. Asimismo, se detallan el diseño arquitectónico de la orquestación en tiempo real y la construcción del ecosistema de visualización geoespacial.
 	
-	\item El \textbf{capítulo~\ref{chap:experimentos}} (Experimentación y Resultados) presenta las pruebas realizadas y los hallazgos obtenidos. Se evalúa el rendimiento del modelo de imputación espacial y temporal entrenado con los datos reales recopilados durante la ventana de monitorización, y se exponen los resultados visuales de los dashboard.
+	\item El \textbf{capítulo~\ref{chap:experimentos}} (Experimentación y Resultados) presenta los hallazgos obtenidos tras la evaluación de los modelos en el conjunto de datos histórico y en el de datos en tiempo real, así como información relevante sobre su entrenamiento. Se realiza una comparación y análisis de los diferentes resultados en diferentes ventanas de contexto y configuraciones.
 	
 	\item Finalmente, el \textbf{capítulo~\ref{chap:conclusiones}} (Conclusiones) sintetiza las deducciones finales extraídas tras la finalización del trabajo. Posteriormente, se evalúa el grado de cumplimiento de los objetivos planteados y se proponen futuras líneas de investigación y desarrollo que podrían derivarse de esta base.
 \end{itemize}
