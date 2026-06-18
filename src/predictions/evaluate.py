@@ -16,7 +16,8 @@ from pypots.forecasting.dlinear import DLinear
 
 class Evaluator:
     def __init__(self, target_model: str, mode: str, window: int):
-        self.target_model = target_model 
+        self.target_model = target_model
+        self.base_model = target_model.split('_')[0] # get the model name with no configuration suffix
         self.mode = mode
         
         self.repo_root = os.environ.get("PROJECT_ROOT", os.getcwd())
@@ -63,7 +64,7 @@ class Evaluator:
                     if "Path:" in lines[i+j]:
                         base_dir = lines[i+j].split("Path: ")[1].strip()
                         if not base_dir.endswith(".pypots"):
-                            base_dir = os.path.join(base_dir, f"{self.target_model}.pypots")
+                            base_dir = os.path.join(base_dir, f"{self.base_model}.pypots")
                         self.model_path = base_dir
                 break
                 
@@ -78,9 +79,9 @@ class Evaluator:
         if not os.path.exists(self.model_path):
             raise FileNotFoundError(f"No se encuentra el archivo .pypots en: {self.model_path}")
             
-        print(f"Reconstruyendo arquitectura {self.target_model} e inyectando pesos entrenados...")
-        
-        if self.target_model == "SAITS":
+        print(f"Reconstruyendo arquitectura {self.base_model} e inyectando pesos entrenados...")        
+
+        if self.base_model == "SAITS":
             model = SAITS(
                 n_steps=self.window_size, n_features=9, n_layers=self.best_params['n_layers'],
                 d_model=self.best_params['d_model'], d_ffn=self.best_params.get('d_ffn', self.best_params['d_model']),
@@ -88,7 +89,7 @@ class Evaluator:
                 d_v=self.best_params['d_model'] // self.best_params['n_heads'], dropout=self.best_params['dropout'],
                 epochs=1, batch_size=self.best_params.get('batch_size', 64)
             )
-        elif self.target_model == "CSDI":
+        elif self.base_model == "CSDI":
             model = CSDI(
                 n_steps=self.window_size, n_features=9, n_layers=self.best_params['n_layers'],
                 n_heads=self.best_params['n_heads'], n_channels=self.best_params['n_channels'],
@@ -99,7 +100,7 @@ class Evaluator:
                 target_strategy=self.best_params.get('target_strategy', 'random'),
                 epochs=1, batch_size=self.best_params.get('batch_size', 64)
             )
-        elif self.target_model == "MICN":
+        elif self.base_model == "MICN":
             model = MICN(
                 n_steps=self.window_size, 
                 n_features=9, 
@@ -112,7 +113,7 @@ class Evaluator:
                 epochs=1, 
                 batch_size=self.best_params.get('batch_size', 64)
             )
-        elif self.target_model == "Transformer":
+        elif self.base_model == "Transformer":
             model = Transformer(
                 n_steps=self.window_size, n_features=9, 
                 n_pred_steps=self.pred_steps, n_pred_features=9,
@@ -126,7 +127,7 @@ class Evaluator:
                 dropout=self.best_params['dropout'],
                 epochs=1, batch_size=self.best_params.get('batch_size', 64)
             )
-        elif self.target_model == "DLinear":
+        elif self.base_model == "DLinear":
             model = DLinear(
                 n_steps=self.window_size, n_features=9, 
                 n_pred_steps=self.pred_steps, n_pred_features=9,
@@ -135,7 +136,7 @@ class Evaluator:
                 epochs=1, batch_size=self.best_params.get('batch_size', 64)
             )
         else:
-            raise ValueError(f"Modelo no soportado: {self.target_model}")
+            raise ValueError(f"Modelo no soportado: {self.base_model}")
             
         model.load(self.model_path)
         return model

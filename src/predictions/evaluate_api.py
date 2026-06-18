@@ -8,7 +8,8 @@ from predictions.data_loader import DataLoader
 
 class EvaluatorAPI(Evaluator):
     def __init__(self, target_model: str, mode: str, window: int):
-        self.target_model = target_model 
+        self.target_model = target_model
+        self.base_model = target_model.split('_')[0]
         self.mode = mode
         self.window_size = window
         self.repo_root = os.environ.get("PROJECT_ROOT", os.getcwd())
@@ -40,8 +41,8 @@ class EvaluatorAPI(Evaluator):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Evaluación de Modelos en Test API (OOT)')
-    parser.add_argument('--model', type=str, choices=['SAITS', 'CSDI', 'MICN', 'Transformer', 'DLinear'])
-    parser.add_argument('--window_size', type=int, help='Ventana temporal (opcional si existe en best_models_summary)')
+    parser.add_argument('--model', type=str, help='Nombre del modelo exacto como sale en el txt')
+    parser.add_argument('--window_size', type=int, help='Ventana temporal (opcional si existe en txt)')
     parser.add_argument('--mode', type=str, default='nn', choices=['nn', 'baselines', 'all'])
     args = parser.parse_args()
     
