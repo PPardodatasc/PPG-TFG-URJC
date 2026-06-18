@@ -45,7 +45,9 @@ class Evaluator:
         _, _, self.test_set = loader.get_splits()
 
     def _parse_summary(self):
-        """ Reads best_models_summary.txt to find the best configuration and model path for the target model."""
+        """
+        Reads best_models_summary.txt to find the best configuration and model path for the target model.
+        """
         if not os.path.exists(self.summary_file):
             raise FileNotFoundError(f"No se encuentra el archivo de resumen en: {self.summary_file}")
             
@@ -142,14 +144,18 @@ class Evaluator:
         return model
 
     def _compute_metrics(self, pred_vals: np.ndarray, real_vals: np.ndarray) -> dict:
-        """Computes MAE, MSE, and RMSE between the predicted values and the real values."""
+        """
+        Computes MAE, MSE, and RMSE between the predicted values and the real values.
+        """
         mae = float(np.mean(np.abs(pred_vals - real_vals)))
         mse = float(np.mean(np.square(pred_vals - real_vals)))
         rmse = float(np.sqrt(mse))
         return {"MAE": mae, "MSE": mse, "RMSE": rmse}
 
     def _log_and_save_results(self, model_name: str, metrics: dict):
-        """Logs the evaluation metrics to the console and appends them to a summary file."""
+        """
+        Logs the evaluation metrics to the console and appends them to a summary file.
+        """
         output = (
             f"{model_name}:\n"
             f"MAE: {metrics['MAE']:.5f}\n"
@@ -163,7 +169,9 @@ class Evaluator:
             f.write(output)
 
     def evaluate_model(self):
-        """Launches the inference process on the Test set and computes the evaluation metrics."""
+        """
+        Launches the inference process on the Test set and computes the evaluation metrics.
+        """
         model = self._load_model()
         print("Realizando inferencia sobre el conjunto de Test...")
         test_set = self.test_set
@@ -195,6 +203,9 @@ class Evaluator:
         self._log_and_save_results(f"Red Neuronal: {self.target_model}", metrics)
 
     def evaluate_mean(self):
+        """
+        Launches the inference process on the Test set using the Mean imputation baseline and computes the evaluation metrics.
+        """
         if self.task_type == 'forecasting': return
         print("Realizando inferencia sobre el conjunto de Test con la Media Global...")
         mean_model = Mean()
@@ -211,6 +222,9 @@ class Evaluator:
         self._log_and_save_results("Baseline: MEDIA GLOBAL", metrics)
 
     def evaluate_locf(self):
+        """
+        Launches the inference process on the Test set using the LOCF imputation baseline and computes the evaluation metrics.
+        """
         if self.task_type == 'forecasting': return
         print("Realizando inferencia sobre el conjunto de Test con LOCF...")
         locf_model = LOCF()

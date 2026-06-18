@@ -30,6 +30,9 @@ class PipelineEvaluator:
         print(f"Dimensión maestra dictada por el Forecaster: {self.window_size} pasos")
         
     def _get_path_from_summary(self, target_model: str) -> str:
+        """
+        Reads the best_models_summary.txt file to find the path of the specified model.
+        """
         if not os.path.exists(self.summary_file):
             raise FileNotFoundError(f"No se encuentra el archivo de resumen en: {self.summary_file}")
             
@@ -56,6 +59,9 @@ class PipelineEvaluator:
         return model_path
 
     def _load_imputer(self) -> Any:
+        """
+        Loads the specified imputer model based on its configuration in model_configs.py.
+        """
         config = DEFAULT_MODEL_KWARGS.get(self.imputer_name)
         if not config:
             raise ValueError(f"No se encontró configuración para {self.imputer_name}")
@@ -98,6 +104,9 @@ class PipelineEvaluator:
         return model
 
     def _load_forecaster(self) -> Any:
+        """
+        Loads the specified forecaster model based on its configuration in model_configs.py.
+        """
         config = dict(DEFAULT_MODEL_KWARGS.get(self.forecaster_name, {}))
         path = self._get_path_from_summary(self.forecaster_name)
         print(f"Cargando Forecaster {self.forecaster_name} desde: {path}")
@@ -143,15 +152,25 @@ class PipelineEvaluator:
         return model
 
     def _compute_metrics(self, pred_vals: np.ndarray, real_vals: np.ndarray) -> dict:
+        """
+        Computes MAE, MSE, and RMSE between the predicted values and the real values
+        """
         mae = float(np.mean(np.abs(pred_vals - real_vals)))
         mse = float(np.mean(np.square(pred_vals - real_vals)))
         rmse = float(np.sqrt(mse))
         return {"MAE": mae, "MSE": mse, "RMSE": rmse}
 
     def _get_imputer_window(self) -> int:
+        """
+        Retrieves the window size for the specified imputer from the configuration.
+        """
         return int(DEFAULT_MODEL_KWARGS.get(self.imputer_name, {}).get('window_size', 0))
 
     def run_experiment(self):
+        """
+        Executes the full pipeline: loads the test dataset, evaluates the forecaster on raw data,
+        imputes the data using the specified imputer and evaluates the forecaster on the cleaned data.
+        """
         print(f"\n[1/4] Cargando conjunto de datos Test (Ventana Forecaster: {self.window_size})...")
         loader = DataLoader(self.data_path, window_size=self.window_size)
         _, _, test_set = loader.get_splits()

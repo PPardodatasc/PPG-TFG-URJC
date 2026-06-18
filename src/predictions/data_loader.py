@@ -142,4 +142,7 @@ class DataLoader:
             
 
     def get_splits(self):
+        """
+        Returns the train, validation, and test datasets.
+        """
         return self.train_dataset, self.val_dataset, self.test_dataset

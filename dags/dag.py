@@ -21,6 +21,11 @@ def melbourne_pipeline():
 
     @task
     def get_api_data() -> JsonPayload:
+        """
+        Calls the Melbourne Parking API endpoint to retrieve the latest sensor data.
+        Returns:
+            A list of JSON records containing the sensor data.
+        """
         
         print("Calling API endpoint...")
         filters = {
@@ -34,6 +39,9 @@ def melbourne_pipeline():
 
     @task
     def df_to_duckdb(data: JsonPayload) -> None:
+        """
+        Converts the JSON data to a Pandas DataFrame and saves it to DuckDB.
+        """
         if not data:
             print("Data list is empty. No data to save.")
             return
@@ -42,7 +50,7 @@ def melbourne_pipeline():
         rows_total = save_to_db(df, "occupancy")
         print(f"Insertions completed. The database has a total of {rows_total} records.")
 
-    ##############
+    # Task execution
     data = get_api_data()
     df_to_duckdb(data)
 

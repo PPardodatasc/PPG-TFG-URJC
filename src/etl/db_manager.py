@@ -19,13 +19,7 @@ def save_to_db(df: pd.DataFrame, name_db: str) -> int:
         Builds the absolute path to the DuckDB database.
         Uses a fixed path when running in Docker, or computes the local path otherwise.
         """
-        # 
         db_path = Path(os.environ.get("DUCKDB_PATH")) / f"{name_db}.duckdb"
-        # else: # FALLBACK LOCAL
-        #     # Comportamiento original para cuando ejecutas en local
-        #     root_dir = Path(__file__).resolve().parent.parent.parent
-        #     db_path = root_dir / 'duck_db' / f"{name_db}.duckdb"
-            
         db_path.parent.mkdir(parents=True, exist_ok=True)
         return str(db_path)
     

@@ -47,8 +47,11 @@ Antes de instalar ninguna dependencia, cree un entorno virtual de Python en la r
 # Crear el entorno virtual
 uv venv .venv
 
-# Activar el entorno virtual en linux
+# Activar el entorno virtual en Linux/macOS
 source .venv/bin/activate
+
+# Activar el entorno virtual en Windows
+.venv\Scripts\activate
 ```
 
 ### Instalación de dependencias
@@ -83,7 +86,7 @@ Si bien en la implementación del TFG se despliega la arquitectura en un servido
    ```
 3. **Acceso a la interfaz**: Abra su navegador en `http://localhost:8080`. Se accede con las credenciales configuradas por defecto. (Normalmente `airflow` como usuario y contraseña).
 
-## Ejecución del Pipeline (Predicción e Imputación)
+## Ejecución del pipeline bifuncional: imputación + predicción
 
 Como se indica previamente en la estructura del repositorio, se incluyen scripts en bash para facilitar la experimentación. Para seguir la evolución del proceso de aprendizaje y visualizar las curvas de entrenamiento, abra la interfaz de **TensorBoard** en su navegador accediendo a: `http://localhost:6006`.
 
@@ -105,7 +108,7 @@ Como se indica previamente en la estructura del repositorio, se incluyen scripts
    ```
    Este comando probará de manera secuencial los resultados de combinar limpieza y predicción bajo distintos horizontes de tiempo (ej. 24h, 48h). El resumen de todas las métricas quedará registrado en `logs_experiments/pipeline_metrics_summary.txt`.
 
-## Previsualización de la Documentación (Quarto)
+## Portal web de resultados con Quarto
 
 Para compilar y visualizar de forma la pagina web interactiva con la ilustración del proyecto y los resultados obtenidos:
 ```bash
@@ -122,6 +125,9 @@ xdg-open maps/map_locations.html
 
 # macOS
 open maps/map_locations.html
+
+# Windows
+start maps/map_locations.html
 ```
 Alternativamente, puede hacer doble clic sobre el archivo desde el explorador de archivos de su sistema operativo.
 
