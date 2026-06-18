@@ -2,7 +2,6 @@
 *.txt
 __pycache__/
 data/
-backups/
 airflow/
 # toml setuptools 
 tfg_melbourne.egg-info 
@@ -11,5 +10,3 @@ cache/
 logs/
 # DuckDB
 *.duckdb
-# Prediction logs and results
-logs_experiments/
