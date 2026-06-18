@@ -1,0 +1,56 @@
+SAITS:
+Trials: 22
+Final mae: 0.04961
+Best params: {'window_size': 48, 'batch_size': 64, 'lr': 0.00047295728151429, 'n_layers': 2, 'd_model': 128, 'n_heads': 4, 'dropout': 0.2}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Imputation/SAITS/SAITS_w48_e20_b64_lr0.00047_lyr2_dm128_hd4_dp0.2/20260609_T152801
+========================================
+
+CSDI:
+Trials: 8
+Final mae: 3.84810
+Best params: {'window_size': 96, 'batch_size': 128, 'lr': 0.001289884852043542, 'n_layers': 3, 'n_channels': 128, 'n_heads': 2, 'dropout': 0.2}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Imputation/CSDI/CSDI_w96_e20_b128_lr0.00129_lyr3_ch128_hd2_dp0.2_ds30_te128_fe128/20260609_T212159
+========================================
+
+DLinear_w192_ps96:
+Trials: 22
+Final mae: 0.06295
+Best params: {'window_size': 192, 'batch_size': 128, 'lr': 0.006634749019159407, 'moving_avg_window_size': 99}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Forecasting/window_192/DLinear/DLinear_w192_e30_b128_lr0.00663_ps96_ma99/20260610_T144057 
+========================================
+
+Transformer_w192_ps96:
+Trials: 22
+Final mae: 0.25028
+Best params: {'window_size': 192, 'batch_size': 32, 'lr': 0.00010850495502007857, 'n_layers': 2, 'd_model': 256, 'n_heads': 8, 'dropout': 0.1}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Forecasting/window_192/Transformer/Transformer_w192_e20_b32_lr0.00011_ps96_lyr2_dm256_hd8/20260610_T163116
+========================================
+
+MICN_w192_ps96:
+Trials: 22
+Final mae: 0.03914
+Best params: {'window_size': 192, 'batch_size': 128, 'lr': 0.0037571541741116712, 'n_layers': 2, 'd_model': 64, 'dropout': 0.1}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Forecasting/window_192/MICN_ps96/MICN_w192_e20_b128_lr0.00376_ps96_lyr2_dm64/20260611_T105743
+========================================
+
+DLinear_w384_ps192:
+Trials: 22
+Final mae: 0.06060
+Best params: {'window_size': 384, 'batch_size': 256, 'lr': 0.002995928317266301, 'moving_avg_window_size': 51}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Forecasting/window_384/DLinear/DLinear_w384_e30_b256_lr0.00300_ps192_ma51/20260611_T141322
+========================================
+
+Transformer_w384_ps192:
+Trials: 22
+Final mae: 0.29357
+Best params: {'window_size': 384, 'batch_size': 32, 'lr': 0.00020274153243355695, 'n_layers': 2, 'd_model': 256, 'n_heads': 4, 'dropout': 0.1}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Forecasting/window_384/Transformer/Transformer_w384_e20_b32_lr0.00020_ps192_lyr2_dm256_hd4/20260611_T182651
+========================================
+
+MICN_w192_ps192:
+Trials: 22
+Final mae: 0.04536
+Best params: {'window_size': 192, 'batch_size': 64, 'lr': 0.0008726590515808426, 'n_layers': 2, 'd_model': 128, 'dropout': 0.1}
+Path: /home/ppardog/Escritorio/tfg/PPG-TFG-URJC/logs_experiments/Forecasting/window_192/MICN_ps192/MICN_w192_e20_b64_lr0.00087_ps192_lyr2_dm128/20260615_T132759
+========================================
+
