@@ -199,7 +199,6 @@ class Evaluator:
         mean_model = Mean()
         test_set = self.test_set
         assert test_set is not None
-        mean_model.fit(test_set)
         results = mean_model.impute(test_set)
         mean_imputed = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
         
@@ -216,7 +215,6 @@ class Evaluator:
         locf_model = LOCF()
         test_set = self.test_set
         assert test_set is not None
-        locf_model.fit(test_set)
         results = locf_model.impute(test_set)
         locf_imputed = np.array(results["imputation"]) if isinstance(results, dict) else np.array(results)
         

@@ -14,9 +14,10 @@ class DataLoader:
     Loads and processes parking sensor data from a Parquet file.
     Automatically adapts its sliding window logic for Imputation or Forecasting.
     """
-    def __init__(self, filepath, window_size):
+    def __init__(self, filepath, window_size, is_oot=False):
         self.filepath = filepath
         self.window_size = window_size
+        self.is_oot = is_oot
         self.features = [
             'VehiclePresent', 
             'lon', 'lat',     
@@ -78,61 +79,67 @@ class DataLoader:
         """
         Orchestrates the data loading based on TASK_TYPE
         """
-        print(f"[{self.__class__.__name__}] Modo: {TASK_TYPE.upper()} | Cargando datos...")
+        print(f"[{self.__class__.__name__}] Modo: {TASK_TYPE.upper()} | OOT: {self.is_oot} | Cargando datos...")
         df = pd.read_parquet(self.filepath)
 
+        # Subsampling
         np.random.seed(33) 
         unique_devices = df['DeviceId'].unique()
         selected_devices = np.random.choice(unique_devices, size=int(len(unique_devices) * DATA_AMOUNT), replace=False) 
         df = df[df['DeviceId'].isin(selected_devices)].reset_index(drop=True)
-        print(f"[{self.__class__.__name__}] Sensores usados: {len(selected_devices)}/{len(unique_devices)} (Seed 33 preservada)")
-        
+        print(f"[{self.__class__.__name__}] Sensores usados: {len(selected_devices)}/{len(unique_devices)}")
+
         df['VehiclePresent'] = df['VehiclePresent'].astype(float)
         df.fillna(value=np.nan, inplace=True) 
 
         # Data splits
-        ts_unique = np.sort(df['Timestamp'].unique())
-        n_ts = len(ts_unique)
-        train_cut = ts_unique[int(n_ts * 0.60)]
-        val_cut = ts_unique[int(n_ts * 0.80)]
+        if not self.is_oot:
+            ts_unique = np.sort(df['Timestamp'].unique())
+            n_ts = len(ts_unique)
+            train_cut = ts_unique[int(n_ts * 0.60)]
+            val_cut = ts_unique[int(n_ts * 0.80)]
+            
+            df_train = df[df['Timestamp'] <= train_cut]
+            df_val = df[(df['Timestamp'] > train_cut) & (df['Timestamp'] <= val_cut)]
+            df_test = df[df['Timestamp'] > val_cut]
         
-        df_train = df[df['Timestamp'] <= train_cut]
-        df_val = df[(df['Timestamp'] > train_cut) & (df['Timestamp'] <= val_cut)]
-        df_test = df[df['Timestamp'] > val_cut]
+        else:
+            df_train = None
+            df_val = None
+            df_test = df # all in test for oot data
         
         print(f"[{self.__class__.__name__}] Generando tensores (Ventana Entrada: {self.window_size}" + 
               (f", Ventana Predicción: {PRED_STEPS})" if TASK_TYPE == 'forecasting' else ")..."))
 
         # Bifurcation acording to TASK_TYPE
         if TASK_TYPE == 'imputation':
-            X_train = self._create_sliding_windows_imputation(df_train)
-            X_val = self._create_sliding_windows_imputation(df_val)
             X_test = self._create_sliding_windows_imputation(df_test)
-            
-            X_val_masked = self._mask_data(X_val, MISSING_RATE)
             X_test_masked = self._mask_data(X_test, MISSING_RATE)
-
-            self.train_dataset = {"X": X_train}
-            self.val_dataset = {"X": X_val_masked, "X_ori": X_val}
             self.test_dataset = {"X": X_test_masked, "X_ori": X_test}
-            
+
+            if not self.is_oot:
+                X_train = self._create_sliding_windows_imputation(df_train)
+                X_val = self._create_sliding_windows_imputation(df_val)
+                X_val_masked = self._mask_data(X_val, MISSING_RATE)
+                self.train_dataset = {"X": X_train}
+                self.val_dataset = {"X": X_val_masked, "X_ori": X_val}
+                print(f"[{self.__class__.__name__}] Particiones - Train X: {self.train_dataset['X'].shape}, Val X: {self.val_dataset['X'].shape}, Test X: {self.test_dataset['X'].shape}")
+
         elif TASK_TYPE == 'forecasting':
-            X_train, Y_train = self._create_sliding_windows_forecasting(df_train)
-            X_val, Y_val = self._create_sliding_windows_forecasting(df_val)
             X_test, Y_test = self._create_sliding_windows_forecasting(df_test)
-            
-            # PyPOTS forecasting API expects X for inputs and X_pred for the future horizon.
-            self.train_dataset = {"X": X_train, "X_pred": Y_train}
-            self.val_dataset = {"X": X_val, "X_pred": Y_val}
             self.test_dataset = {"X": X_test, "X_pred": Y_test}
+
+            if not self.is_oot:
+                X_train, Y_train = self._create_sliding_windows_forecasting(df_train)
+                X_val, Y_val = self._create_sliding_windows_forecasting(df_val)
+                self.train_dataset = {"X": X_train, "X_pred": Y_train}
+                self.val_dataset = {"X": X_val, "X_pred": Y_val}
+                print(f"[{self.__class__.__name__}] Particiones - Train X: {self.train_dataset['X'].shape}, Val X: {self.val_dataset['X'].shape}, Test X: {self.test_dataset['X'].shape}")
         else:
             raise ValueError(f"TASK_TYPE no soportado: {TASK_TYPE}")
 
-        assert self.train_dataset is not None
-        assert self.val_dataset is not None
-        assert self.test_dataset is not None
+        print(f"[{self.__class__.__name__}] Test X: {self.test_dataset['X'].shape}")
             
-        print(f"[{self.__class__.__name__}] Particiones - Train X: {self.train_dataset['X'].shape}, Val X: {self.val_dataset['X'].shape}, Test X: {self.test_dataset['X'].shape}")
 
     def get_splits(self):
         return self.train_dataset, self.val_dataset, self.test_dataset
