@@ -4,7 +4,6 @@ __pycache__/
 data/
 backups/
 airflow/
-pyproject.toml
 # toml setuptools 
 tfg_melbourne.egg-info 
 # folium

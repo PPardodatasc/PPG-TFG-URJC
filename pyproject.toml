@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tfg_melbourne"
+version = "0.1.0"
+description = "TFG Pipeline IoT Smart Parking"
+
+[tool.setuptools.packages.find]
+where = ["src"]
