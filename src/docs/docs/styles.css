@@ -1,0 +1,92 @@
+/*Web Style*/
+
+/* General body styles */
+body {
+    font-family: 'Times New Roman', Times, serif; /* Fuente académica clásica */
+    background-color: #f8f9fa;        
+    color: #2c2c2c;                   
+    font-size: 0.95rem; /* Tamaño de letra más pequeño */
+    line-height: 1.6;
+}
+
+/* Headers */
+h1, h2, h3, h4 {
+    color: #454a43; /* Mantenemos tu color gris oscuro original */
+    font-weight: 700;
+    margin-top: 1.5em;
+}
+
+/* Specific style for main title (h1) */
+h1 {
+    border-bottom: 3px solid #3182ce; /* Blue underline */
+    padding-bottom: 10px;
+}
+
+/* 4. Navigation bar */
+.navbar {
+    background-color: #1a365d !important; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* 5. Navbar links styling (Overrides default Bootstrap colors) */
+.navbar-nav .nav-link {
+    color: #e2e8f0 !important; /* Gris muy claro/blanco roto */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important; /* Blanco puro al pasar el ratón */
+}
+
+/* Code sections */
+pre, code {
+    background-color: #2d3748;        /* Dark mode */
+    color: #e2e8f0;                   
+    border-radius: 8px;              
+}
+
+/* Links */
+a {
+    color: #1a365d; /* Mantenemos tu color original para enlaces */
+    text-decoration: none;            /* Remove default underline */
+    transition: color 0.3s ease;      /* Smooth color transition on hover */
+}
+
+/* Hover effect for links */
+a:hover {
+    color: #1a365d;                   
+    text-decoration: underline;
+}
+
+/* Bibliography blockquotes */
+blockquote {
+    border-left: 4px solid #3182ce;   
+    background-color: #ebf8ff;        
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+/* BIBLIOGRAFÍA PROFESIONAL */
+/* Aplica formato de tarjeta a cada elemento de la lista de referencias */
+#refs > div {
+    background-color: #ffffff;
+    border-left: 4px solid #1a365d; /* Borde izquierdo azul marino */
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra sutil */
+    transition: transform 0.2s ease;
+}
+
+#refs > div:hover {
+    transform: translateX(5px); /* Pequeño desplazamiento al pasar el ratón */
+    border-left: 4px solid #3182ce; /* Cambia a azul claro */
+}

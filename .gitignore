@@ -13,6 +13,5 @@ logs/
 # Quarto
 src/docs/.quarto/
 src/docs/_site/
-src/docs/docs/
 /.quarto/
 **/*.quarto_ipynb

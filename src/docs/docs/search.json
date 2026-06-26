@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "predictions.html",
+    "href": "predictions.html",
+    "title": "Modelado y Resultados",
+    "section": "",
+    "text": "[cite_start]El núcleo predictivo del proyecto se fundamenta en la comparativa empírica (benchmark) de distintas arquitecturas de Deep Learning para resolver dos problemas complementarios: la imputación de valores nulos (caídas de sensores) y la predicción a futuro de la disponibilidad de aparcamiento[cite: 1698]."
+  },
+  {
+    "objectID": "predictions.html#markdown",
+    "href": "predictions.html#markdown",
+    "title": "Modelado y Resultados",
+    "section": "```markdown",
+    "text": "```markdown"
+  },
+  {
+    "objectID": "predictions.html#title-experimentación-y-resultados",
+    "href": "predictions.html#title-experimentación-y-resultados",
+    "title": "Experimentación y Resultados",
+    "section": "title: “Experimentación y Resultados”",
+    "text": "title: “Experimentación y Resultados”\nEl núcleo predictivo del proyecto se fundamenta en la comparativa empírica (benchmark) de distintas arquitecturas de Deep Learning para resolver dos problemas complementarios: la imputación de valores nulos (caídas de sensores) y la predicción a futuro."
+  },
+  {
+    "objectID": "predictions.html#tareas-de-imputación",
+    "href": "predictions.html#tareas-de-imputación",
+    "title": "Modelado y Resultados",
+    "section": "1. Tareas de Imputación",
+    "text": "1. Tareas de Imputación\nSe contrastaron heurísticas clásicas de la industria frente a arquitecturas basadas en autoatención (SAITS) y modelos de difusión probabilística (CSDI).\n\nMétricas de evaluación en el conjunto de test para tareas de imputación.\n\n\n\n\n\n\n\n\nModelo / Algoritmo\nMAE\nMSE\nRMSE\n\n\n\n\nSAITS\n0.05555\n0.01189\n0.10902\n\n\nMedia Global\n0.37965\n0.26472\n0.51451\n\n\nLOCF\n0.53709\n61.99049\n7.87340\n\n\nCSDI\n3.83389\n100.37682\n10.01882\n\n\n\nConclusión clave: La arquitectura determinista SAITS domina la comparativa de forma absoluta. El algoritmo de inercia clásica (LOCF) colapsa matemáticamente ante la alta volatilidad de los cambios de estado en el estacionamiento urbano."
+  },
+  {
+    "objectID": "predictions.html#tareas-de-predicción-forecasting",
+    "href": "predictions.html#tareas-de-predicción-forecasting",
+    "title": "Modelado y Resultados",
+    "section": "2. Tareas de Predicción (Forecasting)",
+    "text": "2. Tareas de Predicción (Forecasting)\nSe evaluó la capacidad de proyección futura contrastando el paradigma atencional (Transformer), convolucional (MICN) y lineal (DLinear).\n\nHorizonte a 24 Horas\n\nResultados de la predicción a 24 horas.\n\n\n\n\n\n\n\n\nModelo\nMAE\nMSE\nRMSE\n\n\n\n\nMICN\n0.03848\n0.02181\n0.14768\n\n\nDLinear\n0.06503\n0.02013\n0.14188\n\n\nTransformer\n0.26443\n0.15471\n0.39334\n\n\n\n\n\nHorizonte a 48 Horas\n\nResultados de la predicción a 48 horas.\n\n\n\n\n\n\n\n\nModelo\nMAE\nMSE\nRMSE\n\n\n\n\nMICN\n0.04639\n0.02492\n0.15787\n\n\nDLinear\n0.07342\n0.02136\n0.14615\n\n\nTransformer\n0.30828\n0.17860\n0.42261\n\n\n\nConclusión clave: Los resultados confirman empíricamente que la arquitectura Transformer resulta subóptima para estas series temporales. Por su parte, la convolución isométrica (MICN) captura la volatilidad diaria logrando el menor error absoluto (MAE), mientras que la descomposición lineal (DLinear) asume un comportamiento conservador, minimizando con éxito el error cuadrático (MSE)."
+  },
+  {
+    "objectID": "index.html#sobre-el-proyecto",
+    "href": "index.html#sobre-el-proyecto",
+    "title": "Inicio",
+    "section": "",
+    "text": "La transición hacia las ciudades inteligentes requiere la implementación de ecosistemas digitales capaces de monitorizar y optimizar la infraestructura urbana. En el ámbito de la movilidad, el tráfico originado por vehículos en búsqueda de estacionamiento constituye una de las principales fuentes de congestión y emisiones. Si bien se ha desplegado una red de sensores IoT para monitorizar la demanda de aparcamiento, la volatilidad física de estos dispositivos genera series temporales discontinuas y plagadas de valores faltantes, lo cual limita el análisis de datos y la toma de decisiones.\nEl presente trabajo fin de grado tiene como objetivo principal el diseño e implementación de una arquitectura predictiva integral para solucionar este desafío. Se propone un sistema end-to-end capaz de ingerir y almacenar telemetría IoT ininterrumpida, para posteriormente aplicar modelos de aprendizaje profundo enfocados a la reconstrucción de los fallos de red y a la predicción de la futura demanda de ocupación de las plazas de estacionamiento.\nPara hacer esto posible, el entrenamiento y la optimización paramétrica de los diferentes modelos se ha llevado a cabo mediante el procesamiento de un gran conjunto de datos históricos. Se hace uso de la librería especializada PyPOTS para la carga de diversas arquitecturas entre las que se encuentran mecanismos de auto-atención, modelos de difusión probabilística, lineales y convolucionales, tanto para la imputación de datos faltantes como para la predicción de ocupación futura. Por otro lado, para la fase de evaluación en producción, se ha desarrollado una infraestructura orquestada mediante Apache Airflow y Docker que extrae información en tiempo real de la API de la ciudad de Melbourne (Australia) y la almacena en la base de datos analítica DuckDB. De forma complementaria, el flujo predictivo se ha enriquecido con un mapa cartográfico de clasificación espacial de los sensores en función de puntos de interés cercanos.\nDe esta forma, la investigación desarrollada valida metodológicamente la aplicación de arquitecturas del estado del arte en entornos de producción sujetos a la evolución constante del tráfico, con el objetivo de consolidar un marco tecnológico resiliente para la gestión de la movilidad basada en datos.\n\n\nPara garantizar la escalabilidad y robustez del sistema, se ha diseñado una arquitectura orientada a los datos, dividida en cuatro fases secuenciales que abarcan desde la ingesta hasta la visualización final:\n\nFlujo histórico y espacial. Ejecutados localmente mediante notebooks de Python, extraen datos estáticos del portal Open Data de Melbourne. Tras aplicar rutinas de limpieza, cruzan información temporal y geográfica generando un dataset unificado (.parquet) para entrenar las redes neuronales.\nFlujo en tiempo real. Orquestado íntegramente por Apache Airflow, interactúa recurrentemente con la API municipal para obtener telemetría viva y la almacena en una base analítica DuckDB, permitiendo evaluar los modelos en un entorno de producción.\nModelado predictivo. Núcleo analítico apoyado en la librería PyPOTS. Abarca la optimización de hiperparámetros y la evaluación final, distinguiendo entre el rendimiento de modelos individuales y flujos integrados (imputación + predicción).\nVisualizaciones. Ecosistema de divulgación conformado por un mapa espacial interactivo, la monitorización de telemetría de entrenamiento en TensorBoard y el presente portal web ilustrativo.\n\n\n\n\nArquitectura general del sistema"
+  },
+  {
+    "objectID": "visualizations.html",
+    "href": "visualizations.html",
+    "title": "Análisis de datos - Descubrimientos",
+    "section": "",
+    "text": "El tratamiento del dato urbano requiere comprender las dinámicas temporales del tráfico y la topología espacial de la ciudad. A continuación, se presentan los hallazgos principales de la fase exploratoria."
+  },
+  {
+    "objectID": "visualizations.html#dinámica-temporal-del-estacionamiento",
+    "href": "visualizations.html#dinámica-temporal-del-estacionamiento",
+    "title": "Análisis de datos - Descubrimientos",
+    "section": "Dinámica Temporal del Estacionamiento",
+    "text": "Dinámica Temporal del Estacionamiento\nEl análisis masivo del histórico de Melbourne revela estacionalidades fuertemente marcadas por el ciclo laboral y comercial de la ciudad. A continuación se expone la distribución temporal cruzada con la variable objetivo (presencia de vehículo).\n\nRotación diaria\nEl volumen de eventos de aparcamiento muestra una dependencia total del horario laboral, con un valle de inactividad de madrugada y picos máximos en las horas centrales del día.\n\n\n\nDistribución del volumen de eventos de estacionamiento según la hora del día\n\n\n\n\nEstacionalidad anual\nLa validación temporal de la muestra extraída confirma que no existen sesgos cronológicos, capturando de forma homogénea todas las épocas del año.\n ## Hotspots de Aparcamiento\nLa demanda de estacionamiento no se distribuye de manera uniforme, sino que se concentra en vías principales correspondientes a distritos financieros o áreas de alta concentración de servicios.\n\n\n\nVías o zonas con mayor densidad de registros de aparcamiento"
+  },
+  {
+    "objectID": "visualizations.html#clasificación-espacial-e-integración-cartográfica",
+    "href": "visualizations.html#clasificación-espacial-e-integración-cartográfica",
+    "title": "Análisis de datos - Descubrimientos",
+    "section": "Clasificación Espacial e Integración Cartográfica",
+    "text": "Clasificación Espacial e Integración Cartográfica\nPara dotar al sistema de contexto geoespacial, se ha cruzado el inventario de sensores con la API de OpenStreetMap, clasificando cada plaza según la densidad de Puntos de Interés (POIs) cercanos en un radio de 100 metros (Comercial, Residencial, CBD o General).\nA continuación se presenta el renderizado interactivo de la red de sensores. Puedes interactuar con el mapa, hacer zoom y pasar el cursor sobre los sensores para ver su identificador, vía y clasificación asignada:"
+  },
+  {
+    "objectID": "predictions.html#title-modelado-y-resultados",
+    "href": "predictions.html#title-modelado-y-resultados",
+    "title": "Modelado y Resultados",
+    "section": "title: “Modelado y Resultados”",
+    "text": "title: “Modelado y Resultados”\nEl núcleo predictivo del proyecto se fundamenta en la comparativa empírica (benchmark) de distintas arquitecturas de Deep Learning para resolver dos problemas complementarios: la imputación de valores nulos (caídas de sensores) y la predicción a futuro."
+  },
+  {
+    "objectID": "predictions.html#metodología-de-modelado",
+    "href": "predictions.html#metodología-de-modelado",
+    "title": "Modelado y Resultados",
+    "section": "Metodología de Modelado",
+    "text": "Metodología de Modelado\nPara garantizar la validez científica de los resultados, el flujo de trabajo procesó los tensores temporales dividiéndolos en fases estrictas de entrenamiento (60%), validación (20%) y prueba (20%) para evitar la contaminación de los datos (data leakage).\nDada la alta complejidad interna de los modelos empleados, se implementó una rigurosa optimización de hiperparámetros (HPO). El sistema evaluó decenas de configuraciones mediante un muestreo probabilístico (Random Search), acoplado a un mecanismo de parada temprana (Early Stopping) diseñado para penalizar las predicciones extremas monitorizando el Error Cuadrático Medio (MSE) en el conjunto de validación.\nEn el ámbito de la predicción, se contrastaron tres paradigmas diametralmente opuestos: 1. Paradigma Atencional (Transformer): Mecanismos de autoatención pura. 2. Paradigma Convolucional (MICN): Extracción de características locales y globales mediante convoluciones isométricas unidimensionales. 3. Paradigma Lineal (DLinear): Descomposición matemática en tendencias y estacionalidades.\n\n\n\nFlujo lógico del modelado: Optimización de hiperparámetros y evaluación final"
+  },
+  {
+    "objectID": "predictions.html#verificación-de-convergencia-tensorboard",
+    "href": "predictions.html#verificación-de-convergencia-tensorboard",
+    "title": "Modelado y Resultados",
+    "section": "Verificación de Convergencia (TensorBoard)",
+    "text": "Verificación de Convergencia (TensorBoard)\nLa observabilidad de las curvas de entrenamiento justifica el desempeño matemático de las redes. En TensorBoard, las trazas de pérdida reflejan el desplome vertical de las convoluciones de MICN frente al estancamiento de aprendizaje de la arquitectura Transformer.\n\n\n\nComparativa de la función de pérdida en entrenamiento: MICN (naranja/rosado) vs Transformer (azul/gris)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Este portal interactivo documenta los descubrimientos y resultados más relevantes del trabajo de fin de grado realizado por Pablo Pardo Gutiérrez.\n\nTIP: puede utilizar el menú superior para explorar las diferentes secciones del proyecto.\n\n\n\nLa transición hacia las ciudades inteligentes requiere la implementación de ecosistemas digitales capaces de monitorizar y optimizar la infraestructura urbana. En el ámbito de la movilidad, el tráfico originado por vehículos en búsqueda de estacionamiento constituye una de las principales fuentes de congestión y emisiones. Si bien se ha desplegado una red de sensores IoT para monitorizar la demanda de aparcamiento, la volatilidad física de estos dispositivos genera series temporales discontinuas y plagadas de valores faltantes, lo cual limita el análisis de datos y la toma de decisiones.\nEl presente trabajo fin de grado tiene como objetivo principal el diseño e implementación de una arquitectura predictiva integral para solucionar este desafío. Se propone un sistema end-to-end capaz de ingerir y almacenar telemetría IoT ininterrumpida, para posteriormente aplicar modelos de aprendizaje profundo enfocados a la reconstrucción de los fallos de red y a la predicción de la futura demanda de ocupación de las plazas de estacionamiento.\nPara hacer esto posible, el entrenamiento y la optimización paramétrica de los diferentes modelos se ha llevado a cabo mediante el procesamiento de un gran conjunto de datos históricos. Se hace uso de la librería especializada PyPOTS para la carga de diversas arquitecturas entre las que se encuentran mecanismos de auto-atención, modelos de difusión probabilística, lineales y convolucionales, tanto para la imputación de datos faltantes como para la predicción de ocupación futura. Por otro lado, para la fase de evaluación en producción, se ha desarrollado una infraestructura orquestada mediante Apache Airflow y Docker que extrae información en tiempo real de la API de la ciudad de Melbourne (Australia) y la almacena en la base de datos analítica DuckDB. De forma complementaria, el flujo predictivo se ha enriquecido con un mapa cartográfico de clasificación espacial de los sensores en función de puntos de interés cercanos.\nDe esta forma, la investigación desarrollada valida metodológicamente la aplicación de arquitecturas del estado del arte en entornos de producción sujetos a la evolución constante del tráfico, con el objetivo de consolidar un marco tecnológico resiliente para la gestión de la movilidad basada en datos.\n\n\nPara garantizar la escalabilidad y robustez del sistema, se ha diseñado una arquitectura orientada a los datos, dividida en cuatro fases secuenciales que abarcan desde la ingesta hasta la visualización final:\n\nFlujo histórico y espacial. Ejecutados localmente mediante notebooks de Python, extraen datos estáticos del portal Open Data de Melbourne. Tras aplicar rutinas de limpieza, cruzan información temporal y geográfica generando un dataset unificado (.parquet) para entrenar las redes neuronales.\nFlujo en tiempo real. Orquestado íntegramente por Apache Airflow, interactúa recurrentemente con la API municipal para obtener telemetría viva y la almacena en una base analítica DuckDB, permitiendo evaluar los modelos en un entorno de producción.\nModelado predictivo. Núcleo analítico apoyado en la librería PyPOTS. Abarca la optimización de hiperparámetros y la evaluación final, distinguiendo entre el rendimiento de modelos individuales y flujos integrados (imputación + predicción).\nVisualizaciones. Ecosistema de divulgación conformado por un mapa espacial interactivo, la monitorización de telemetría de entrenamiento en TensorBoard y el presente portal web ilustrativo.\n\n\n\n\nArquitectura general del sistema"
+  },
+  {
+    "objectID": "index.html#title-inicio",
+    "href": "index.html#title-inicio",
+    "title": "Inicio",
+    "section": "title: “Inicio”",
+    "text": "title: “Inicio”"
+  },
+  {
+    "objectID": "predictions.html#verificación-de-convergencia",
+    "href": "predictions.html#verificación-de-convergencia",
+    "title": "Modelado y Resultados",
+    "section": "Verificación de Convergencia",
+    "text": "Verificación de Convergencia\nEn la telemetría extraída durante el entrenamiento, las curvas de pérdida confirman la divergencia arquitectónica: se observa un desplome rápido del error en las convoluciones de MICN frente a un estancamiento prolongado de la red Transformer.\n\n\n\nComparativa de la función de pérdida en entrenamiento: MICN (naranja/rosado) vs Transformer (azul/gris)."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Bibliografía",
+    "section": "",
+    "text": "Se listan las referencias bibliográficas que sustentan el desarrollo del proyecto:\n\n\nAlavi, Amir H, Pengju Jiao, Wajiha G Butt, and Pub Destech. 2018. “Internet of Things-Enabled Smart Cities: State-of-the-Art and Future Trends.” Measurement 129: 589–606.\n\n\nAl-Garadi, Mohammed Ali, Amr Mohamed, Abdulla K Al-Ali, Xiaojiang Du, Ihsan Ali, and Mohsen Guizani. 2020. “A Survey of Machine and Deep Learning Methods for Internet of Things (IoT) Security.” IEEE Communications Surveys & Tutorials 22 (3): 1646–85.\n\n\nAllaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. “Quarto.” Posit Software. https://github.com/quarto-dev/quarto-cli.\n\n\nApache Software Foundation. 2024. “Architecture Overview - Apache Airflow Documentation.” https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html.\n\n\nÅström, Karl J., and Björn Wittenmark. 1997. Computer-Controlled Systems: Theory and Design. 3rd ed. Prentice Hall.\n\n\nDu, Wenjie, David Cote, and Tianchun Liu. 2023. “PyPOTS: A Python Toolbox for Data Mining on Partially Observed Time Series.” arXiv Preprint arXiv:2305.10370.\n\n\nDu, Wenjie, David Cote, and Yan Liu. 2023. “SAITS: Self-Attention-Based Imputation for Time Series.” Expert Systems with Applications 219: 119619. https://doi.org/10.1016/j.eswa.2023.119619.\n\n\nHo, Jonathan, Ajay Jain, and Pieter Abbeel. 2020. “Denoising Diffusion Probabilistic Models.” Advances in Neural Information Processing Systems 33: 6840–51.\n\n\nLiang, Xuan, Tao Zou, Bin Guo, et al. 2015. “Assessing Beijing’s PM2.5 Pollution: Severity, Weather Impact, APEC and Winter Heating.” Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences 471 (2182): 20150257.\n\n\nLin, Trista, Hervé Rivano, and Frédéric Le Mouel. 2017. “A Survey of Smart Parking Solutions.” IEEE Transactions on Intelligent Transportation Systems 18 (12): 3229–53.\n\n\nLittle, Roderick J. A., and Donald B. Rubin. 2019. Statistical Analysis with Missing Data. John Wiley & Sons.\n\n\nMerkel, Dirk. 2014. “Docker: Lightweight Linux Containers for Consistent Development and Deployment.” Linux Journal 2014 (239): 2.\n\n\nMiśkowicz, Marek. 2015. Event-Based Control and Signal Processing. CRC Press.\n\n\nMoritz, Steffen, Amin Sardá, Thomas Bartz-Beielstein, Martin Zaefferer, and Jörg Stork. 2015. “Algorithm for Time Series Imputation-and imputeTS Package.” arXiv Preprint arXiv:1510.03924.\n\n\nNaciones Unidas. 2015. Transformar Nuestro Mundo: La Agenda 2030 Para El Desarrollo Sostenible. https://sdgs.un.org/es/2030agenda.\n\n\nRaasveldt, Mark, and Hannes Mühleisen. 2019. “DuckDB: An Embeddable Analytical Database.” Proceedings of the 2019 International Conference on Management of Data, 1981–84.\n\n\nReis, Joe, and Matt Housley. 2022. Fundamentals of Data Engineering: Plan and Build Robust Data Systems. O’Reilly Media, Inc.\n\n\nRubin, Donald B. 1976. “Inference and Missing Data.” Biometrika 63 (3): 581–92.\n\n\nShoup, Donald C. 2006. “Cruising for Parking.” Transport Policy 13 (6): 479–86.\n\n\nSilva, Ikram, George Moody, Daniel J Scott, Leo A Celi, and Roger G Mark. 2012. “Predicting in-Hospital Mortality of ICU Patients: The PhysioNet/Computing in Cardiology Challenge 2012.” 2012 Computing in Cardiology, 245–48.\n\n\nTashiro, Yusuke, Jiaming Song, Yang Song, and Stefano Ermon. 2021. “CSDI: Conditional Score-Based Diffusion Models for Probabilistic Time Series Imputation.” Advances in Neural Information Processing Systems 34: 24804–16.\n\n\nVan Rossum, Guido, and Fred L Drake Jr. 1995. Python Tutorial. Centrum voor Wiskunde en Informatica Amsterdam, The Netherlands.\n\n\nVaswani, Ashish, Noam Shazeer, Niki Parmar, et al. 2017. “Attention Is All You Need.” Advances in Neural Information Processing Systems 30: 5998–6008.\n\n\nWang, Huiqiang, Jian Peng, Feihu Huang, Jince Wang, Junhui Chen, and Yifei Xiao. 2023. “MICN: Multi-Scale Local and Global Context Modeling for Long-Term Series Forecasting.” The Eleventh International Conference on Learning Representations (ICLR). https://openreview.net/forum?id=zt53IDUR1U.\n\n\nWu, Haixu, Jiehui Xu, Jianmin Wang, and Mingsheng Long. 2021. “Autoformer: Decomposition Transformers with Auto-Correlation for Long-Term Series Forecasting.” Advances in Neural Information Processing Systems 34: 22419–31.\n\n\nZeng, Ailing, Muxi Chen, Lei Zhang, and Qiang Xu. 2023. “Are Transformers Effective for Time Series Forecasting?” Proceedings of the Thirty-Seventh AAAI Conference on Artificial Intelligence 37: 11121–28.\n\n\nZhou, Haoyi, Shanghang Zhang, Jieqi Peng, et al. 2021. “Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting.” Proceedings of the Thirty-Fifth AAAI Conference on Artificial Intelligence 35: 11106–15."
+  },
+  {
+    "objectID": "predictions.html#metodología-y-orquestación-del-flujo",
+    "href": "predictions.html#metodología-y-orquestación-del-flujo",
+    "title": "Modelado y Resultados",
+    "section": "Metodología y Orquestación del Flujo",
+    "text": "Metodología y Orquestación del Flujo\nPara aislar la complejidad matemática y maximizar el uso de los recursos computacionales de forma desatendida, el proceso de entrenamiento se automatizó completamente. Se desarrollaron scripts de Bash que inicializan el entorno, inyectan las variables necesarias y ejecutan secuencialmente el pipeline de optimización.\nUna vez iniciado el script, el ciclo de vida algorítmico sigue un esquema lógico estricto:\n\n\n\nFlujo lógico del modelado: high performance optimization y flujo de evaluación\n\n\n\n1. Optimización de Hiperparámetros (HPO)\nEl orquestador central gestiona la búsqueda paramétrica en cuatro etapas: * Inicialización: Carga de los espacios de búsqueda dinámica definidos. * Generación: Creación de configuraciones paramétricas únicas mediante muestreo probabilístico (Random Search). * Entrenamiento y Validación: Inicialización de la red neuronal y evaluación de su capacidad de generalización. Se integra telemetría directa hacia TensorBoard para registrar las curvas de pérdida. Toda invocación cuenta con control de excepciones para liberar la caché de la GPU en caso de fallo. * Actualización: Comparativa del error resultante con el mejor registro histórico, reteniendo en disco los pesos óptimos si se supera el rendimiento anterior.\n\n\n2. Evaluación en el Conjunto de Test\nFinalizada la optimización, se evalúan las arquitecturas con la mejor configuración bajo dos enfoques: * Evaluación Individual: Se calcula el error en imputación (aislando las coordenadas con valores nulos artificiales) y en predicción (frente a la ventana futura, descartando los vacíos originales). * Evaluación Integrada (Pipeline): Ensayo empírico para cuantificar si las arquitecturas de forecasting incrementan su rendimiento al recibir un contexto previamente reconstruido matemáticamente. Se instancian ambos modelos de forma simultánea, aplicando la imputación por sub-bloques antes de ensamblar la matriz continua para la predicción final."
+  },
+  {
+    "objectID": "predictions.html#resultados-en-tareas-de-imputación",
+    "href": "predictions.html#resultados-en-tareas-de-imputación",
+    "title": "Modelado y Resultados",
+    "section": "Resultados en Tareas de Imputación",
+    "text": "Resultados en Tareas de Imputación\n[cite_start]Se contrastaron heurísticas clásicas de la industria frente a arquitecturas basadas en autoatención (SAITS) y modelos de difusión probabilística (CSDI)[cite: 1698].\n\nMétricas de evaluación en el conjunto de test para tareas de imputación.\n\n\n\n\n\n\n\n\nModelo / Algoritmo\nMAE\nMSE\nRMSE\n\n\n\n\nSAITS\n0.05555\n0.01189\n0.10902\n\n\nMedia Global\n0.37965\n0.26472\n0.51451\n\n\nLOCF\n0.53709\n61.99049\n7.87340\n\n\nCSDI\n3.83389\n100.37682\n10.01882\n\n\n\n[cite_start]Conclusión clave: La arquitectura determinista SAITS domina la comparativa de forma absoluta[cite: 3089]. [cite_start]El algoritmo de inercia clásica (LOCF) colapsa matemáticamente ante la alta volatilidad de los cambios de estado en el estacionamiento urbano[cite: 3085, 3088]."
+  },
+  {
+    "objectID": "predictions.html#resultados-en-tareas-de-predicción-forecasting",
+    "href": "predictions.html#resultados-en-tareas-de-predicción-forecasting",
+    "title": "Modelado y Resultados",
+    "section": "Resultados en Tareas de Predicción (Forecasting)",
+    "text": "Resultados en Tareas de Predicción (Forecasting)\n[cite_start]Se evaluó la capacidad de proyección futura contrastando el paradigma atencional (Transformer), convolucional (MICN) y lineal (DLinear)[cite: 1698].\n\nHorizonte a 24 Horas\n\nResultados de la predicción a 24 horas.\n\n\n\n\n\n\n\n\nModelo\nMAE\nMSE\nRMSE\n\n\n\n\nMICN\n0.03848\n0.02181\n0.14768\n\n\nDLinear\n0.06503\n0.02013\n0.14188\n\n\nTransformer\n0.26443\n0.15471\n0.39334\n\n\n\n\n\nHorizonte a 48 Horas\n\nResultados de la predicción a 48 horas.\n\n\n\n\n\n\n\n\nModelo\nMAE\nMSE\nRMSE\n\n\n\n\nMICN\n0.04639\n0.02492\n0.15787\n\n\nDLinear\n0.07342\n0.02136\n0.14615\n\n\nTransformer\n0.30828\n0.17860\n0.42261\n\n\n\n[cite_start]Conclusión clave: Los resultados confirman empíricamente que la arquitectura Transformer resulta subóptima para estas series temporales[cite: 3102, 3103]. [cite_start]Por su parte, la convolución isométrica (MICN) captura la volatilidad diaria logrando el menor error absoluto (MAE), mientras que la descomposición lineal (DLinear) asume un comportamiento conservador, minimizando con éxito el error cuadrático (MSE)[cite: 3108, 3109, 3110, 3111]."
+  }
+]
