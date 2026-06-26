@@ -2,18 +2,29 @@
 title: "Inicio"
 ---
 
-# Smart Parking en Melbourne
+# Análisis mediante Redes de Aprendizaje Profundo de Series Temporales Parcialmente Observadas sobre Datos de Ocupación de Estacionamiento en un Espacio Urbano Inteligente
 
-Este portal interactivo documenta el desarrollo y los resultados del sistema de predicción de ocupación de aparcamientos en superficie en la ciudad de Melbourne.
+Este portal interactivo documenta los descubrimientos y resultados más relevantes del trabajo de fin de grado realizado por Pablo Pardo Gutiérrez.
+
+> TIP: puede utilizar el menú superior para explorar las diferentes secciones del proyecto.
 
 ## Sobre el proyecto
 
-Para dar solución al problema de la congestión del tráfico de agitación, se ha diseñado una arquitectura orientada a los datos que ingiere eventos transaccionales de sensores físicos y aplica modelos de **Deep Learning** (PyPOTS) para imputar y predecir el estado futuro de las plazas.
+La transición hacia las ciudades inteligentes requiere la implementación de ecosistemas digitales capaces de monitorizar y optimizar la infraestructura urbana. En el ámbito de la movilidad, el tráfico originado por vehículos en búsqueda de estacionamiento constituye una de las principales fuentes de congestión y emisiones. Si bien se ha desplegado una red de sensores IoT para monitorizar la demanda de aparcamiento, la volatilidad física de estos dispositivos genera series temporales discontinuas y plagadas de valores faltantes, lo cual limita el análisis de datos y la toma de decisiones.
 
-### Fases del desarrollo:
-1. Ingesta automatizada y almacenamiento analítico (DuckDB).
-2. Procesamiento de series temporales y Feature Engineering.
-3. Modelado con Redes Neuronales.
-4. Visualización geoespacial y divulgación.
+El presente trabajo fin de grado tiene como objetivo principal el diseño e implementación de una arquitectura predictiva integral para solucionar este desafío. Se propone un sistema *end-to-end* capaz de ingerir y almacenar telemetría IoT ininterrumpida, para posteriormente aplicar modelos de aprendizaje profundo enfocados a la reconstrucción de los fallos de red y a la predicción de la futura demanda de ocupación de las plazas de estacionamiento.
 
-> Navega por el menú superior para explorar el análisis exploratorio (EDA) y los resultados predictivos del modelo.
+Para hacer esto posible, el entrenamiento y la optimización paramétrica de los diferentes modelos se ha llevado a cabo mediante el procesamiento de un gran conjunto de datos históricos. Se hace uso de la librería especializada PyPOTS para la carga de diversas arquitecturas entre las que se encuentran mecanismos de auto-atención, modelos de difusión probabilística, lineales y convolucionales, tanto para la imputación de datos faltantes como para la predicción de ocupación futura. Por otro lado, para la fase de evaluación en producción, se ha desarrollado una infraestructura orquestada mediante Apache Airflow y Docker que extrae información en tiempo real de la API de la ciudad de Melbourne (Australia) y la almacena en la base de datos analítica DuckDB. De forma complementaria, el flujo predictivo se ha enriquecido con un mapa cartográfico de clasificación espacial de los sensores en función de puntos de interés cercanos. 
+
+De esta forma, la investigación desarrollada valida metodológicamente la aplicación de arquitecturas del estado del arte en entornos de producción sujetos a la evolución constante del tráfico, con el objetivo de consolidar un marco tecnológico resiliente para la gestión de la movilidad basada en datos.
+
+### Arquitectura del Sistema
+
+Para garantizar la escalabilidad y robustez del sistema, se ha diseñado una arquitectura orientada a los datos, dividida en cuatro fases secuenciales que abarcan desde la ingesta hasta la visualización final:
+
+* **Flujo histórico y espacial.** Ejecutados localmente mediante *notebooks* de Python, extraen datos estáticos del portal *Open Data* de Melbourne. Tras aplicar rutinas de limpieza, cruzan información temporal y geográfica generando un dataset unificado (`.parquet`) para entrenar las redes neuronales.
+* **Flujo en tiempo real.** Orquestado íntegramente por **Apache Airflow**, interactúa recurrentemente con la API municipal para obtener telemetría viva y la almacena en una base analítica **DuckDB**, permitiendo evaluar los modelos en un entorno de producción.
+* **Modelado predictivo.** Núcleo analítico apoyado en la librería **PyPOTS**. Abarca la optimización de hiperparámetros y la evaluación final, distinguiendo entre el rendimiento de modelos individuales y flujos integrados (imputación + predicción).
+* **Visualizaciones.** Ecosistema de divulgación conformado por un mapa espacial interactivo, la monitorización de telemetría de entrenamiento en *TensorBoard* y el presente portal web ilustrativo.
+
+![Arquitectura general del sistema](img/[implem]arquitectura.svg){fig-align="center"}

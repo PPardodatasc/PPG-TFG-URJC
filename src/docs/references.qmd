@@ -1,0 +1,10 @@
+---
+title: "Bibliografía"
+nocite: |
+  @*
+---
+
+Se listan las referencias bibliográficas que sustentan el desarrollo del proyecto:
+
+::: {#refs}
+:::

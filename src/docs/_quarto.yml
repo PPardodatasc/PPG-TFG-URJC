@@ -1,21 +1,31 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "Smart Parking Melbourne"
-  description: "Predicción de ocupación de estacionamientos en Melbourne utilizando técnicas de análisis de datos y machine learning."
+  title: "Gestión del dato urbano en Melbourne"
+  description: "Análisis mediante Redes de Aprendizaje Profundo de Series Temporales Parcialmente Observadas sobre Datos de Ocupación de Estacionamiento en un Espacio Urbano Inteligente"
   navbar:
+    logo: img/logoURJC.png
     left:
       - href: index.qmd
         text: Inicio
-      - href: predictions.qmd
-        text: Resultados
       - href: visualizations.qmd
-        text: Visualizaciones
+        text: Análisis de datos
+      - href: predictions.qmd
+        text: Modelado y resultados  
+      - href: references.qmd
+        text: Bibliografía
+    right:
+      - icon: github
+        href: https://github.com/PPardodatasc/PPG-TFG-URJC
+        aria-label: Repositorio GitHub
+
+bibliography: references.bib
 
 format:
   html:
-    theme: cosmo # Temas limpios. Otros buenos: litera, flatly, zephyr.
+    theme: cosmo
     css: styles.css
-    toc: true # Activa el índice lateral de contenidos
-    code-fold: true # Permite al usuario ocultar/mostrar el código fuente
+    toc: true
+    code-fold: true
