@@ -3,8 +3,8 @@
 __pycache__/
 data/
 airflow/
-# toml setuptools 
-tfg_melbourne.egg-info 
+# toml setuptools
+tfg_melbourne.egg-info
 # folium
 cache/
 logs/
@@ -13,3 +13,6 @@ logs/
 # Quarto
 src/docs/.quarto/
 src/docs/_site/
+src/docs/docs/
+/.quarto/
+**/*.quarto_ipynb
