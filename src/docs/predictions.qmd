@@ -111,6 +111,3 @@ Tras analizar las variaciones de rendimiento, se extraen tres conclusiones funda
 * **El SoTA es robusto por naturaleza.** Inyectar la señal perfectamente imputada genera una mejora virtualmente inexistente en ambos horizontes temporales. Las arquitecturas predictivas modernas asimilan los vacíos y anomalías de los sensores con tal eficacia que anulan la necesidad de aplicar técnicas generativas de imputación previas.
 * **Propagación del error por escalabilidad.** En escenarios de medio-largo plazo, la imputación en cascada puede degradar ligeramente el rendimiento (véase el +0.49% de error obtenido). Las pequeñas imprecisiones de imputación se acumulan a lo largo de ventanas temporales extensas, lo cual afeca negativamente a la capa predictiva.
 * **Refutación algorítmica del Transformer.** Se comprueba que mal rendimiento de la arqutiectura basada en atención se debe a una cuestión estructural y no a una simple intolerancia de valores ausentes: al inyectarle la señal totalmente reconstruida la mejora es estadísticamente nula.
-
----
-
