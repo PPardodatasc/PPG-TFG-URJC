@@ -15,6 +15,7 @@ Este repositorio contiene el código correspondiente al Trabajo de Fin de Grado 
 - **`airflow/`**: directorio generado automáticamente al ejecutar Airflow en su máquina. Utilizado para la configuración, DAGs y logs de Apache Airflow.
 - **`dags/`**: contiene el grafo de ejecución de Airflow, que orquesta el proceso continuo de extracción y carga de datos.
 - **`data/`**: directorio generado automáticamente al ejecutar el pipeline EDA. Almacena los conjuntos de datos originales y procesados.
+- **`docs/`**: archivos html para la renderización web de Quarto.
 - **`duck_db/`**: directorio donde se ubica la base de datos DuckDB local. No se muestra en GitHub por buenas prácticas.
 - **`memoria/`**: documentación en LaTeX con los archivos necesarios para compilar el documento PDF final de la memoria del proyecto, así como el archivo PDF ya compilado.
 - **`src/`**: código fuente principal del proyecto.
