@@ -18,7 +18,7 @@ h1, h2, h3, h4 {
 
 /* Specific style for main title (h1) */
 h1 {
-    border-bottom: 3px solid #3182ce; /* Blue underline */
+    border-bottom: 3px solid #1a365d; /* Blue underline */
     padding-bottom: 10px;
 }
 
@@ -67,7 +67,7 @@ a:hover {
 
 /* Bibliography blockquotes */
 blockquote {
-    border-left: 4px solid #3182ce;   
+    border-left: 4px solid #1a365d;   
     background-color: #ebf8ff;        
     padding: 15px 20px;
     border-radius: 0 8px 8px 0;
@@ -75,15 +75,25 @@ blockquote {
 }
 
 /* BIBLIOGRAFÍA PROFESIONAL */
+/* Contenedor global de las referencias */
+#refs {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
 /* Aplica formato de tarjeta a cada elemento de la lista de referencias */
 #refs > div {
     background-color: #ffffff;
     border-left: 4px solid #1a365d; /* Borde izquierdo azul marino */
-    padding: 15px 20px;
+    padding: 15px 20px 15px 25px; /* Añadimos más espacio a la izquierda (25px) */
     margin-bottom: 15px;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra sutil */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil */
     transition: transform 0.2s ease;
+    
+    /* ELIMINAR SANGRÍA DE QUARTO QUE PISA EL BORDE */
+    text-indent: 0 !important; 
+    margin-left: 0 !important;
 }
 
 #refs > div:hover {

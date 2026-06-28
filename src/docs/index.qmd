@@ -4,7 +4,7 @@ title: "Inicio"
 
 # Análisis mediante Redes de Aprendizaje Profundo de Series Temporales Parcialmente Observadas sobre Datos de Ocupación de Estacionamiento en un Espacio Urbano Inteligente
 
-Este portal interactivo documenta los descubrimientos y resultados más relevantes del trabajo de fin de grado realizado por Pablo Pardo Gutiérrez.
+Este portal web documenta los descubrimientos y resultados más relevantes del trabajo de fin de grado realizado por Pablo Pardo Gutiérrez.
 
 > TIP: puede utilizar el menú superior para explorar las diferentes secciones del proyecto.
 
@@ -18,13 +18,13 @@ Para hacer esto posible, el entrenamiento y la optimización paramétrica de los
 
 De esta forma, la investigación desarrollada valida metodológicamente la aplicación de arquitecturas del estado del arte en entornos de producción sujetos a la evolución constante del tráfico, con el objetivo de consolidar un marco tecnológico resiliente para la gestión de la movilidad basada en datos.
 
-### Arquitectura del Sistema
+### Arquitectura del sistema
 
 Para garantizar la escalabilidad y robustez del sistema, se ha diseñado una arquitectura orientada a los datos, dividida en cuatro fases secuenciales que abarcan desde la ingesta hasta la visualización final:
 
-* **Flujo histórico y espacial.** Ejecutados localmente mediante *notebooks* de Python, extraen datos estáticos del portal *Open Data* de Melbourne. Tras aplicar rutinas de limpieza, cruzan información temporal y geográfica generando un dataset unificado (`.parquet`) para entrenar las redes neuronales.
-* **Flujo en tiempo real.** Orquestado íntegramente por **Apache Airflow**, interactúa recurrentemente con la API municipal para obtener telemetría viva y la almacena en una base analítica **DuckDB**, permitiendo evaluar los modelos en un entorno de producción.
-* **Modelado predictivo.** Núcleo analítico apoyado en la librería **PyPOTS**. Abarca la optimización de hiperparámetros y la evaluación final, distinguiendo entre el rendimiento de modelos individuales y flujos integrados (imputación + predicción).
-* **Visualizaciones.** Ecosistema de divulgación conformado por un mapa espacial interactivo, la monitorización de telemetría de entrenamiento en *TensorBoard* y el presente portal web ilustrativo.
+* **Flujo histórico y espacial.** Ejecutados localmente mediante *notebooks* de Python: extraen datos estáticos del portal de datoa abiertos de Melbourne. Tras varias etapas de procesamiento, se cruza información temporal y geográfica para generar un dataset unificado adecuado al entrenamiento de las redes neuronales.
+* **Flujo en tiempo real.** Orquestado íntegramente por Apache Airflow: interactúa recurrentemente con la API disponibilizada para obtener telemetría en tiempo real. La información consumida se almacena en la base de datos DuckDB, con el objetivo de evaluar los modelos entrenados en un entorno de producción.
+* **Modelado predictivo.** Núcleo analítico apoyado en la librería PyPOTS: abarca la optimización de hiperparámetros durante el entrenamiento y la evaluación final. Se distingue entre el rendimiento de modelos individuales y la combinación de los mismos (imputación + predicción).
+* **Visualizaciones.** Ecosistema de divulgación visual: incluye un mapa espacial interactivo, la monitorización de telemetría de entrenamiento en TensorBoard y el presente portal web ilustrativo.
 
 ![Arquitectura general del sistema](img/[implem]arquitectura.svg){fig-align="center"}

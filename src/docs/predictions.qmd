@@ -1,34 +1,47 @@
 ---
-title: "Modelado y Resultados"
+title: "Modelado y resultados"
 ---
 
-[cite_start]El núcleo predictivo del proyecto se fundamenta en la comparativa empírica (*benchmark*) de distintas arquitecturas de **Deep Learning** para resolver dos problemas complementarios: la imputación de valores nulos (caídas de sensores) y la predicción a futuro de la disponibilidad de aparcamiento[cite: 1698].
+El núcleo predictivo del proyecto se fundamenta en la comparativa empírica de distintas arquitecturas de deep learning para resolver dos problemas asociados a las series temporales: la imputación de valores nulos y la predicción de los valores futuros.
 
-## Metodología y Orquestación del Flujo
+Para abordar ambos retos, el sistema integra modelos representativos de los principales paradigmas actuales. En las tareas de **imputación**, se evalúan arquitecturas como SAITS, basada en autoatención, 
+y CSDI, un modelo generativo de difusión probabilística. Por otro lado, para las tareas de **predicción**, se comparan tres paradigmas diametralmente opuestos: la arquitectura Transformer como el mecanismo de atención puro, MICN, con su extracción de características 
+mediante convoluciones isométricas, y DLinear, donde se aplica una descomposición matemática lineal.
 
-Para aislar la complejidad matemática y maximizar el uso de los recursos computacionales de forma desatendida, el proceso de entrenamiento se automatizó completamente. Se desarrollaron *scripts* de *Bash* que inicializan el entorno, inyectan las variables necesarias y ejecutan secuencialmente el *pipeline* de optimización.
+## Metodología y orquestación del flujo de trabajo
 
-Una vez iniciado el *script*, el ciclo de vida algorítmico sigue un esquema lógico estricto:
+Para aislar la complejidad matemática y maximizar el uso de los recursos computacionales de forma desatendida, el proceso de entrenamiento se automatiza completamente. Se emplean *scripts* de *Bash* que inicializan el entorno y ejecutan secuencialmente el *pipeline* de optimización.
 
-![Flujo lógico del modelado: high performance optimization y flujo de evaluación](img/[implem]flujo_entrenamiento_eval.svg){fig-align="center"}
+El ciclo de vida algorítmico sigue el siguiente esquema lógico:
+
+![Flujo lógico del modelado: High Performance Optimization y flujo de evaluación](img/[implem]flujo_entrenamiento_eval.svg){fig-align="center"}
 
 ### 1. Optimización de Hiperparámetros (HPO)
-El orquestador central gestiona la búsqueda paramétrica en cuatro etapas:
-* **Inicialización:** Carga de los espacios de búsqueda dinámica definidos.
-* **Generación:** Creación de configuraciones paramétricas únicas mediante muestreo probabilístico (*Random Search*).
-* **Entrenamiento y Validación:** Inicialización de la red neuronal y evaluación de su capacidad de generalización. Se integra telemetría directa hacia **TensorBoard** para registrar las curvas de pérdida. Toda invocación cuenta con control de excepciones para liberar la caché de la GPU en caso de fallo.
-* **Actualización:** Comparativa del error resultante con el mejor registro histórico, reteniendo en disco los pesos óptimos si se supera el rendimiento anterior.
+La búsqueda paramétrica se gestiona en cuatro etapas:
 
-### 2. Evaluación en el Conjunto de Test
-Finalizada la optimización, se evalúan las arquitecturas con la mejor configuración bajo dos enfoques:
-* **Evaluación Individual:** Se calcula el error en imputación (aislando las coordenadas con valores nulos artificiales) y en predicción (frente a la ventana futura, descartando los vacíos originales).
-* **Evaluación Integrada (Pipeline):** Ensayo empírico para cuantificar si las arquitecturas de *forecasting* incrementan su rendimiento al recibir un contexto previamente reconstruido matemáticamente. Se instancian ambos modelos de forma simultánea, aplicando la imputación por sub-bloques antes de ensamblar la matriz continua para la predicción final.
+* **Inicialización.** Carga de los espacios de búsqueda dinámica.
+* **Generación de hiperparámetros.** Creación de configuraciones paramétricas únicas mediante muestreo probabilístico (*Random Search*).
+* **Entrenamiento y validación.** Entrenamiento de la red neuronal y validación de su capacidad de generalización. Se integra telemetría directa hacia TensorBoard para registrar las curvas de pérdida.
+* **Actualización:** Comparativa del error resultante con el mejor registro histórico. Almacenamiento de los pesos del modelo entrenado.
 
----
+### 2. Evaluación en el conjunto de prueba
+Finalizada la optimización, se evalúan las arquitecturas con la mejor configuración bajo tres enfoques:
 
-## Resultados en Tareas de Imputación
+* **Evaluación individual.** Se calcula el error del modelo sobre el conjunto de *test*.
+* **Evaluación integrada.** Se calcula el error de la combinación secuencial de un modelo de imputación junto a otro modelo de predicción.
+* **Evaluación *Out-Of-Time*.** Se realiza una prueba de estrés sobre los datos consumidos en tiempo real para observar el error obtenido por las distintas implementaciones ya entrenadas. Busca evaluar la resistencia a la deriva conceptual.
 
-[cite_start]Se contrastaron heurísticas clásicas de la industria frente a arquitecturas basadas en autoatención (SAITS) y modelos de difusión probabilística (CSDI)[cite: 1698].
+## Convergencia de los modelos
+
+En la telemetría extraída durante el entrenamiento, las funciones de pérdida arrojan información valiosa sobre cómo los diferentes modelos se adaptan a los datos. 
+Se observa un desplome rápido del error en las convoluciones de MICN frente a un estancamiento prolongado de la red Transformer, incapaz de mejorar a lo largo de las iteraciones.
+
+![Comparativa de la función de pérdida en entrenamiento entre MICN (naranja y rosado) y Transformer (azul y gris) para ambos horizontes predictivos.](img/[exp]micn_transf_tl.png){fig-align="center"}
+
+
+## 1. Resultados en tareas de imputación
+
+Se contrastan heurísticas clásicas de la industria (media global y LOCF) frente a las arquitecturas de imputación:
 
 | Modelo / Algoritmo | MAE | MSE | RMSE |
 |:---|:---:|:---:|:---:|
@@ -37,15 +50,18 @@ Finalizada la optimización, se evalúan las arquitecturas con la mejor configur
 | LOCF | 0.53709 | 61.99049 | 7.87340 |
 | CSDI | 3.83389 | 100.37682 | 10.01882 |
 
-: Métricas de evaluación en el conjunto de test para tareas de imputación. {tbl-colwidths="[40, 20, 20, 20]"}
+: Métricas de evaluación en el conjunto de test histórico para tareas de imputación. {tbl-colwidths="[40, 20, 20, 20]"}
 
-[cite_start]**Conclusión clave**: La arquitectura determinista SAITS domina la comparativa de forma absoluta[cite: 3089]. [cite_start]El algoritmo de inercia clásica (LOCF) colapsa matemáticamente ante la alta volatilidad de los cambios de estado en el estacionamiento urbano[cite: 3085, 3088].
+**Conclusiones clave:**
 
-## Resultados en Tareas de Predicción (Forecasting)
+* **Superioridad determinista.** La arquitectura SAITS domina la comparativa de forma absoluta. En el conjunto de datos de producción, el modelo incluso mejora su rendimiento (MAE de 0.039), lo que demuestra que ha logrado interiorizar el comportamiento subyacente de los usuarios.
+* **Colapso de la inercia.** El algoritmo clásico LOCF fracasa rotundamente ante la alta volatilidad de los cambios de estado binarios en el estacionamiento urbano.
 
-[cite_start]Se evaluó la capacidad de proyección futura contrastando el paradigma atencional (Transformer), convolucional (MICN) y lineal (DLinear)[cite: 1698].
+## 2. Resultados en tareas de predicción
 
-### Horizonte a 24 Horas
+Se evalua la capacidad de proyección futura y se obtienen los siguientes resultados:
+
+### Horizonte a 24 horas
 
 | Modelo | MAE | MSE | RMSE |
 |:---|:---:|:---:|:---:|
@@ -55,7 +71,7 @@ Finalizada la optimización, se evalúan las arquitecturas con la mejor configur
 
 : Resultados de la predicción a 24 horas. {tbl-colwidths="[40, 20, 20, 20]"}
 
-### Horizonte a 48 Horas
+### Horizonte a 48 horas
 
 | Modelo | MAE | MSE | RMSE |
 |:---|:---:|:---:|:---:|
@@ -65,12 +81,36 @@ Finalizada la optimización, se evalúan las arquitecturas con la mejor configur
 
 : Resultados de la predicción a 48 horas. {tbl-colwidths="[40, 20, 20, 20]"}
 
-[cite_start]**Conclusión clave**: Los resultados confirman empíricamente que la arquitectura Transformer resulta subóptima para estas series temporales[cite: 3102, 3103]. [cite_start]Por su parte, la convolución isométrica (MICN) captura la volatilidad diaria logrando el menor error absoluto (MAE), mientras que la descomposición lineal (DLinear) asume un comportamiento conservador, minimizando con éxito el error cuadrático (MSE)[cite: 3108, 3109, 3110, 3111].
+**Conclusiones clave:**
+
+* **Fracaso del método de atención puro.** Los resultados confirman empíricamente que la arquitectura Transformer resulta subóptima para estas series temporales.
+* **Similitud de rendimiento para MICN y DLinear.** Las métricas obtenidas son similares, aunque la convolución isométrica captura la volatilidad diaria y obtiene el menor MAE. Por su parte, la descomposición lineal asume un comportamiento más conservador y evita predecir anomalías extremas. Gracias a ello, minimiza el error cuadrático (MSE).
+* **Resiliencia de DLinear en producción.** Al someter los modelos a datos obtenidos en tiempo real, DLinear ha demostrado una robustez estructural excepcional al horizonte de 48 horas. Por el contrario, MICN ha presentado una degradación de rendimiento debido a la imposibilidad técnica de escalar su ventana de contexto histórico.
+
+## 3. Evaluación de la integración de modelos consecutivamente
+
+Se realiza un ensayo empírico para cuantificar si sanear la señal con un modelo de imputación antes de predecir a futuro justifica su altísimo coste computacional frente a predecir con la señal original.
+
+Para garantizar la rigurosidad del análisis, se seleccionaron cuatro escenarios de prueba estratégicos. En la siguiente tabla se consolidan los resultados de someter el conjunto de prueba a las redes de predicción de forma aislada (datos crudos) y, posteriormente, a través del *pipeline* de preprocesamiento (datos imputados por SAITS):
+
+| Pipeline (Imputador → Predictor) | Estado | MAE | MSE | Var. (%) |
+|:---|:---|:---:|:---:|:---:|
+| **SAITS → MICN (24H)** | Crudo | 0.03845 | 0.02177 | -0.05% |
+| | Imputado | **0.03843** | **0.02165** | |
+| **SAITS → DLinear (24H)** | Crudo | 0.06503 | 0.02010 | -0.49% |
+| | Imputado | **0.06471** | **0.02006** | |
+| **SAITS → DLinear (48H)** | Crudo | **0.07342** | **0.02136** | +0.49% |
+| | Imputado | 0.07378 | 0.02136 | |
+| **SAITS → Transformer (24H)** | Crudo | 0.26451 | 0.15475 | -0.04% |
+| | Imputado | **0.26440** | **0.15473** | |
+
+: Resultados del *pipeline* integrado. Comparativa de error MAE sobre datos originales frente a datos previamente imputados por SAITS. {tbl-colwidths="[35, 15, 20, 20, 10]"}
+
+Tras analizar las variaciones de rendimiento, se extraen tres conclusiones fundamentales:
+
+* **El SoTA es robusto por naturaleza.** Inyectar la señal perfectamente imputada genera una mejora virtualmente inexistente en ambos horizontes temporales. Las arquitecturas predictivas modernas asimilan los vacíos y anomalías de los sensores con tal eficacia que anulan la necesidad de aplicar técnicas generativas de imputación previas.
+* **Propagación del error por escalabilidad.** En escenarios de medio-largo plazo, la imputación en cascada puede degradar ligeramente el rendimiento (véase el +0.49% de error obtenido). Las pequeñas imprecisiones de imputación se acumulan a lo largo de ventanas temporales extensas, lo cual afeca negativamente a la capa predictiva.
+* **Refutación algorítmica del Transformer.** Se comprueba que mal rendimiento de la arqutiectura basada en atención se debe a una cuestión estructural y no a una simple intolerancia de valores ausentes: al inyectarle la señal totalmente reconstruida la mejora es estadísticamente nula.
 
 ---
 
-## Verificación de Convergencia
-
-En la telemetría extraída durante el entrenamiento, las curvas de pérdida confirman la divergencia arquitectónica: se observa un desplome rápido del error en las convoluciones de MICN frente a un estancamiento prolongado de la red Transformer.
-
-![Comparativa de la función de pérdida en entrenamiento: MICN (naranja/rosado) vs Transformer (azul/gris).](img/[exp]micn_transf_tl.png){fig-align="center"}

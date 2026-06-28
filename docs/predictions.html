@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Modelado y Resultados – Gestión del dato urbano en Melbourne</title>
+<title>Modelado y resultados – Gestión del dato urbano en Melbourne</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -57,17 +57,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -90,8 +90,8 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Gestión del dato urbano en Melbourne</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -132,21 +132,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#metodología-y-orquestación-del-flujo" id="toc-metodología-y-orquestación-del-flujo" class="nav-link active" data-scroll-target="#metodología-y-orquestación-del-flujo">Metodología y Orquestación del Flujo</a>
+  <li><a href="#metodología-y-orquestación-del-flujo-de-trabajo" id="toc-metodología-y-orquestación-del-flujo-de-trabajo" class="nav-link active" data-scroll-target="#metodología-y-orquestación-del-flujo-de-trabajo">Metodología y orquestación del flujo de trabajo</a>
   <ul class="collapse">
   <li><a href="#optimización-de-hiperparámetros-hpo" id="toc-optimización-de-hiperparámetros-hpo" class="nav-link" data-scroll-target="#optimización-de-hiperparámetros-hpo">1. Optimización de Hiperparámetros (HPO)</a></li>
-  <li><a href="#evaluación-en-el-conjunto-de-test" id="toc-evaluación-en-el-conjunto-de-test" class="nav-link" data-scroll-target="#evaluación-en-el-conjunto-de-test">2. Evaluación en el Conjunto de Test</a></li>
+  <li><a href="#evaluación-en-el-conjunto-de-prueba" id="toc-evaluación-en-el-conjunto-de-prueba" class="nav-link" data-scroll-target="#evaluación-en-el-conjunto-de-prueba">2. Evaluación en el conjunto de prueba</a></li>
   </ul></li>
-  <li><a href="#resultados-en-tareas-de-imputación" id="toc-resultados-en-tareas-de-imputación" class="nav-link" data-scroll-target="#resultados-en-tareas-de-imputación">Resultados en Tareas de Imputación</a></li>
-  <li><a href="#resultados-en-tareas-de-predicción-forecasting" id="toc-resultados-en-tareas-de-predicción-forecasting" class="nav-link" data-scroll-target="#resultados-en-tareas-de-predicción-forecasting">Resultados en Tareas de Predicción (Forecasting)</a>
+  <li><a href="#convergencia-de-los-modelos" id="toc-convergencia-de-los-modelos" class="nav-link" data-scroll-target="#convergencia-de-los-modelos">Convergencia de los modelos</a></li>
+  <li><a href="#resultados-en-tareas-de-imputación" id="toc-resultados-en-tareas-de-imputación" class="nav-link" data-scroll-target="#resultados-en-tareas-de-imputación">1. Resultados en tareas de imputación</a></li>
+  <li><a href="#resultados-en-tareas-de-predicción" id="toc-resultados-en-tareas-de-predicción" class="nav-link" data-scroll-target="#resultados-en-tareas-de-predicción">2. Resultados en tareas de predicción</a>
   <ul class="collapse">
-  <li><a href="#horizonte-a-24-horas" id="toc-horizonte-a-24-horas" class="nav-link" data-scroll-target="#horizonte-a-24-horas">Horizonte a 24 Horas</a></li>
-  <li><a href="#horizonte-a-48-horas" id="toc-horizonte-a-48-horas" class="nav-link" data-scroll-target="#horizonte-a-48-horas">Horizonte a 48 Horas</a></li>
+  <li><a href="#horizonte-a-24-horas" id="toc-horizonte-a-24-horas" class="nav-link" data-scroll-target="#horizonte-a-24-horas">Horizonte a 24 horas</a></li>
+  <li><a href="#horizonte-a-48-horas" id="toc-horizonte-a-48-horas" class="nav-link" data-scroll-target="#horizonte-a-48-horas">Horizonte a 48 horas</a></li>
   </ul></li>
-  <li><a href="#verificación-de-convergencia" id="toc-verificación-de-convergencia" class="nav-link" data-scroll-target="#verificación-de-convergencia">Verificación de Convergencia</a></li>
+  <li><a href="#evaluación-de-la-integración-de-modelos-consecutivamente" id="toc-evaluación-de-la-integración-de-modelos-consecutivamente" class="nav-link" data-scroll-target="#evaluación-de-la-integración-de-modelos-consecutivamente">3. Evaluación de la integración de modelos consecutivamente</a></li>
   </ul>
 </nav>
     </div>
@@ -155,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modelado y Resultados</h1>
+<h1 class="title">Modelado y resultados</h1>
 </div>
 
 
@@ -172,32 +173,53 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>[cite_start]El núcleo predictivo del proyecto se fundamenta en la comparativa empírica (<em>benchmark</em>) de distintas arquitecturas de <strong>Deep Learning</strong> para resolver dos problemas complementarios: la imputación de valores nulos (caídas de sensores) y la predicción a futuro de la disponibilidad de aparcamiento[cite: 1698].</p>
-<section id="metodología-y-orquestación-del-flujo" class="level2">
-<h2 class="anchored" data-anchor-id="metodología-y-orquestación-del-flujo">Metodología y Orquestación del Flujo</h2>
-<p>Para aislar la complejidad matemática y maximizar el uso de los recursos computacionales de forma desatendida, el proceso de entrenamiento se automatizó completamente. Se desarrollaron <em>scripts</em> de <em>Bash</em> que inicializan el entorno, inyectan las variables necesarias y ejecutan secuencialmente el <em>pipeline</em> de optimización.</p>
-<p>Una vez iniciado el <em>script</em>, el ciclo de vida algorítmico sigue un esquema lógico estricto:</p>
+<p>El núcleo predictivo del proyecto se fundamenta en la comparativa empírica de distintas arquitecturas de deep learning para resolver dos problemas asociados a las series temporales: la imputación de valores nulos y la predicción de los valores futuros.</p>
+<p>Para abordar ambos retos, el sistema integra modelos representativos de los principales paradigmas actuales. En las tareas de <strong>imputación</strong>, se evalúan arquitecturas como SAITS, basada en autoatención, y CSDI, un modelo generativo de difusión probabilística. Por otro lado, para las tareas de <strong>predicción</strong>, se comparan tres paradigmas diametralmente opuestos: la arquitectura Transformer como el mecanismo de atención puro, MICN, con su extracción de características mediante convoluciones isométricas, y DLinear, donde se aplica una descomposición matemática lineal.</p>
+<section id="metodología-y-orquestación-del-flujo-de-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="metodología-y-orquestación-del-flujo-de-trabajo">Metodología y orquestación del flujo de trabajo</h2>
+<p>Para aislar la complejidad matemática y maximizar el uso de los recursos computacionales de forma desatendida, el proceso de entrenamiento se automatiza completamente. Se emplean <em>scripts</em> de <em>Bash</em> que inicializan el entorno y ejecutan secuencialmente el <em>pipeline</em> de optimización.</p>
+<p>El ciclo de vida algorítmico sigue el siguiente esquema lógico:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/[implem]flujo_entrenamiento_eval.svg" class="img-fluid figure-img"></p>
-<figcaption>Flujo lógico del modelado: high performance optimization y flujo de evaluación</figcaption>
+<figcaption>Flujo lógico del modelado: High Performance Optimization y flujo de evaluación</figcaption>
 </figure>
 </div>
 <section id="optimización-de-hiperparámetros-hpo" class="level3">
 <h3 class="anchored" data-anchor-id="optimización-de-hiperparámetros-hpo">1. Optimización de Hiperparámetros (HPO)</h3>
-<p>El orquestador central gestiona la búsqueda paramétrica en cuatro etapas: * <strong>Inicialización:</strong> Carga de los espacios de búsqueda dinámica definidos. * <strong>Generación:</strong> Creación de configuraciones paramétricas únicas mediante muestreo probabilístico (<em>Random Search</em>). * <strong>Entrenamiento y Validación:</strong> Inicialización de la red neuronal y evaluación de su capacidad de generalización. Se integra telemetría directa hacia <strong>TensorBoard</strong> para registrar las curvas de pérdida. Toda invocación cuenta con control de excepciones para liberar la caché de la GPU en caso de fallo. * <strong>Actualización:</strong> Comparativa del error resultante con el mejor registro histórico, reteniendo en disco los pesos óptimos si se supera el rendimiento anterior.</p>
+<p>La búsqueda paramétrica se gestiona en cuatro etapas:</p>
+<ul>
+<li><strong>Inicialización.</strong> Carga de los espacios de búsqueda dinámica.</li>
+<li><strong>Generación de hiperparámetros.</strong> Creación de configuraciones paramétricas únicas mediante muestreo probabilístico (<em>Random Search</em>).</li>
+<li><strong>Entrenamiento y validación.</strong> Entrenamiento de la red neuronal y validación de su capacidad de generalización. Se integra telemetría directa hacia TensorBoard para registrar las curvas de pérdida.</li>
+<li><strong>Actualización:</strong> Comparativa del error resultante con el mejor registro histórico. Almacenamiento de los pesos del modelo entrenado.</li>
+</ul>
 </section>
-<section id="evaluación-en-el-conjunto-de-test" class="level3">
-<h3 class="anchored" data-anchor-id="evaluación-en-el-conjunto-de-test">2. Evaluación en el Conjunto de Test</h3>
-<p>Finalizada la optimización, se evalúan las arquitecturas con la mejor configuración bajo dos enfoques: * <strong>Evaluación Individual:</strong> Se calcula el error en imputación (aislando las coordenadas con valores nulos artificiales) y en predicción (frente a la ventana futura, descartando los vacíos originales). * <strong>Evaluación Integrada (Pipeline):</strong> Ensayo empírico para cuantificar si las arquitecturas de <em>forecasting</em> incrementan su rendimiento al recibir un contexto previamente reconstruido matemáticamente. Se instancian ambos modelos de forma simultánea, aplicando la imputación por sub-bloques antes de ensamblar la matriz continua para la predicción final.</p>
-<hr>
+<section id="evaluación-en-el-conjunto-de-prueba" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-en-el-conjunto-de-prueba">2. Evaluación en el conjunto de prueba</h3>
+<p>Finalizada la optimización, se evalúan las arquitecturas con la mejor configuración bajo tres enfoques:</p>
+<ul>
+<li><strong>Evaluación individual.</strong> Se calcula el error del modelo sobre el conjunto de <em>test</em>.</li>
+<li><strong>Evaluación integrada.</strong> Se calcula el error de la combinación secuencial de un modelo de imputación junto a otro modelo de predicción.</li>
+<li><strong>Evaluación <em>Out-Of-Time</em>.</strong> Se realiza una prueba de estrés sobre los datos consumidos en tiempo real para observar el error obtenido por las distintas implementaciones ya entrenadas. Busca evaluar la resistencia a la deriva conceptual.</li>
+</ul>
 </section>
+</section>
+<section id="convergencia-de-los-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="convergencia-de-los-modelos">Convergencia de los modelos</h2>
+<p>En la telemetría extraída durante el entrenamiento, las funciones de pérdida arrojan información valiosa sobre cómo los diferentes modelos se adaptan a los datos. Se observa un desplome rápido del error en las convoluciones de MICN frente a un estancamiento prolongado de la red Transformer, incapaz de mejorar a lo largo de las iteraciones.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/[exp]micn_transf_tl.png" class="img-fluid figure-img"></p>
+<figcaption>Comparativa de la función de pérdida en entrenamiento entre MICN (naranja y rosado) y Transformer (azul y gris) para ambos horizontes predictivos.</figcaption>
+</figure>
+</div>
 </section>
 <section id="resultados-en-tareas-de-imputación" class="level2">
-<h2 class="anchored" data-anchor-id="resultados-en-tareas-de-imputación">Resultados en Tareas de Imputación</h2>
-<p>[cite_start]Se contrastaron heurísticas clásicas de la industria frente a arquitecturas basadas en autoatención (SAITS) y modelos de difusión probabilística (CSDI)[cite: 1698].</p>
+<h2 class="anchored" data-anchor-id="resultados-en-tareas-de-imputación">1. Resultados en tareas de imputación</h2>
+<p>Se contrastan heurísticas clásicas de la industria (media global y LOCF) frente a las arquitecturas de imputación:</p>
 <table class="caption-top table">
-<caption>Métricas de evaluación en el conjunto de test para tareas de imputación.</caption>
+<caption>Métricas de evaluación en el conjunto de test histórico para tareas de imputación.</caption>
 <colgroup>
 <col style="width: 40%">
 <col style="width: 20%">
@@ -239,13 +261,17 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>[cite_start]<strong>Conclusión clave</strong>: La arquitectura determinista SAITS domina la comparativa de forma absoluta[cite: 3089]. [cite_start]El algoritmo de inercia clásica (LOCF) colapsa matemáticamente ante la alta volatilidad de los cambios de estado en el estacionamiento urbano[cite: 3085, 3088].</p>
+<p><strong>Conclusiones clave:</strong></p>
+<ul>
+<li><strong>Superioridad determinista.</strong> La arquitectura SAITS domina la comparativa de forma absoluta. En el conjunto de datos de producción, el modelo incluso mejora su rendimiento (MAE de 0.039), lo que demuestra que ha logrado interiorizar el comportamiento subyacente de los usuarios.</li>
+<li><strong>Colapso de la inercia.</strong> El algoritmo clásico LOCF fracasa rotundamente ante la alta volatilidad de los cambios de estado binarios en el estacionamiento urbano.</li>
+</ul>
 </section>
-<section id="resultados-en-tareas-de-predicción-forecasting" class="level2">
-<h2 class="anchored" data-anchor-id="resultados-en-tareas-de-predicción-forecasting">Resultados en Tareas de Predicción (Forecasting)</h2>
-<p>[cite_start]Se evaluó la capacidad de proyección futura contrastando el paradigma atencional (Transformer), convolucional (MICN) y lineal (DLinear)[cite: 1698].</p>
+<section id="resultados-en-tareas-de-predicción" class="level2">
+<h2 class="anchored" data-anchor-id="resultados-en-tareas-de-predicción">2. Resultados en tareas de predicción</h2>
+<p>Se evalua la capacidad de proyección futura y se obtienen los siguientes resultados:</p>
 <section id="horizonte-a-24-horas" class="level3">
-<h3 class="anchored" data-anchor-id="horizonte-a-24-horas">Horizonte a 24 Horas</h3>
+<h3 class="anchored" data-anchor-id="horizonte-a-24-horas">Horizonte a 24 horas</h3>
 <table class="caption-top table">
 <caption>Resultados de la predicción a 24 horas.</caption>
 <colgroup>
@@ -285,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="horizonte-a-48-horas" class="level3">
-<h3 class="anchored" data-anchor-id="horizonte-a-48-horas">Horizonte a 48 Horas</h3>
+<h3 class="anchored" data-anchor-id="horizonte-a-48-horas">Horizonte a 48 horas</h3>
 <table class="caption-top table">
 <caption>Resultados de la predicción a 48 horas.</caption>
 <colgroup>
@@ -323,19 +349,102 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>[cite_start]<strong>Conclusión clave</strong>: Los resultados confirman empíricamente que la arquitectura Transformer resulta subóptima para estas series temporales[cite: 3102, 3103]. [cite_start]Por su parte, la convolución isométrica (MICN) captura la volatilidad diaria logrando el menor error absoluto (MAE), mientras que la descomposición lineal (DLinear) asume un comportamiento conservador, minimizando con éxito el error cuadrático (MSE)[cite: 3108, 3109, 3110, 3111].</p>
+<p><strong>Conclusiones clave:</strong></p>
+<ul>
+<li><strong>Fracaso del método de atención puro.</strong> Los resultados confirman empíricamente que la arquitectura Transformer resulta subóptima para estas series temporales.</li>
+<li><strong>Similitud de rendimiento para MICN y DLinear.</strong> Las métricas obtenidas son similares, aunque la convolución isométrica captura la volatilidad diaria y obtiene el menor MAE. Por su parte, la descomposición lineal asume un comportamiento más conservador y evita predecir anomalías extremas. Gracias a ello, minimiza el error cuadrático (MSE).</li>
+<li><strong>Resiliencia de DLinear en producción.</strong> Al someter los modelos a datos obtenidos en tiempo real, DLinear ha demostrado una robustez estructural excepcional al horizonte de 48 horas. Por el contrario, MICN ha presentado una degradación de rendimiento debido a la imposibilidad técnica de escalar su ventana de contexto histórico.</li>
+</ul>
+</section>
+</section>
+<section id="evaluación-de-la-integración-de-modelos-consecutivamente" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación-de-la-integración-de-modelos-consecutivamente">3. Evaluación de la integración de modelos consecutivamente</h2>
+<p>Se realiza un ensayo empírico para cuantificar si sanear la señal con un modelo de imputación antes de predecir a futuro justifica su altísimo coste computacional frente a predecir con la señal original.</p>
+<p>Para garantizar la rigurosidad del análisis, se seleccionaron cuatro escenarios de prueba estratégicos. En la siguiente tabla se consolidan los resultados de someter el conjunto de prueba a las redes de predicción de forma aislada (datos crudos) y, posteriormente, a través del <em>pipeline</em> de preprocesamiento (datos imputados por SAITS):</p>
+<table class="caption-top table">
+<caption>Resultados del <em>pipeline</em> integrado. Comparativa de error MAE sobre datos originales frente a datos previamente imputados por SAITS.</caption>
+<colgroup>
+<col style="width: 35%">
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pipeline (Imputador → Predictor)</th>
+<th style="text-align: left;">Estado</th>
+<th style="text-align: center;">MAE</th>
+<th style="text-align: center;">MSE</th>
+<th style="text-align: center;">Var. (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>SAITS → MICN (24H)</strong></td>
+<td style="text-align: left;">Crudo</td>
+<td style="text-align: center;">0.03845</td>
+<td style="text-align: center;">0.02177</td>
+<td style="text-align: center;">-0.05%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Imputado</td>
+<td style="text-align: center;"><strong>0.03843</strong></td>
+<td style="text-align: center;"><strong>0.02165</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>SAITS → DLinear (24H)</strong></td>
+<td style="text-align: left;">Crudo</td>
+<td style="text-align: center;">0.06503</td>
+<td style="text-align: center;">0.02010</td>
+<td style="text-align: center;">-0.49%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Imputado</td>
+<td style="text-align: center;"><strong>0.06471</strong></td>
+<td style="text-align: center;"><strong>0.02006</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>SAITS → DLinear (48H)</strong></td>
+<td style="text-align: left;">Crudo</td>
+<td style="text-align: center;"><strong>0.07342</strong></td>
+<td style="text-align: center;"><strong>0.02136</strong></td>
+<td style="text-align: center;">+0.49%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Imputado</td>
+<td style="text-align: center;">0.07378</td>
+<td style="text-align: center;">0.02136</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>SAITS → Transformer (24H)</strong></td>
+<td style="text-align: left;">Crudo</td>
+<td style="text-align: center;">0.26451</td>
+<td style="text-align: center;">0.15475</td>
+<td style="text-align: center;">-0.04%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Imputado</td>
+<td style="text-align: center;"><strong>0.26440</strong></td>
+<td style="text-align: center;"><strong>0.15473</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Tras analizar las variaciones de rendimiento, se extraen tres conclusiones fundamentales:</p>
+<ul>
+<li><strong>El SoTA es robusto por naturaleza.</strong> Inyectar la señal perfectamente imputada genera una mejora virtualmente inexistente en ambos horizontes temporales. Las arquitecturas predictivas modernas asimilan los vacíos y anomalías de los sensores con tal eficacia que anulan la necesidad de aplicar técnicas generativas de imputación previas.</li>
+<li><strong>Propagación del error por escalabilidad.</strong> En escenarios de medio-largo plazo, la imputación en cascada puede degradar ligeramente el rendimiento (véase el +0.49% de error obtenido). Las pequeñas imprecisiones de imputación se acumulan a lo largo de ventanas temporales extensas, lo cual afeca negativamente a la capa predictiva.</li>
+<li><strong>Refutación algorítmica del Transformer.</strong> Se comprueba que mal rendimiento de la arqutiectura basada en atención se debe a una cuestión estructural y no a una simple intolerancia de valores ausentes: al inyectarle la señal totalmente reconstruida la mejora es estadísticamente nula.</li>
+</ul>
 <hr>
-</section>
-</section>
-<section id="verificación-de-convergencia" class="level2">
-<h2 class="anchored" data-anchor-id="verificación-de-convergencia">Verificación de Convergencia</h2>
-<p>En la telemetría extraída durante el entrenamiento, las curvas de pérdida confirman la divergencia arquitectónica: se observa un desplome rápido del error en las convoluciones de MICN frente a un estancamiento prolongado de la red Transformer.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/[exp]micn_transf_tl.png" class="img-fluid figure-img"></p>
-<figcaption>Comparativa de la función de pérdida en entrenamiento: MICN (naranja/rosado) vs Transformer (azul/gris).</figcaption>
-</figure>
-</div>
 
 
 </section>
@@ -366,12 +475,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
