@@ -70,18 +70,11 @@
     "text": "El tratamiento del dato urbano requiere comprender las dinámicas temporales del tráfico y la topología espacial de la ciudad. En esta sección, se presentan los hallazgos principales de la fase exploratoria, así como el mapa cartográfico con los principales puntos de interés."
   },
   {
-    "objectID": "visualizations.html#dinámica-temporal-del-estacionamiento",
-    "href": "visualizations.html#dinámica-temporal-del-estacionamiento",
-    "title": "Análisis de datos - Descubrimientos",
-    "section": "Dinámica temporal del estacionamiento",
-    "text": "Dinámica temporal del estacionamiento\nEl análisis del conjunto histórico de Melbourne revela estacionalidades marcadas por el ciclo laboral y comercial de la ciudad. A continuación se expone la distribución temporal cruzada con la variable objetivo (presencia de vehículo).\n\nRotación diaria\nEl volumen de eventos de aparcamiento muestra una dependencia total del horario laboral, con un valle de inactividad de madrugada y picos máximos en las horas centrales del día.\n\n\n\nDistribución del volumen de eventos de estacionamiento según la hora del día"
-  },
-  {
     "objectID": "visualizations.html#hotspots-de-aparcamiento",
     "href": "visualizations.html#hotspots-de-aparcamiento",
     "title": "Análisis de datos - Descubrimientos",
     "section": "Hotspots de aparcamiento",
-    "text": "Hotspots de aparcamiento\nLa demanda de estacionamiento no se distribuye de manera uniforme, sino que se concentra en vías principales correspondientes a ciertos distritos: comerciales (servicios), financieros…\n\n\n\nVías y zonas con mayor densidad de registros de aparcamiento"
+    "text": "Hotspots de aparcamiento\nLa demanda de estacionamiento no se distribuye de manera uniforme, sino que se concentra en vías principales correspondientes a ciertos distritos: comerciales (servicios), financieros…\n\n\nCódigo\nstreet_col = 'StreetName'\narea_col = 'AreaName'\n\ntop_10_streets = (\n    df_500k_mod[street_col]\n    .dropna()\n    .value_counts()\n    .head(10)\n    .sort_values(ascending=False)\n)\n\ntop_10_areas = (\n    df_500k_mod[area_col]\n    .dropna()\n    .value_counts()\n    .head(10)\n    .sort_values(ascending=False)\n)\n\nfig, axes = plt.subplots(1, 2, figsize=(11, 4.5))\n\nsns.barplot(\n    x=top_10_streets.values,\n    y=top_10_streets.index,\n    ax=axes[0],\n    color='#4C78A8'\n)\naxes[0].set_title('Top 10 calles con más registros', fontsize=11, fontweight='bold')\naxes[0].set_xlabel('Número de registros', fontsize=9)\naxes[0].set_ylabel('Calle', fontsize=9)\naxes[0].tick_params(labelsize=9)\naxes[0].grid(axis='x', alpha=0.25)\n\nsns.barplot(\n    x=top_10_areas.values,\n    y=top_10_areas.index,\n    ax=axes[1],\n    color='#737272'\n)\naxes[1].set_title('Top 10 áreas con más registros', fontsize=11, fontweight='bold')\naxes[1].set_xlabel('Número de registros', fontsize=9)\naxes[1].set_ylabel('Área', fontsize=9)\naxes[1].tick_params(labelsize=9)\naxes[1].grid(axis='x', alpha=0.25)\n\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nFigura 2: Vías y zonas con mayor densidad de registros de aparcamiento"
   },
   {
     "objectID": "visualizations.html#clasificación-espacial",

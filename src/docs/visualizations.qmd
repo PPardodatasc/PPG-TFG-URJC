@@ -1,23 +1,149 @@
 ---
 title: "Análisis de datos - Descubrimientos"
+jupyter: python3
 ---
+```{python}
+#| echo: false
+#| message: false
+#| warning: false
+
+import pandas as pd
+import numpy as np
+import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set_theme(style="whitegrid")
+
+data_folder = os.environ.get("DATA_FOLDER_PATH_IPYNB", "../../data/")
+csv_name = os.environ.get("CSV_2019_RAW_NAME", "On-street_Car_Parking_Sensor_Data_-_2019.csv")
+csv_path = os.path.join(data_folder, csv_name)
+
+df_500k = pd.read_csv(csv_path, nrows=500000, low_memory=False)
+
+df_500k_mod = df_500k.copy()
+df_500k_mod['DurationMinutes'] = df_500k_mod['DurationMinutes'].str.replace(',', '.').astype(float)
+
+df_500k_mod['ArrivalTime'] = pd.to_datetime(df_500k_mod['ArrivalTime'])
+df_500k_mod['DepartureTime'] = pd.to_datetime(df_500k_mod['DepartureTime'])
+df_500k_mod['Hour'] = df_500k_mod['ArrivalTime'].dt.hour
+df_500k_mod['WeekDay'] = df_500k_mod['ArrivalTime'].dt.weekday
+df_500k_mod['Month'] = df_500k_mod['ArrivalTime'].dt.month
+```
 
 El tratamiento del dato urbano requiere comprender las dinámicas temporales del tráfico y la topología espacial de la ciudad. En esta sección, se presentan los hallazgos principales de la fase exploratoria, así como el mapa cartográfico con los principales puntos de interés.
-
-## Dinámica temporal del estacionamiento
-
-El análisis del conjunto histórico de Melbourne revela estacionalidades marcadas por el ciclo laboral y comercial de la ciudad. A continuación se expone la distribución temporal cruzada con la variable objetivo (presencia de vehículo).
 
 ### Rotación diaria
 El volumen de eventos de aparcamiento muestra una dependencia total del horario laboral, con un valle de inactividad de madrugada y picos máximos en las horas centrales del día.
 
-![Distribución del volumen de eventos de estacionamiento según la hora del día](img/[implem]eda_hours.png){fig-align="center"}
+```{python}
+#| label: fig-eda-hours
+#| fig-cap: "Distribución del volumen de eventos de estacionamiento según la hora del día"
+#| fig-align: center
+#| out-width: "60%"
+#| warning: false
+#| message: false
+
+occupied_intervals = df_500k_mod[df_500k_mod['VehiclePresent'] == True].copy()
+
+occupied_intervals['start_hour'] = occupied_intervals['ArrivalTime'].dt.floor('h')
+occupied_intervals['end_hour'] = occupied_intervals['DepartureTime'].dt.ceil('h')
+
+same_hour_mask = occupied_intervals['end_hour'] <= occupied_intervals['start_hour']
+occupied_intervals.loc[same_hour_mask, 'end_hour'] = occupied_intervals.loc[same_hour_mask, 'start_hour'] + pd.Timedelta(hours=1)
+
+occupied_intervals['hour_range'] = occupied_intervals.apply(
+    lambda row: pd.date_range(start=row['start_hour'], end=row['end_hour'], freq='h', inclusive='left'),
+    axis=1
+)
+
+occupied_by_hour = (
+    occupied_intervals[['DeviceId', 'hour_range']]
+    .explode('hour_range')
+    .dropna(subset=['hour_range'])
+)
+
+occupied_per_timestamp = occupied_by_hour.groupby('hour_range')['DeviceId'].nunique()
+
+mean_occupied_by_hour = (
+    occupied_per_timestamp
+    .groupby(occupied_per_timestamp.index.hour)
+    .mean()
+    .reindex(range(24), fill_value=0)
+)
+
+plt.figure(figsize=(7, 3.5))
+plt.bar(mean_occupied_by_hour.index, mean_occupied_by_hour.values, color='#4C78A8', alpha=0.85)
+plt.xticks(range(24), fontsize=9)
+plt.yticks(fontsize=9)
+plt.xlabel('Hora del día', fontsize=10)
+plt.ylabel('DeviceId ocupados en promedio', fontsize=10)
+plt.title('Ocupación media por hora', fontsize=11, fontweight='bold')
+plt.grid(axis='y', alpha=0.25)
+plt.tight_layout()
+plt.show()
+```
 
 ## Hotspots de aparcamiento
 
 La demanda de estacionamiento no se distribuye de manera uniforme, sino que se concentra en vías principales correspondientes a ciertos distritos: comerciales (servicios), financieros...
 
-![Vías y zonas con mayor densidad de registros de aparcamiento](img/[implem]eda_hotspots.png){fig-align="center" width="80%"}
+```{python}
+#| label: fig-eda-hotspots
+#| fig-cap: "Vías y zonas con mayor densidad de registros de aparcamiento"
+#| fig-align: center
+#| out-width: "85%"
+#| warning: false
+#| message: false
+
+street_col = 'StreetName'
+area_col = 'AreaName'
+
+top_10_streets = (
+    df_500k_mod[street_col]
+    .dropna()
+    .value_counts()
+    .head(10)
+    .sort_values(ascending=False)
+)
+
+top_10_areas = (
+    df_500k_mod[area_col]
+    .dropna()
+    .value_counts()
+    .head(10)
+    .sort_values(ascending=False)
+)
+
+fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+
+sns.barplot(
+    x=top_10_streets.values,
+    y=top_10_streets.index,
+    ax=axes[0],
+    color='#4C78A8'
+)
+axes[0].set_title('Top 10 calles con más registros', fontsize=11, fontweight='bold')
+axes[0].set_xlabel('Número de registros', fontsize=9)
+axes[0].set_ylabel('Calle', fontsize=9)
+axes[0].tick_params(labelsize=9)
+axes[0].grid(axis='x', alpha=0.25)
+
+sns.barplot(
+    x=top_10_areas.values,
+    y=top_10_areas.index,
+    ax=axes[1],
+    color='#737272'
+)
+axes[1].set_title('Top 10 áreas con más registros', fontsize=11, fontweight='bold')
+axes[1].set_xlabel('Número de registros', fontsize=9)
+axes[1].set_ylabel('Área', fontsize=9)
+axes[1].tick_params(labelsize=9)
+axes[1].grid(axis='x', alpha=0.25)
+
+plt.tight_layout()
+plt.show()
+```
 
 ## Clasificación espacial
 
