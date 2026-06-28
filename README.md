@@ -81,6 +81,7 @@ Para previsualizar la web en tiempo real en un navegador local:
 ```bash
 # Navegar al directorio raíz del portal web desde la raíz del proyecto
 cd src/docs 
+quarto render
 quarto preview
 ```
 
