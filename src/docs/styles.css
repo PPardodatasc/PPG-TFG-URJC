@@ -1,17 +1,17 @@
-/*Web Style*/
+/* styles.css */
 
 /* General body styles */
 body {
-    font-family: 'Times New Roman', Times, serif; /* Fuente académica clásica */
+    font-family: 'Times New Roman', Times, serif;
     background-color: #f8f9fa;        
     color: #2c2c2c;                   
-    font-size: 0.95rem; /* Tamaño de letra más pequeño */
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
 /* Headers */
 h1, h2, h3, h4 {
-    color: #454a43; /* Mantenemos tu color gris oscuro original */
+    color: #454a43;
     font-weight: 700;
     margin-top: 1.5em;
 }
@@ -35,28 +35,28 @@ h1 {
     color: #ffffff;
 }
 
-/* 5. Navbar links styling (Overrides default Bootstrap colors) */
+/* 5. Navbar links styling */
 .navbar-nav .nav-link {
-    color: #e2e8f0 !important; /* Gris muy claro/blanco roto */
+    color: #e2e8f0 !important; 
     transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #ffffff !important; /* Blanco puro al pasar el ratón */
+    color: #ffffff !important; 
 }
 
 /* Code sections */
 pre, code {
-    background-color: #2d3748;        /* Dark mode */
-    color: #e2e8f0;                   
+    background-color: #2d3748;       
+    color: #eae7e7;                   
     border-radius: 8px;              
 }
 
 /* Links */
 a {
-    color: #1a365d; /* Mantenemos tu color original para enlaces */
-    text-decoration: none;            /* Remove default underline */
-    transition: color 0.3s ease;      /* Smooth color transition on hover */
+    color: #1a365d; 
+    text-decoration: none;            
+    transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 /* Hover effect for links */
@@ -65,7 +65,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Bibliography blockquotes */
+/* Bibliography */
 blockquote {
     border-left: 4px solid #1a365d;   
     background-color: #ebf8ff;        
@@ -74,29 +74,25 @@ blockquote {
     font-style: italic;
 }
 
-/* BIBLIOGRAFÍA PROFESIONAL */
-/* Contenedor global de las referencias */
 #refs {
     padding-left: 0 !important;
     margin-left: 0 !important;
 }
 
-/* Aplica formato de tarjeta a cada elemento de la lista de referencias */
 #refs > div {
     background-color: #ffffff;
-    border-left: 4px solid #1a365d; /* Borde izquierdo azul marino */
-    padding: 15px 20px 15px 25px; /* Añadimos más espacio a la izquierda (25px) */
+    border-left: 4px solid #1a365d; 
+    padding: 15px 20px 15px 25px; 
     margin-bottom: 15px;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease;
-    
-    /* ELIMINAR SANGRÍA DE QUARTO QUE PISA EL BORDE */
+
     text-indent: 0 !important; 
     margin-left: 0 !important;
 }
 
 #refs > div:hover {
-    transform: translateX(5px); /* Pequeño desplazamiento al pasar el ratón */
-    border-left: 4px solid #3182ce; /* Cambia a azul claro */
+    transform: translateX(5px); 
+    border-left: 4px solid #3182ce; 
 }
