@@ -31,7 +31,7 @@ Este repositorio contiene el código correspondiente al Trabajo de Fin de Grado 
 
 ## Instalación y entorno
 
-Es muy importante tener el archivo de configuración `pyproject.toml`, asegúrese de que no se excluya del control de versiones y de que la instalación esté en modo editable. De esta forma las rutas funcionarán sin importar el directorio de ejecución y Python considerará que `src/` es la raíz del proyecto. Asimismo, es imprescindible crear y disponer de un archivo **`.env`** en el directorio principal. Este archivo debe contener todas las variables de entorno requeridas por la aplicación. Véase el archivo `.env.example`.
+Es fundamental tener el archivo de configuración `pyproject.toml`. De esta forma, las rutas funcionarán sin importar el directorio de ejecución y Python considerará que `src/` es la raíz del proyecto. Asimismo, es imprescindible crear y disponer de un archivo **`.env`** en el directorio principal. Este archivo debe contener todas las variables de entorno requeridas por la aplicación. Véase el archivo `.env.example`.
 
 ### Gestor de paquetes (uv)
 
